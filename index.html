@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://sme-loan.work.gd/css/main.css">
     <title>网商贷提额项目报单计数器</title>
     <style>
         body {
@@ -16,14 +15,16 @@
         .container {
             display: inline-block;
             text-align: left;
-            max-width: 800px;
+            max-width: 480px;
             margin: auto;
+            padding-bottom: 50px; 
         }
     
         .section {
             border: 1px solid lightgray;
             padding: 10px;
             margin-bottom: 20px;
+            max-width: 480px;
         }
     
         .title {
@@ -37,7 +38,10 @@
         }
     
         input[type="number"] {
-            width: 100px;
+            width: 40px; 
+            height: 20px; 
+            padding: 3px;
+            font-size: 16px;
         }
     
         .buttons {
@@ -45,8 +49,11 @@
         }
     
         button {
-            padding: 10px 15px;
+            padding: 0px 15px;
             font-size: 16px;
+            height: 30px; 
+            line-height: 30px; 
+            text-align: center; 
         }
     
         .green {
@@ -62,12 +69,48 @@
             background-color: red;
             color: white;
         }
+    
+        .highlight {
+            background-color: yellow; /* Highlighter color */
+        }
+        #nameInput {
+            width: 70px; 
+            height: 20px; 
+            font-size: 16px; 
+        }
+        #result {
+            word-wrap: break-word; 
+            overflow-wrap: break-word; 
+            white-space: normal; 
+            width: 480px; 
+            box-sizing: border-box; 
+            padding: 10px; 
+            margin-top: 20px; 
+            border: 1px solid lightgray; 
+            background-color: #f9f9f9; 
+        }
+        .contact-info {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 1px;
+    border-top: 1px solid lightgray;
+    box-sizing: border-box;
+        }
+    
     </style>
 </head>
 <body>
     <div class="container">
         <div class="title">网商贷提额项目报单计数器</div>
-
+        
+    <div class="contact-info">
+        联系方式：diogenesinajar@hotmail.com
+    </div>
+    
         <div class="input-row">
             姓名：<span id="nameDisplay">张三</span>
             当日目标：<span id="targetDisplay">500</span> 元
@@ -80,24 +123,24 @@
     
         <div class="section">
             <h3>AI端口</h3>
-            <div class="input-row">征信授权（25元）：<input type="number" id="aiCredit" min="0" value="0"></div>
-            <div class="input-row">银行流水授权(超网)（45元）：<input type="number" id="aiBank1" min="0" value="0"></div>
-            <div class="input-row">银行流水授权(邮箱)（80元）：<input type="number" id="aiBank2" min="0" value="0"></div>
-            <div class="input-row">税票自证授权（80元）：<input type="number" id="aiTax" min="0" value="0"></div>
-            <div class="input-row">微信账单授权（35元）：<input type="number" id="aiWechat" min="0" value="0"></div>
-            <div class="input-row">房信用授权(直连)（45元）：<input type="number" id="aiHouse1" min="0" value="0"></div>
-            <div class="input-row">房信用授权(复杂)（80元）：<input type="number" id="aiHouse2" min="0" value="0"></div>
+            <div class="input-row">授权<b>征信</b>(<b>25</b>元)：<input type="number" id="aiCredit" min="0" value="0"></div>
+            <div class="input-row">授权<b>银行流水-超网</b>(<b>45</b>元)：<input type="number" id="aiBank1" min="0" value="0"></div>
+            <div class="input-row">授权<b>银行流水-邮箱</b>(<b>80</b>元)：<input type="number" id="aiBank2" min="0" value="0"></div>
+            <div class="input-row">授权<b>税票自证-RPA</b>(<b>80</b>元)：<input type="number" id="aiTax" min="0" value="0"></div>
+            <div class="input-row">授权<b>微信账单</b>(<b>35</b>元)：<input type="number" id="aiWechat" min="0" value="0"></div>
+            <div class="input-row">授权<b>房信用-直连</b>(<b>45</b>元)：<input type="number" id="aiHouse1" min="0" value="0"></div>
+            <div class="input-row">授权<b>房信用-复杂</b>(<b>80</b>元)：<input type="number" id="aiHouse2" min="0" value="0"></div>
         </div>
     
         <div class="section">
             <h3>离线端口</h3>
-            <div class="input-row">征信授权（40元）：<input type="number" id="offlineCredit" min="0" value="0"></div>
-            <div class="input-row">银行流水授权(超网)（60元）：<input type="number" id="offlineBank1" min="0" value="0"></div>
-            <div class="input-row">银行流水授权(邮箱)（100元）：<input type="number" id="offlineBank2" min="0" value="0"></div>
-            <div class="input-row">税票自证授权（80元）：<input type="number" id="offlineTax" min="0" value="0"></div>
-            <div class="input-row">微信账单授权（40元）：<input type="number" id="offlineWechat" min="0" value="0"></div>
-            <div class="input-row">房信用授权(直连)（60元）：<input type="number" id="offlineHouse1" min="0" value="0"></div>
-            <div class="input-row">房信用授权(复杂)（100元）：<input type="number" id="offlineHouse2" min="0" value="0"></div>
+            <div class="input-row">授权<b>征信</b>(<b>30</b>元)：<input type="number" id="offlineCredit" min="0" value="0"></div>
+            <div class="input-row">授权<b>银行流水-超网</b>(<b>60</b>元)：<input type="number" id="offlineBank1" min="0" value="0"></div>
+            <div class="input-row">授权<b>银行流水-邮箱</b>(<b>100</b>元)：<input type="number" id="offlineBank2" min="0" value="0"></div>
+            <div class="input-row">授权<b>税票自证-RPA</b>(<b>80</b>元)：<input type="number" id="offlineTax" min="0" value="0"></div>
+            <div class="input-row">授权<b>微信账单</b>(<b>40</b>元)：<input type="number" id="offlineWechat" min="0" value="0"></div>
+            <div class="input-row">授权<b>房信用-直连</b>(<b>60</b>元)：<input type="number" id="offlineHouse1" min="0" value="0"></div>
+            <div class="input-row">授权<b>房信用-复杂</b>(<b>100</b>元)：<input type="number" id="offlineHouse2" min="0" value="0"></div>
         </div>
     
         <div class="buttons">
@@ -114,7 +157,8 @@
         let totalOrders = parseInt(localStorage.getItem('totalOrders')) || 0;
         let totalAmount = parseInt(localStorage.getItem('totalAmount')) || 0;
         let aiTotalOrders = parseInt(localStorage.getItem('aiTotalOrders')) || 0;
-        let lastCalculation = {};
+        let lastCalculation = JSON.parse(localStorage.getItem('lastCalculation')) || {};
+        let prevState = {};  
     
         function calculate() {
             const name = document.getElementById('nameDisplay').textContent;
@@ -127,7 +171,7 @@
             const aiWechat = parseInt(document.getElementById('aiWechat').value);
             const aiHouse1 = parseInt(document.getElementById('aiHouse1').value);
             const aiHouse2 = parseInt(document.getElementById('aiHouse2').value);
-    
+            
             const offlineCredit = parseInt(document.getElementById('offlineCredit').value);
             const offlineBank1 = parseInt(document.getElementById('offlineBank1').value);
             const offlineBank2 = parseInt(document.getElementById('offlineBank2').value);
@@ -135,130 +179,284 @@
             const offlineWechat = parseInt(document.getElementById('offlineWechat').value);
             const offlineHouse1 = parseInt(document.getElementById('offlineHouse1').value);
             const offlineHouse2 = parseInt(document.getElementById('offlineHouse2').value);
-    
+            
             // 计算当次完成订单总金额
             const totalCurrent = (aiCredit * 25) + (aiBank1 * 45) + (aiBank2 * 80) + (aiTax * 80) + (aiWechat * 35) + (aiHouse1 * 45) + (aiHouse2 * 80)
-                                + (offlineCredit * 40) + (offlineBank1 * 60) + (offlineBank2 * 100) + (offlineTax * 80) + (offlineWechat * 40) + (offlineHouse1 * 60) + (offlineHouse2 * 100);
-    
+                                + (offlineCredit * 30) + (offlineBank1 * 60) + (offlineBank2 * 100) + (offlineTax * 80) + (offlineWechat * 40) + (offlineHouse1 * 60) + (offlineHouse2 * 100);
+            
             // 更新总单数
             const totalCurrentOrders = aiCredit + aiBank1 + aiBank2 + aiTax + aiWechat + aiHouse1 + aiHouse2 
                                         + offlineCredit + offlineBank1 + offlineBank2 + offlineTax + offlineWechat + offlineHouse1 + offlineHouse2;
-    
+            
+            // 保存当前状态到 prevState
+            prevState = {
+                totalOrders, 
+                totalAmount, 
+                aiTotalOrders, 
+                resultText: document.getElementById('result').textContent 
+            };
+            
             totalOrders += totalCurrentOrders;
             totalAmount += totalCurrent;
             aiTotalOrders += (aiCredit + aiBank1 + aiBank2 + aiTax + aiWechat + aiHouse1 + aiHouse2);
-    
+            
             const diff = target - totalAmount;
             const diffText = diff >= 0 ? `差额 ${diff} 元` : `超额 ${Math.abs(diff)} 元`;
-    
-            document.getElementById('result').innerHTML = 
-                `日目标 ${target} 元，${name} 完成 ${totalCurrent} 元，总单 ${totalOrders} 单（AI ${aiTotalOrders} 单），${diffText}，其他伙伴加油 [加油]`;
-    
-            document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
-    
-            local
-            // 保存到 localStorage
+            
+            // 显示结果
+            const resultText = `日目标 ${target} 元，${name} 完成 ${totalCurrent} 元，总单 ${totalOrders} 单（AI ${aiTotalOrders} 单），${diffText}，其他伙伴加油 [加油]`;
+            document.getElementById('result').textContent = resultText;
+            
+            // 保存最近一次的计算结果以便撤销
+            lastCalculation = {
+                aiCredit,
+                aiBank1,
+                aiBank2,
+                aiTax,
+                aiWechat,
+                aiHouse1,
+                aiHouse2,
+                offlineCredit,
+                offlineBank1,
+                offlineBank2,
+                offlineTax,
+                offlineWechat,
+                offlineHouse1,
+                offlineHouse2,
+                resultText
+            };
+            localStorage.setItem('lastCalculation', JSON.stringify(lastCalculation));
+            
+            // 保存当前总单数和金额
             localStorage.setItem('totalOrders', totalOrders);
             localStorage.setItem('totalAmount', totalAmount);
             localStorage.setItem('aiTotalOrders', aiTotalOrders);
-    
-            // 记录最后一次计算数据
-            lastCalculation = {
-                totalOrders: totalOrders,
-                totalAmount: totalAmount,
-                aiTotalOrders: aiTotalOrders,
-            };
+            
+            // 清空所有输入框的值
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                input.value = 0;
+            });
+            
+            // 重新应用高亮
+            applyHighlight();
         }
     
-        // 撤销功能
         function undo() {
-            if (lastCalculation) {
-                totalOrders = lastCalculation.totalOrders || 0;
-                totalAmount = lastCalculation.totalAmount || 0;
-                aiTotalOrders = lastCalculation.aiTotalOrders || 0;
+            if (Object.keys(prevState).length > 0) { // 判断是否有保存的状态
+                const { aiCredit, aiBank1, aiBank2, aiTax, aiWechat, aiHouse1, aiHouse2, 
+                        offlineCredit, offlineBank1, offlineBank2, offlineTax, offlineWechat, 
+                        offlineHouse1, offlineHouse2, resultText, totalOrders: prevTotalOrders, 
+                        totalAmount: prevTotalAmount, aiTotalOrders: prevAiTotalOrders } = prevState; // 使用 prevState 代替 lastCalculation
     
+                document.getElementById('aiCredit').value = aiCredit || 0;
+                document.getElementById('aiBank1').value = aiBank1 || 0;
+                document.getElementById('aiBank2').value = aiBank2 || 0;
+                document.getElementById('aiTax').value = aiTax || 0;
+                document.getElementById('aiWechat').value = aiWechat || 0;
+                document.getElementById('aiHouse1').value = aiHouse1 || 0;
+                document.getElementById('aiHouse2').value = aiHouse2 || 0;
+                document.getElementById('offlineCredit').value = offlineCredit || 0;
+                document.getElementById('offlineBank1').value = offlineBank1 || 0;
+                document.getElementById('offlineBank2').value = offlineBank2 || 0;
+                document.getElementById('offlineTax').value = offlineTax || 0;
+                document.getElementById('offlineWechat').value = offlineWechat || 0;
+                document.getElementById('offlineHouse1').value = offlineHouse1 || 0;
+                document.getElementById('offlineHouse2').value = offlineHouse2 || 0;
+            
+                // 恢复保存的订单总数和AI订单总数
+                totalOrders = prevTotalOrders;
+                totalAmount = prevTotalAmount;
+                aiTotalOrders = prevAiTotalOrders;
+            
+                // 更新本地存储
                 localStorage.setItem('totalOrders', totalOrders);
                 localStorage.setItem('totalAmount', totalAmount);
                 localStorage.setItem('aiTotalOrders', aiTotalOrders);
-    
-                document.getElementById('result').innerHTML = 
-                    `日目标 ${document.getElementById('targetDisplay').textContent} 元，${document.getElementById('nameDisplay').textContent} 完成 ${totalAmount} 元，总单 ${totalOrders} 单（AI ${aiTotalOrders} 单），差额 ${document.getElementById('targetDisplay').textContent - totalAmount} 元，其他伙伴加油 [加油]`;
+            
+                // 显示最近一次的计算结果
+                document.getElementById('result').textContent = resultText;
+            
+                // 清空 prevState，防止多次撤销
+                prevState = {};
             }
+            
+            // 重新应用高亮效果
+            applyHighlight();
         }
     
-        // 强制归零功能
         function confirmReset() {
             if (confirm('确定是否真的强制归零？')) {
-                reset();
+                // 强制将所有值归零
+                document.querySelectorAll('input[type="number"]').forEach(input => {
+                    input.value = 0;
+                });
+    
+                // 清除本地存储中的数据
+                localStorage.removeItem('totalOrders');
+                localStorage.removeItem('totalAmount');
+                localStorage.removeItem('aiTotalOrders');
+                localStorage.removeItem('lastCalculation');
+    
+                // 清除结果栏
+                document.getElementById('result').textContent = '';
+    
+                // 重置内存中的数据
+                totalOrders = 0;
+                totalAmount = 0;
+                aiTotalOrders = 0;
+                lastCalculation = {};
+    
+                // 更新本地存储中的数据
+                localStorage.setItem('totalOrders', totalOrders);
+                localStorage.setItem('totalAmount', totalAmount);
+                localStorage.setItem('aiTotalOrders', aiTotalOrders);
+                localStorage.setItem('lastCalculation', JSON.stringify(lastCalculation));
+    
+                // 重新应用高亮
+                applyHighlight();
             }
         }
     
-        function reset() {
-            totalOrders = 0;
-            totalAmount = 0;
-            aiTotalOrders = 0;
-    
-            localStorage.removeItem('totalOrders');
-            localStorage.removeItem('totalAmount');
-            localStorage.removeItem('aiTotalOrders');
-    
-            document.getElementById('result').innerHTML = '已强制归零。';
+        function copyResult() {
+            const resultText = document.getElementById('result').textContent;
+            navigator.clipboard.writeText(resultText)
+                .then(() => alert('结果已复制到剪贴板'))
+                .catch(err => alert('复制失败'));
         }
     
-        // 复制结果功能
-        function copyResult() {
-            const resultText = document.getElementById('result').innerText;
-            navigator.clipboard.writeText(resultText).then(() => {
-                alert('结果已复制到剪贴板！');
-            }).catch(err => {
-                alert('复制失败，请手动复制。');
+        function applyHighlight() {
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                const label = input.parentElement.querySelector('b');
+                if (input.value > 0) {
+                    input.classList.add('highlight');
+                    if (label) {
+                        label.classList.add('highlight');
+                    }
+                } else {
+                    input.classList.remove('highlight');
+                    if (label) {
+                        label.classList.remove('highlight');
+                    }
+                }
             });
         }
     
-        // 编辑功能
-        document.getElementById('editBtn').addEventListener('click', function() {
-            document.getElementById('nameDisplay').style.display = 'none';
-            document.getElementById('targetDisplay').style.display = 'none';
-            document.getElementById('editBtn').style.display = 'none';
-            document.getElementById('nameInput').style.display = 'inline';
-            document.getElementById('targetInput').style.display = 'inline';
-            document.getElementById('saveBtn').style.display = 'inline';
-            document.getElementById('cancelBtn').style.display = 'inline';
+        // 初始化时应用高亮
+        document.addEventListener('DOMContentLoaded', () => {
+            applyHighlight();
+            
+            // 给所有的输入框添加事件监听器
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                input.addEventListener('input', applyHighlight);
+            });
+            
+            // 编辑按钮点击事件处理
+            document.getElementById('editBtn').addEventListener('click', () => {
+                document.getElementById('nameDisplay').style.display = 'none';
+                document.getElementById('targetDisplay').style.display = 'none';
+                document.getElementById('nameInput').style.display = 'inline';
+                document.getElementById('targetInput').style.display = 'inline';
+                document.getElementById('saveBtn').style.display = 'inline';
+                document.getElementById('cancelBtn').style.display = 'inline';
+                document.getElementById('editBtn').style.display = 'none';
+            });
+    
+            // 保存按钮点击事件处理
+            document.getElementById('saveBtn').addEventListener('click', () => {
+                const newName = document.getElementById('nameInput').value;
+                const newTarget = parseInt(document.getElementById('targetInput').value);
+                
+                document.getElementById('nameDisplay').textContent = newName;
+                document.getElementById('targetDisplay').textContent = newTarget;
+                
+                document.getElementById('nameDisplay').style.display = 'inline';
+                document.getElementById('targetDisplay').style.display = 'inline';
+                document.getElementById('nameInput').style.display = 'none';
+                document.getElementById('targetInput').style.display = 'none';
+                document.getElementById('saveBtn').style.display = 'none';
+                document.getElementById('cancelBtn').style.display = 'none';
+                document.getElementById('editBtn').style.display = 'inline';
+            });
+    
+            // 取消按钮点击事件处理
+            document.getElementById('cancelBtn').addEventListener('click', () => {
+                document.getElementById('nameInput').value = document.getElementById('nameDisplay').textContent;
+                document.getElementById('targetInput').value = document.getElementById('targetDisplay').textContent;
+    
+                document.getElementById('nameDisplay').style.display = 'inline';
+                document.getElementById('targetDisplay').style.display = 'inline';
+                document.getElementById('nameInput').style.display = 'none';
+                document.getElementById('targetInput').style.display = 'none';
+                document.getElementById('saveBtn').style.display = 'none';
+                document.getElementById('cancelBtn').style.display = 'none';
+                document.getElementById('editBtn').style.display = 'inline';
+            });
         });
+// 获取保存的数据（如果有的话）
+const savedName = localStorage.getItem('savedName');
+const savedTarget = localStorage.getItem('savedTarget');
+
+// 初始化时检查保存的数据
+document.addEventListener('DOMContentLoaded', () => {
+    if (savedName) {
+        document.getElementById('nameDisplay').textContent = savedName;
+        document.getElementById('nameInput').value = savedName;
+    }
+
+    if (savedTarget) {
+        document.getElementById('targetDisplay').textContent = savedTarget;
+        document.getElementById('targetInput').value = savedTarget;
+    }
     
-        document.getElementById('saveBtn').addEventListener('click', function() {
-            const newName = document.getElementById('nameInput').value;
-            const newTarget = parseInt(document.getElementById('targetInput').value);
+    applyHighlight();
     
-            document.getElementById('nameDisplay').textContent = newName;
-            document.getElementById('targetDisplay').textContent = newTarget;
+    // 添加事件监听器
+    document.getElementById('editBtn').addEventListener('click', () => {
+        document.getElementById('nameDisplay').style.display = 'none';
+        document.getElementById('targetDisplay').style.display = 'none';
+        document.getElementById('nameInput').style.display = 'inline';
+        document.getElementById('targetInput').style.display = 'inline';
+        document.getElementById('saveBtn').style.display = 'inline';
+        document.getElementById('cancelBtn').style.display = 'inline';
+        document.getElementById('editBtn').style.display = 'none';
+    });
     
-            document.getElementById('nameDisplay').style.display = 'inline';
-            document.getElementById('targetDisplay').style.display = 'inline';
-            document.getElementById('editBtn').style.display = 'inline';
-            document.getElementById('nameInput').style.display = 'none';
-            document.getElementById('targetInput').style.display = 'none';
-            document.getElementById('saveBtn').style.display = 'none';
-            document.getElementById('cancelBtn').style.display = 'none';
-        });
+    document.getElementById('saveBtn').addEventListener('click', () => {
+        const newName = document.getElementById('nameInput').value;
+        const newTarget = parseInt(document.getElementById('targetInput').value);
     
-        document.getElementById('cancelBtn').addEventListener('click', function() {
-            document.getElementById('nameInput').value = document.getElementById('nameDisplay').textContent;
-            document.getElementById('targetInput').value = document.getElementById('targetDisplay').textContent;
+        // 保存到 localStorage
+        localStorage.setItem('savedName', newName);
+        localStorage.setItem('savedTarget', newTarget);
     
-            document.getElementById('nameDisplay').style.display = 'inline';
-            document.getElementById('targetDisplay').style.display = 'inline';
-            document.getElementById('editBtn').style.display = 'inline';
-            document.getElementById('nameInput').style.display = 'none';
-            document.getElementById('targetInput').style.display = 'none';
-            document.getElementById('saveBtn').style.display = 'none';
-            document.getElementById('cancelBtn').style.display = 'none';
-        });
+        document.getElementById('nameDisplay').textContent = newName;
+        document.getElementById('targetDisplay').textContent = newTarget;
+    
+        document.getElementById('nameDisplay').style.display = 'inline';
+        document.getElementById('targetDisplay').style.display = 'inline';
+        document.getElementById('nameInput').style.display = 'none';
+        document.getElementById('targetInput').style.display = 'none';
+        document.getElementById('saveBtn').style.display = 'none';
+        document.getElementById('cancelBtn').style.display = 'none';
+        document.getElementById('editBtn').style.display = 'inline';
+    });
+    
+    document.getElementById('cancelBtn').addEventListener('click', () => {
+        document.getElementById('nameInput').value = document.getElementById('nameDisplay').textContent;
+        document.getElementById('targetInput').value = document.getElementById('targetDisplay').textContent;
+    
+        document.getElementById('nameDisplay').style.display = 'inline';
+        document.getElementById('targetDisplay').style.display = 'inline';
+        document.getElementById('nameInput').style.display = 'none';
+        document.getElementById('targetInput').style.display = 'none';
+        document.getElementById('saveBtn').style.display = 'none';
+        document.getElementById('cancelBtn').style.display = 'none';
+        document.getElementById('editBtn').style.display = 'inline';
+    });
+});
     </script>
 <footer>
   <a href="http://dnsexit.com"><img src="http://dnsexit.com/images/dns.gif" border=0></a>
 </footer>
 </body>
-
-
 </html>
