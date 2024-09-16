@@ -304,6 +304,17 @@
             
                 // 显示最近一次的计算结果
                 document.getElementById('result').textContent = resultText;
+                
+                // save the latest result of function undo()
+                const result = {
+                dayGoal: parseInt(document.getElementById('targetDisplay').textContent),
+                totalCompletedOrders: totalAmount,
+                aiCompletedOrders: aiTotalOrders,
+                difference: parseInt(document.getElementById('targetDisplay').textContent) - totalAmount,
+                resultText: resultText
+                };
+                localStorage.setItem('calculationResult', JSON.stringify(result));
+
             
                 // 清空 prevState，防止多次撤销
                 prevState = {};
@@ -325,6 +336,8 @@
                 localStorage.removeItem('totalAmount');
                 localStorage.removeItem('aiTotalOrders');
                 localStorage.removeItem('lastCalculation');
+                localStorage.removeItem('calculationResult'); // 清除计算结果
+
     
                 // 清除结果栏
                 document.getElementById('result').textContent = '';
