@@ -154,6 +154,24 @@
     </div>
     
     <script>
+        // 初始化时加载保存的数据
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedName = localStorage.getItem('savedName');
+            const savedTarget = localStorage.getItem('savedTarget');
+
+            if (savedName) {
+                document.getElementById('nameDisplay').textContent = savedName;
+                document.getElementById('nameInput').value = savedName;
+            }
+
+            if (savedTarget) {
+                document.getElementById('targetDisplay').textContent = savedTarget;
+                document.getElementById('targetInput').value = savedTarget;
+            }
+
+            applyHighlight();
+        });
+
         let totalOrders = parseInt(localStorage.getItem('totalOrders')) || 0;
         let totalAmount = parseInt(localStorage.getItem('totalAmount')) || 0;
         let aiTotalOrders = parseInt(localStorage.getItem('aiTotalOrders')) || 0;
@@ -206,7 +224,18 @@
             // 显示结果
             const resultText = `日目标 ${target} 元，${name} 完成 ${totalCurrent} 元，总单 ${totalOrders} 单（AI ${aiTotalOrders} 单），${diffText}，其他伙伴加油 [加油]`;
             document.getElementById('result').textContent = resultText;
-            
+
+
+            // 保存计算结果
+            const result = {
+            dayGoal: target,
+            totalCompletedOrders: totalCurrent,
+            aiCompletedOrders: aiTotalOrders,
+            difference: diff,
+            resultText: resultText
+            };
+            localStorage.setItem('calculationResult', JSON.stringify(result));
+
             // 保存最近一次的计算结果以便撤销
             lastCalculation = {
                 aiCredit,
@@ -340,7 +369,71 @@
                 }
             });
         }
-    
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+    // 加载并显示保存的结果
+    const savedResult = localStorage.getItem('calculationResult');
+    if (savedResult) {
+        document.getElementById('result').textContent = JSON.parse(savedResult).resultText;
+    }
+
+    // 应用高亮效果
+    applyHighlight();
+
+    // 添加事件监听器
+    document.querySelectorAll('input[type="number"]').forEach(input => {
+        input.addEventListener('input', applyHighlight);
+    });
+
+    // 编辑按钮点击事件处理
+    document.getElementById('editBtn').addEventListener('click', () => {
+        document.getElementById('nameDisplay').style.display = 'none';
+        document.getElementById('targetDisplay').style.display = 'none';
+        document.getElementById('nameInput').style.display = 'inline';
+        document.getElementById('targetInput').style.display = 'inline';
+        document.getElementById('saveBtn').style.display = 'inline';
+        document.getElementById('cancelBtn').style.display = 'inline';
+        document.getElementById('editBtn').style.display = 'none';
+    });
+
+    // 保存按钮点击事件处理
+    document.getElementById('saveBtn').addEventListener('click', () => {
+        const newName = document.getElementById('nameInput').value;
+        const newTarget = parseInt(document.getElementById('targetInput').value);
+
+        // 保存到 localStorage
+        localStorage.setItem('savedName', newName);
+        localStorage.setItem('savedTarget', newTarget);
+
+        document.getElementById('nameDisplay').textContent = newName;
+        document.getElementById('targetDisplay').textContent = newTarget;
+
+        document.getElementById('nameDisplay').style.display = 'inline';
+        document.getElementById('targetDisplay').style.display = 'inline';
+        document.getElementById('nameInput').style.display = 'none';
+        document.getElementById('targetInput').style.display = 'none';
+        document.getElementById('saveBtn').style.display = 'none';
+        document.getElementById('cancelBtn').style.display = 'none';
+        document.getElementById('editBtn').style.display = 'inline';
+    });
+
+    // 取消按钮点击事件处理
+    document.getElementById('cancelBtn').addEventListener('click', () => {
+        document.getElementById('nameInput').value = document.getElementById('nameDisplay').textContent;
+        document.getElementById('targetInput').value = document.getElementById('targetDisplay').textContent;
+
+        document.getElementById('nameDisplay').style.display = 'inline';
+        document.getElementById('targetDisplay').style.display = 'inline';
+        document.getElementById('nameInput').style.display = 'none';
+        document.getElementById('targetInput').style.display = 'none';
+        document.getElementById('saveBtn').style.display = 'none';
+        document.getElementById('cancelBtn').style.display = 'none';
+        document.getElementById('editBtn').style.display = 'inline';
+    });
+});
+
         // 初始化时应用高亮
         document.addEventListener('DOMContentLoaded', () => {
             applyHighlight();
