@@ -35,44 +35,45 @@
             margin-bottom: 20px;
         }
 
-
+        /* 悬浮说明样式 */
 .tooltip {
     display: inline-block;
     position: relative;
     cursor: pointer;
     margin-left: 5px;
     font-size: 13px;
-    border: 1px solid #87CEFA;
+    border: 1px solid #87CEFA; /* 浅蓝色边框 */
     border-radius: 50%;
     width: 14px;
     height: 14px;
     text-align: center;
     line-height: 15px;
-    color: #87CEFA;
-    background-color: white;
+    color: #87CEFA; /* 浅蓝色问号 */
+    background-color: white; /* 圆圈内部背景色 */
     font-weight: bold;
 }
 
 body.dark-mode .tooltip {
     background-color: #333; 
-}        
+}
 
 .tooltip:hover::after {
     content: attr(data-tooltip);
     position: absolute;
     top: -5px;
     left: 25px;
-    background-color: #333; 
-    color: #fff; 
+    background-color: #333; /* 悬浮提示的背景色 */
+    color: #fff; /* 悬浮提示的文字颜色 */
     padding: 5px;
     border-radius: 5px;
-    white-space: normal;
-    width: 200px;
+    white-space: normal; /* 允许文本换行 */
+    width: 200px; /* 设置最大宽度，文本超出后换行 */
     z-index: 1;
     font-size: 14px;
     line-height: 1.5;
     font-weight: normal;
-    text-align: left; 
+    white-space: pre-wrap;
+    text-align: left; /* 使悬浮文本左对齐 */
 }
     
         .input-row {
@@ -221,7 +222,7 @@ body.dark-mode .contact-info {
     </div>
     <div class="container">
         <div class="title">网商贷提额项目报单计数器
-            <span class="tooltip" data-tooltip="使用说明：将新增单数填入对应种类端口之后的输入框中，全部填好之后点击【立即计算】按钮，即可自动生成报单文本，再点击【一键复制】按钮">?</span>
+            <span class="tooltip" data-tooltip="使用说明：&#10;1. 将新增单数填入对应种类端口之后的输入框中；&#10;2. 全部填好之后点击【立即计算】按钮，即可自动生成报单文本；&#10;3. 再点击【一键复制】按钮。&#10;注：本计数器具有自动累计功能，页面刷新和浏览器重启都不会丢失数据。">?</span>
         </div>
         
     <div class="contact-info">
@@ -230,10 +231,10 @@ body.dark-mode .contact-info {
     
         <div class="input-row">
             姓名：<span id="nameDisplay">鲍得快</span>
-            当日目标：<span id="targetDisplay">250</span> 元
+            当日目标：<span id="targetDisplay">500</span> 元
             <button id="editBtn">编辑</button>
             <input type="text" id="nameInput" style="display: none;" value="鲍得快">
-            <input type="number" id="targetInput" style="display: none;" value="250">
+            <input type="number" id="targetInput" style="display: none;" value="500">
             <button id="saveBtn" style="display: none;">保存</button>
             <button id="cancelBtn" style="display: none;">取消</button>
         </div>
