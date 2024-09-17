@@ -302,10 +302,10 @@ body.dark-mode .contact-info {
             aiTotalOrders += (aiCredit + aiBank1 + aiBank2 + aiTax + aiWechat + aiHouse1 + aiHouse2);
             
             const diff = target - totalAmount;
-            const diffText = diff >= 0 ? `差额 ${diff} 元` : `超额 ${Math.abs(diff)} 元`;
+            const diffText = diff >= 0 ? `差额${diff}元` : `超额${Math.abs(diff)}元`;
             
             // 显示结果
-            const resultText = `日目标 ${target} 元，${name} 完成 ${totalCurrent} 元，总单 ${totalOrders} 单（AI ${aiTotalOrders} 单），${diffText}，其他伙伴加油 [加油]`;
+            const resultText = `日目标${target}元，${name}本次新增完成${totalCurrent}元，总单${totalOrders}单（AI ${aiTotalOrders}单），当日累计完成${totalAmount}元，${diffText}，其他伙伴加油[加油]`;
             document.getElementById('result').textContent = resultText;
 
 
