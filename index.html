@@ -92,35 +92,31 @@
             background-color: #f9f9f9; 
         }
 
-        /* 夜间模式下的样式 */
 body.dark-mode #result {
-    background-color: #333; /* 夜间模式背景色，深灰色或黑色 */
-    color: #f1f1f1; /* 夜间模式文字颜色，浅色或白色 */
-    border: 1px solid #555; /* 夜间模式边框颜色 */
+    background-color: #333; 
+    color: #f1f1f1; 
+    border: 1px solid #555; 
 }
 
-/* 默认样式（明亮模式） */
 .contact-info {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #f1f1f1; /* 明亮模式背景色 */
+    background-color: #f1f1f1; 
     text-align: center;
-    padding: 1px; /* 增加 padding 使其更易读 */
+    padding: 1px; 
     border-top: 1px solid lightgray;
     box-sizing: border-box;
-    color: black; /* 明亮模式文字颜色 */
+    color: black; 
 }
 
-/* 夜间模式下的样式 */
 body.dark-mode .contact-info {
-    background-color: #1a1a1a; /* 更深的背景色 */
-    color: #e0e0e0; /* 更浅的文字颜色，增加对比度 */
-    border-top: 1px solid #444; /* 夜间模式边框颜色 */
+    background-color: #1a1a1a; 
+    color: #e0e0e0; 
+    border-top: 1px solid #444; 
 }
 
-            /* 添加媒体查询 */
             @media (max-width: 768px) {
             .container {
                 padding: 3px;
@@ -139,25 +135,21 @@ body.dark-mode .contact-info {
             }
         }
 
-        /* 默认样式（明亮模式） */
         body {
             background-color: white;
             color: black;
         }
 
-        /* 夜间模式样式 */
         body.dark-mode {
             background-color: black;
             color: white;
         }
 
-        /* 按钮容器样式 */
         .theme-switcher {
     position: absolute;
-    top: 1px; /* 距离容器顶部 10px，可以根据需要调整 */
-    right: 1px; /* 距离容器右侧 10px，可以根据需要调整 */
+    top: 1px; 
+    right: 1px; 
 }
-
 
 
     </style>
@@ -195,10 +187,10 @@ body.dark-mode .contact-info {
     </div>
     
         <div class="input-row">
-            姓名：<span id="nameDisplay">算烦了的铁憨憨</span>
+            姓名：<span id="nameDisplay">有点烦的铁憨憨</span>
             当日目标：<span id="targetDisplay">250</span> 元
             <button id="editBtn">编辑</button>
-            <input type="text" id="nameInput" style="display: none;" value="算烦了的铁憨憨">
+            <input type="text" id="nameInput" style="display: none;" value="有点烦的铁憨憨">
             <input type="number" id="targetInput" style="display: none;" value="250">
             <button id="saveBtn" style="display: none;">保存</button>
             <button id="cancelBtn" style="display: none;">取消</button>
@@ -304,7 +296,6 @@ body.dark-mode .contact-info {
             const diff = target - totalAmount;
             const diffText = diff >= 0 ? `差额 ${diff} 元` : `超额 ${Math.abs(diff)} 元`;
             
-            // 显示结果
             const resultText = `日目标 ${target} 元，${name} 本次新增完成 ${totalCurrent} 元，总单 ${totalOrders} 单（AI ${aiTotalOrders} 单），当日累计完成 ${totalAmount} 元，${diffText}，其他伙伴加油[加油]`;
             document.getElementById('result').textContent = resultText;
 
