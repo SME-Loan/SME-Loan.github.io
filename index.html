@@ -90,38 +90,53 @@
             background-color: #f9f9f9; 
         }
         .contact-info {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #f1f1f1;
-    text-align: center;
-    padding: 1px;
-    border-top: 1px solid lightgray;
-    box-sizing: border-box;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #f1f1f1;
+        text-align: center;
+        padding: 1px;
+        border-top: 1px solid lightgray;
+        box-sizing: border-box;
         }
-    
+            /* 添加媒体查询 */
+            @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            .title {
+                font-size: 20px;
+            }
+            button {
+                font-size: 14px;
+                padding: 0px 10px;
+            }
+            #result {
+                font-size: 14px;
+            }
+        }
     </style>
 
-    <link rel="icon" href="images/logo.ico" type="image/x-icon">
-<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+        <link rel="icon" href="images/logo.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
 
     
-<!-- Matomo -->
-<script>
-  var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="https://smeloanworkgd.matomo.cloud/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '1']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src='https://cdn.matomo.cloud/smeloanworkgd.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Matomo Code -->
+       <!-- Matomo -->
+       <script>
+       var _paq = window._paq = window._paq || [];
+       /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+       _paq.push(['trackPageView']);
+       _paq.push(['enableLinkTracking']);
+       (function() {
+       var u="https://smeloanworkgd.matomo.cloud/";
+       _paq.push(['setTrackerUrl', u+'matomo.php']);
+       _paq.push(['setSiteId', '1']);
+       var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+       g.async=true; g.src='https://cdn.matomo.cloud/smeloanworkgd.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+       })();
+       </script>
+       <!-- End Matomo Code -->
 
 </head>
 <body>
