@@ -34,6 +34,39 @@
             font-size: 24px;
             margin-bottom: 20px;
         }
+
+        /* 悬浮说明样式 */
+.tooltip {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 18px;
+    border: 2px solid #87CEFA; /* 浅蓝色边框 */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    color: #87CEFA; /* 浅蓝色问号 */
+    background-color: white; /* 圆圈内部背景色 */
+}
+
+.tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -5px;
+    left: 25px;
+    background-color: #333; /* 悬浮提示的背景色 */
+    color: #fff; /* 悬浮提示的文字颜色 */
+    padding: 5px;
+    border-radius: 5px;
+    white-space: normal; /* 允许文本换行 */
+    width: 200px; /* 设置最大宽度，文本超出后换行 */
+    z-index: 1;
+    font-size: 14px;
+    text-align: left; /* 使悬浮文本左对齐 */
+}
     
         .input-row {
             margin-bottom: 5px;
@@ -180,7 +213,9 @@ body.dark-mode .contact-info {
         <button id="theme-toggle">切换主题</button>
     </div>
     <div class="container">
-        <div class="title">网商贷提额项目报单计数器</div>
+        <div class="title">网商贷提额项目报单计数器
+            <span class="tooltip" data-tooltip="使用说明：将新增单数填入对应种类端口之后的输入框中，全部填好之后点击【立即计算】按钮，即可自动生成报单文本，再点击【一键复制】按钮">?</span>
+        </div>
         
     <div class="contact-info">
         联系方式：programmeursauvage@hotmail.com
