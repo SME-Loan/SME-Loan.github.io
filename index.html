@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>提额项目报单计数器</title>
+    <title>提额项目报单计数器 2.0</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,127 +36,146 @@
         }
 
       
-.tooltip {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    margin-left: 5px;
-    font-size: 13px;
-    border: 1px solid #87CEFA; 
-    border-radius: 50%;
-    width: 14px;
-    height: 14px;
-    text-align: center;
-    line-height: 15px;
-    color: #87CEFA;
-    background-color: white;
-    font-weight: bold;
-}
+            .tooltip {
+                display: inline-block;
+                position: relative;
+                cursor: pointer;
+                margin-left: 5px;
+                font-size: 13px;
+                border: 1px solid #87CEFA; 
+                border-radius: 50%;
+                width: 14px;
+                height: 14px;
+                text-align: center;
+                line-height: 15px;
+                color: #87CEFA;
+                background-color: white;
+                font-weight: bold;
+            }
 
-body.dark-mode .tooltip {
-    background-color: #333; 
-}
+                body.dark-mode .tooltip {
+                    background-color: #333; 
+                }
 
-.tooltip:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    top: -5px;
-    left: 25px;
-    background-color: #333;
-    color: #fff;
-    padding: 5px;
-    border-radius: 5px;
-    white-space: normal; 
-    width: 200px; 
-    z-index: 1;
-    font-size: 14px;
-    line-height: 1.5;
-    font-weight: normal;
-    white-space: pre-wrap;
-    text-align: left; 
-}
-    
-        .input-row {
-            margin-bottom: 5px;
-        }
-    
-        input[type="number"] {
-            width: 40px; 
-            height: 20px; 
-            padding: 3px;
-            font-size: 16px;
-        }
-    
-        .buttons {
-            margin-top: 20px;
-        }
-    
-        button {
-            padding: 0px 15px;
-            font-size: 16px;
-            height: 30px; 
-            line-height: 30px; 
-            text-align: center; 
-        }
-    
-        .green {
-            background-color: green;
-            color: white;
-        }
-    
-        .yellow {
-            background-color: yellow;
-        }
-    
-        .red {
-            background-color: red;
-            color: white;
-        }
-    
-        .highlight {
-            background-color: yellow; 
-        }
-        #nameInput {
-            width: 70px; 
-            height: 20px; 
-            font-size: 16px; 
-        }
-        #result {
-            word-wrap: break-word; 
-            overflow-wrap: break-word; 
-            white-space: normal; 
-            width: 450px; 
-            box-sizing: border-box; 
-            padding: 10px; 
-            margin-top: 20px; 
-            border: 1px solid lightgray; 
-            background-color: #f9f9f9; 
-        }
+            .tooltip:hover::after {
+                content: attr(data-tooltip);
+                position: absolute;
+                top: -5px;
+                left: 25px;
+                background-color: #333;
+                color: #fff;
+                padding: 5px;
+                border-radius: 5px;
+                white-space: normal; 
+                width: 200px; 
+                z-index: 1;
+                font-size: 14px;
+                line-height: 1.5;
+                font-weight: normal;
+                white-space: pre-wrap;
+                text-align: left; 
+            }
+                
+                    .input-row {
+                        margin-bottom: 5px;
+                    }
+                
+                    input[type="number"] {
+                        width: 40px; 
+                        height: 20px; 
+                        padding: 3px;
+                        font-size: 16px;
+                    }
 
-body.dark-mode #result {
-    background-color: #333; 
-    color: #f1f1f1; 
-    border: 1px solid #555; 
-}
+                    .input-row input[type="number"]#targetInput {
+                        width: 40px; 
+                        -moz-appearance: textfield; /* Firefox */
+                        -webkit-appearance: none; /* Safari 和 Chrome */
+                        appearance: none; /* 现代浏览器 */
+                    }
 
-.contact-info {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #f1f1f1; 
-    text-align: center;
-    padding: 1px; 
-    border-top: 1px solid lightgray;
-    box-sizing: border-box;
-    color: black; 
-}
+                    .input-row input[type="number"]#targetInput::-webkit-inner-spin-button,
+                    .input-row input[type="number"]#targetInput::-webkit-outer-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
 
-body.dark-mode .contact-info {
-    background-color: #1a1a1a; 
-    color: #e0e0e0; 
-    border-top: 1px solid #444; 
-}
+                    .input-row span#nameDisplay {
+                        margin-right: 15px; 
+                    }
+
+
+                
+                    .buttons {
+                        margin-top: 20px;
+                    }
+                
+                    button {
+                        padding: 0px 15px;
+                        font-size: 16px;
+                        height: 30px; 
+                        line-height: 30px; 
+                        text-align: center; 
+                    }
+                
+                    .green {
+                        background-color: green;
+                        color: white;
+                    }
+                
+                    .yellow {
+                        background-color: yellow;
+                    }
+                
+                    .red {
+                        background-color: red;
+                        color: white;
+                    }
+                
+                    .highlight {
+                        background-color: yellow; 
+                    }
+                    #nameInput {
+                        width: 60px; 
+                        height: 20px; 
+                        font-size: 16px; 
+                    }
+                    #result {
+                        word-wrap: break-word; 
+                        overflow-wrap: break-word; 
+                        white-space: normal; 
+                        width: 450px; 
+                        box-sizing: border-box; 
+                        padding: 10px; 
+                        margin-top: 20px; 
+                        border: 1px solid lightgray; 
+                        background-color: #f9f9f9; 
+                    }
+
+                        body.dark-mode #result {
+                            background-color: #333; 
+                            color: #f1f1f1; 
+                            border: 1px solid #555; 
+                        }
+
+                    .contact-info {
+                        position: fixed;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        background-color: #f1f1f1; 
+                        text-align: center;
+                        padding: 1px; 
+                        border-top: 1px solid lightgray;
+                        box-sizing: border-box;
+                        color: black; 
+                    }
+
+                        body.dark-mode .contact-info {
+                            background-color: #1a1a1a; 
+                            color: #e0e0e0; 
+                            border-top: 1px solid #444; 
+                        }
 
             @media (max-width: 768px) {
             .container {
@@ -187,10 +206,10 @@ body.dark-mode .contact-info {
         }
 
         .theme-switcher {
-    position: absolute;
-    top: 1px; 
-    right: 1px; 
-}
+            position: absolute;
+            top: 1px; 
+            right: 1px; 
+        }
 
 
     </style>
@@ -217,61 +236,183 @@ body.dark-mode .contact-info {
 
 </head>
 <body>
-    <div class="theme-switcher">
-        <button id="theme-toggle">切换主题</button>
-    </div>
-    <div class="container">
-        <div class="title">提额项目报单计数器
-            <span class="tooltip" data-tooltip="使用说明：&#10;1. 将新增单数填入对应种类端口之后的输入框中；&#10;2. 全部填好之后点击【立即计算】按钮，即可自动生成报单文本；&#10;3. 再点击【一键复制】按钮。&#10;注：本计数器具有自动累计功能，页面刷新或浏览器重启都不会丢失数据。">?</span>
+        <div class="theme-switcher">
+            <button id="theme-toggle">切换主题</button>
+        </div>
+        <div class="container">
+            <div class="title">提额项目报单计数器 2.0
+                <span class="tooltip" data-tooltip="使用说明：&#10;1. 将新增单数填入对应种类端口之后的输入框中；&#10;2. 全部填好之后点击【立即计算】按钮，即可自动生成报单文本；&#10;3. 再点击【一键复制】按钮。&#10;注：本计数器具有自动累计功能，页面刷新或浏览器重启都不会丢失数据。&#10; &#10;更新记录 v. 2.0(2024-09-21)：&#10;i. 修复了“姓名”和“当日目标”输入框的显示问题；&#10;ii. 新增了各小类端口“已有n单”的显示功能；&#10;iii. 对关键数字进行了高亮显示和颜色调整。&#10; &#10;如果你在使用过程中有任何不好的体验或者更多的功能需求，欢迎随时提出，你的意见和建议都会得到最高程度的重视！">?</span>
+            </div>
+            
+        <div class="contact-info">
+            联系方式：programmeursauvage@hotmail.com
         </div>
         
-    <div class="contact-info">
-        联系方式：programmeursauvage@hotmail.com
-    </div>
-    
         <div class="input-row">
             姓名：<span id="nameDisplay">鲍得快</span>
-            当日目标：<span id="targetDisplay">500</span> 元
-            <button id="editBtn">编辑</button>
             <input type="text" id="nameInput" style="display: none;" value="鲍得快">
+            当日目标：<span id="targetDisplay">500</span>
             <input type="number" id="targetInput" style="display: none;" value="500">
+            元
+            <button id="editBtn">编辑</button>
             <button id="saveBtn" style="display: none;">保存</button>
             <button id="cancelBtn" style="display: none;">取消</button>
         </div>
+        
+    
+    
     
         <div class="section">
             <h3>AI端口</h3>
-            <div class="input-row">授权<b>征信</b>(<b>25</b>元/单)：<input type="number" id="aiCredit" min="0" value="0"></div>
-            <div class="input-row">授权<b>银行流水-超网</b>(<b>45</b>元/单)：<input type="number" id="aiBank1" min="0" value="0"></div>
-            <div class="input-row">授权<b>银行流水-邮箱</b>(<b>80</b>元/单)：<input type="number" id="aiBank2" min="0" value="0"></div>
-            <div class="input-row">授权<b>发票明细-RPA</b>(<b>80</b>元/单)：<input type="number" id="aiTax" min="0" value="0"></div>
-            <div class="input-row">授权<b>微信账单</b>(<b>35</b>元/单)：<input type="number" id="aiWechat" min="0" value="0"></div>
-            <div class="input-row">授权<b>房产信息-直连</b>(<b>45</b>元/单)：<input type="number" id="aiHouse1" min="0" value="0"></div>
-            <div class="input-row">授权<b>房产信息-复杂</b>(<b>80</b>元/单)：<input type="number" id="aiHouse2" min="0" value="0"></div>
+            <div class="input-row">
+                授权<b>征信</b>(<b style="color: #F56C73;">25</b>元/单)：<input type="number" id="aiCredit" min="0" value="0">
+                <span id="aiCreditTotal" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                授权<b>银行流水-超网</b>(<b style="color: #F56C73;">45</b>元/单)：<input type="number" id="aiBank1" min="0" value="0">
+                <span id="aiBank1Total" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                授权<b>银行流水-邮箱</b>(<b style="color: #F56C73;">80</b>元/单)：<input type="number" id="aiBank2" min="0" value="0">
+                <span id="aiBank2Total" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                授权<b>发票明细-RPA</b>(<b style="color: #F56C73;">80</b>元/单)：<input type="number" id="aiTax" min="0" value="0">
+                <span id="aiTaxTotal" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                授权<b>微信账单</b>(<b style="color: #F56C73;">35</b>元/单)：<input type="number" id="aiWechat" min="0" value="0">
+                <span id="aiWechatTotal" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                授权<b>房产信息-直连</b>(<b style="color: #F56C73;">45</b>元/单)：<input type="number" id="aiHouse1" min="0" value="0">
+                <span id="aiHouse1Total" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                授权<b>房产信息-复杂</b>(<b style="color: #F56C73;">80</b>元/单)：<input type="number" id="aiHouse2" min="0" value="0">
+                <span id="aiHouse2Total" style="display: inline;">已有0单</span>
+            </div>
         </div>
-    
+        
         <div class="section">
             <h3>离线端口</h3>
-            <div class="input-row">授权<b>征信</b>(<b>30</b>元/单)：<input type="number" id="offlineCredit" min="0" value="0"></div>
-            <div class="input-row">授权<b>银行流水-超网</b>(<b>60</b>元/单)：<input type="number" id="offlineBank1" min="0" value="0"></div>
-            <div class="input-row">授权<b>银行流水-邮箱</b>(<b>100</b>元/单)：<input type="number" id="offlineBank2" min="0" value="0"></div>
-            <div class="input-row">授权<b>发票明细-RPA</b>(<b>80</b>元/单)：<input type="number" id="offlineTax" min="0" value="0"></div>
-            <div class="input-row">授权<b>微信账单</b>(<b>40</b>元/单)：<input type="number" id="offlineWechat" min="0" value="0"></div>
-            <div class="input-row">授权<b>房产信息-直连</b>(<b>60</b>元/单)：<input type="number" id="offlineHouse1" min="0" value="0"></div>
-            <div class="input-row">授权<b>房产信息-复杂</b>(<b>100</b>元/单)：<input type="number" id="offlineHouse2" min="0" value="0"></div>
+            <div class="input-row">
+                授权<b>征信</b>(<b style="color: #F56C73;">30</b>元/单)：<input type="number" id="offlineCredit" min="0" value="0">
+                <span id="offlineCreditTotal" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                授权<b>银行流水-超网</b>(<b style="color: #F56C73;">60</b>元/单)：<input type="number" id="offlineBank1" min="0" value="0">
+                <span id="offlineBank1Total" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                授权<b>银行流水-邮箱</b>(<b style="color: #F56C73;">100</b>元/单)：<input type="number" id="offlineBank2" min="0" value="0">
+                <span id="offlineBank2Total" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                授权<b>发票明细-RPA</b>(<b style="color: #F56C73;">80</b>元/单)：<input type="number" id="offlineTax" min="0" value="0">
+                <span id="offlineTaxTotal" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                授权<b>微信账单</b>(<b style="color: #F56C73;">40</b>元/单)：<input type="number" id="offlineWechat" min="0" value="0">
+                <span id="offlineWechatTotal" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                授权<b>房产信息-直连</b>(<b style="color: #F56C73;">60</b>元/单)：<input type="number" id="offlineHouse1" min="0" value="0">
+                <span id="offlineHouse1Total" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                授权<b>房产信息-复杂</b>(<b style="color: #F56C73;">100</b>元/单)：<input type="number" id="offlineHouse2" min="0" value="0">
+                <span id="offlineHouse2Total" style="display: inline;">已有0单</span>
+            </div>
         </div>
+        
     
         <div class="buttons">
-            <button class="green" onclick="calculate()">立即计算</button>
-            <button class="yellow" onclick="undo()">撤销本次计算</button>
-            <button class="red" onclick="confirmReset()">强制归零</button>
-            <button onclick="copyResult()">一键复制</button>
-        </div>
+            <button class="green">立即计算</button>
+            <button class="yellow">撤销本次计算</button>
+            <button class="red">强制归零</button>
+            <button class="copy-button">一键复制</button>
+        </div>        
     
         <div id="result"></div>
     </div>
     
     <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 初始化已有报单的显示
+            const fields = [
+                'aiCredit', 'aiBank1', 'aiBank2', 'aiTax', 'aiWechat', 'aiHouse1', 'aiHouse2',
+                'offlineCredit', 'offlineBank1', 'offlineBank2', 'offlineTax', 'offlineWechat', 
+                'offlineHouse1', 'offlineHouse2'
+            ];
+
+            // 初始化显示已存储的累计订单数
+            fields.forEach(field => {
+                const total = parseInt(localStorage.getItem(`${field}Total`)) || 0;
+                updateDisplay(field, total);
+            });
+
+            // 临时保存用户输入的数值
+            let tempValues = {};
+            fields.forEach(field => tempValues[field] = 0);
+
+            // 监听输入框变化，暂时存储输入的值
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                input.addEventListener('input', (event) => {
+                    const id = event.target.id;
+                    const value = parseInt(event.target.value) || 0;
+                    tempValues[id] = value;  // 保存用户输入
+                });
+            });
+
+            // 保存上次计算结果以便撤销
+            let lastCalculation = {};
+
+            // 点击“立即计算”按钮
+            document.querySelector('.green').addEventListener('click', () => {
+                // 保存当前状态用于撤销
+                lastCalculation = fields.reduce((acc, field) => {
+                    acc[field] = parseInt(localStorage.getItem(`${field}Total`)) || 0;
+                    return acc;
+                }, {});
+
+                // 累加用户输入的临时值
+                fields.forEach(field => {
+                    const previousTotal = parseInt(localStorage.getItem(`${field}Total`)) || 0;
+                    const newTotal = previousTotal + tempValues[field];
+                    localStorage.setItem(`${field}Total`, newTotal);
+                    updateDisplay(field, newTotal);
+                });
+
+                // 清空临时值
+                fields.forEach(field => tempValues[field] = 0);
+                document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+            });
+
+            // 点击“撤销本次计算”按钮
+            document.querySelector('.yellow').addEventListener('click', () => {
+                if (Object.keys(lastCalculation).length > 0) {
+                    fields.forEach(field => {
+                        localStorage.setItem(`${field}Total`, lastCalculation[field]);
+                        updateDisplay(field, lastCalculation[field]);
+                    });
+                    lastCalculation = {};  // 重置撤销状态
+                }
+            });
+
+            // 更新显示函数
+            function updateDisplay(field, total) {
+                const displayElement = document.getElementById(`${field}Total`);
+                const totalText = total > 0 ? `<span style="font-weight: bold; color: gold;">${total}</span>` : '0';
+                displayElement.innerHTML = `已有${totalText}单`;
+            }
+        });
+
+
+
+
+
         // 初始化时加载保存的数据
         document.addEventListener('DOMContentLoaded', () => {
             const savedName = localStorage.getItem('savedName');
@@ -441,13 +582,19 @@ body.dark-mode .contact-info {
             applyHighlight();
         }
     
+        // 添加事件监听
+        document.querySelector('.green').addEventListener('click', calculate);
+        document.querySelector('.yellow').addEventListener('click', undo);
+        document.querySelector('.red').addEventListener('click', confirmReset);
+        document.querySelector('.copy-button').addEventListener('click', copyResult);
+
         function confirmReset() {
             if (confirm('确定真的强制归零？')) {
                 // 强制将所有值归零
                 document.querySelectorAll('input[type="number"]').forEach(input => {
                     input.value = 0;
                 });
-    
+
                 // 清除本地存储中的数据
                 localStorage.removeItem('totalOrders');
                 localStorage.removeItem('totalAmount');
@@ -455,26 +602,39 @@ body.dark-mode .contact-info {
                 localStorage.removeItem('lastCalculation');
                 localStorage.removeItem('calculationResult'); // 清除计算结果
 
-    
                 // 清除结果栏
                 document.getElementById('result').textContent = '';
-    
+
                 // 重置内存中的数据
                 totalOrders = 0;
                 totalAmount = 0;
                 aiTotalOrders = 0;
                 lastCalculation = {};
-    
+
                 // 更新本地存储中的数据
                 localStorage.setItem('totalOrders', totalOrders);
                 localStorage.setItem('totalAmount', totalAmount);
                 localStorage.setItem('aiTotalOrders', aiTotalOrders);
                 localStorage.setItem('lastCalculation', JSON.stringify(lastCalculation));
-    
+
                 // 重新应用高亮
                 applyHighlight();
+
+                resetOrderDisplay();
             }
         }
+
+        function resetOrderDisplay() {
+            const fields = ['aiCredit', 'aiBank1', 'aiBank2', 'aiTax', 'aiWechat', 'aiHouse1', 'aiHouse2',
+                            'offlineCredit', 'offlineBank1', 'offlineBank2', 'offlineTax', 'offlineWechat', 
+                            'offlineHouse1', 'offlineHouse2']; 
+            fields.forEach(field => {
+                localStorage.setItem(`${field}Total`, 0);
+                document.getElementById(`${field}Total`).innerHTML = `已有<span>${0}</span>单`; // 使用正常样式
+            });
+        }
+
+
     
         function copyResult() {
             const resultText = document.getElementById('result').textContent;
@@ -489,7 +649,6 @@ body.dark-mode .contact-info {
     document.querySelectorAll('input[type="number"]').forEach(input => {
         const label = input.parentElement.querySelector('b');
 
-        // 高亮样式定义
         const highlightStyles = {
             lightMode: {
                 backgroundColor: 'yellow',
@@ -504,14 +663,25 @@ body.dark-mode .contact-info {
         // 选择当前模式的高亮样式
         const currentHighlightStyles = isDarkMode ? highlightStyles.darkMode : highlightStyles.lightMode;
 
-        if (input.value > 0) {
-            input.classList.add('highlight');
-            input.style.backgroundColor = currentHighlightStyles.backgroundColor;
-            input.style.color = currentHighlightStyles.color;
-            if (label) {
-                label.classList.add('highlight');
-                label.style.backgroundColor = currentHighlightStyles.backgroundColor;
-                label.style.color = currentHighlightStyles.color;
+        if (input.id !== 'targetInput') {
+            if (input.value > 0) {
+                input.classList.add('highlight');
+                input.style.backgroundColor = currentHighlightStyles.backgroundColor;
+                input.style.color = currentHighlightStyles.color;
+                if (label) {
+                    label.classList.add('highlight');
+                    label.style.backgroundColor = currentHighlightStyles.backgroundColor;
+                    label.style.color = currentHighlightStyles.color;
+                }
+            } else {
+                input.classList.remove('highlight');
+                input.style.backgroundColor = ''; // 恢复默认样式
+                input.style.color = '';
+                if (label) {
+                    label.classList.remove('highlight');
+                    label.style.backgroundColor = ''; // 恢复默认样式
+                    label.style.color = '';
+                }
             }
         } else {
             input.classList.remove('highlight');
@@ -528,84 +698,85 @@ body.dark-mode .contact-info {
 
 
 
-        document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleButton = document.getElementById('theme-toggle');
-    const currentTheme = localStorage.getItem('theme');
-    
-    // 设置初始主题
-    if (currentTheme) {
-        document.body.classList.toggle('dark-mode', currentTheme === 'dark');
-    }
-
-    // 切换主题
-    themeToggleButton.addEventListener('click', () => {
-        const isDarkMode = document.body.classList.toggle('dark-mode');
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-    });
-});
-
 
         document.addEventListener('DOMContentLoaded', () => {
-    // 加载并显示保存的结果
-    const savedResult = localStorage.getItem('calculationResult');
-    if (savedResult) {
-        document.getElementById('result').textContent = JSON.parse(savedResult).resultText;
-    }
+            const themeToggleButton = document.getElementById('theme-toggle');
+            const currentTheme = localStorage.getItem('theme');
+            
+            // 设置初始主题
+            if (currentTheme) {
+                document.body.classList.toggle('dark-mode', currentTheme === 'dark');
+            }
 
-    // 应用高亮效果
-    applyHighlight();
+            // 切换主题
+            themeToggleButton.addEventListener('click', () => {
+                const isDarkMode = document.body.classList.toggle('dark-mode');
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            });
+        });
 
-    // 添加事件监听器
-    document.querySelectorAll('input[type="number"]').forEach(input => {
-        input.addEventListener('input', applyHighlight);
-    });
 
-    // 编辑按钮点击事件处理
-    document.getElementById('editBtn').addEventListener('click', () => {
-        document.getElementById('nameDisplay').style.display = 'none';
-        document.getElementById('targetDisplay').style.display = 'none';
-        document.getElementById('nameInput').style.display = 'inline';
-        document.getElementById('targetInput').style.display = 'inline';
-        document.getElementById('saveBtn').style.display = 'inline';
-        document.getElementById('cancelBtn').style.display = 'inline';
-        document.getElementById('editBtn').style.display = 'none';
-    });
+        document.addEventListener('DOMContentLoaded', () => {
+            // 加载并显示保存的结果
+            const savedResult = localStorage.getItem('calculationResult');
+            if (savedResult) {
+                document.getElementById('result').textContent = JSON.parse(savedResult).resultText;
+            }
 
-    // 保存按钮点击事件处理
-    document.getElementById('saveBtn').addEventListener('click', () => {
-        const newName = document.getElementById('nameInput').value;
-        const newTarget = parseInt(document.getElementById('targetInput').value);
+            // 应用高亮效果
+            applyHighlight();
 
-        // 保存到 localStorage
-        localStorage.setItem('savedName', newName);
-        localStorage.setItem('savedTarget', newTarget);
+            // 添加事件监听器
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                input.addEventListener('input', applyHighlight);
+            });
 
-        document.getElementById('nameDisplay').textContent = newName;
-        document.getElementById('targetDisplay').textContent = newTarget;
+            // 编辑按钮点击事件处理
+            document.getElementById('editBtn').addEventListener('click', () => {
+                document.getElementById('nameDisplay').style.display = 'none';
+                document.getElementById('targetDisplay').style.display = 'none';
+                document.getElementById('nameInput').style.display = 'inline';
+                document.getElementById('targetInput').style.display = 'inline';
+                document.getElementById('saveBtn').style.display = 'inline';
+                document.getElementById('cancelBtn').style.display = 'inline';
+                document.getElementById('editBtn').style.display = 'none';
+            });
 
-        document.getElementById('nameDisplay').style.display = 'inline';
-        document.getElementById('targetDisplay').style.display = 'inline';
-        document.getElementById('nameInput').style.display = 'none';
-        document.getElementById('targetInput').style.display = 'none';
-        document.getElementById('saveBtn').style.display = 'none';
-        document.getElementById('cancelBtn').style.display = 'none';
-        document.getElementById('editBtn').style.display = 'inline';
-    });
+            // 保存按钮点击事件处理
+            document.getElementById('saveBtn').addEventListener('click', () => {
+                const newName = document.getElementById('nameInput').value;
+                const newTarget = parseInt(document.getElementById('targetInput').value);
 
-    // 取消按钮点击事件处理
-    document.getElementById('cancelBtn').addEventListener('click', () => {
-        document.getElementById('nameInput').value = document.getElementById('nameDisplay').textContent;
-        document.getElementById('targetInput').value = document.getElementById('targetDisplay').textContent;
+                // 保存到 localStorage
+                localStorage.setItem('savedName', newName);
+                localStorage.setItem('savedTarget', newTarget);
 
-        document.getElementById('nameDisplay').style.display = 'inline';
-        document.getElementById('targetDisplay').style.display = 'inline';
-        document.getElementById('nameInput').style.display = 'none';
-        document.getElementById('targetInput').style.display = 'none';
-        document.getElementById('saveBtn').style.display = 'none';
-        document.getElementById('cancelBtn').style.display = 'none';
-        document.getElementById('editBtn').style.display = 'inline';
-    });
-});
+                document.getElementById('nameDisplay').textContent = newName;
+                document.getElementById('targetDisplay').textContent = newTarget;
+
+                document.getElementById('nameDisplay').style.display = 'inline';
+                document.getElementById('targetDisplay').style.display = 'inline';
+                document.getElementById('nameInput').style.display = 'none';
+                document.getElementById('targetInput').style.display = 'none';
+                document.getElementById('saveBtn').style.display = 'none';
+                document.getElementById('cancelBtn').style.display = 'none';
+                document.getElementById('editBtn').style.display = 'inline';
+            });
+
+            // 取消按钮点击事件处理
+            document.getElementById('cancelBtn').addEventListener('click', () => {
+                document.getElementById('nameInput').value = document.getElementById('nameDisplay').textContent;
+                document.getElementById('targetInput').value = document.getElementById('targetDisplay').textContent;
+
+                document.getElementById('nameDisplay').style.display = 'inline';
+                document.getElementById('targetDisplay').style.display = 'inline';
+                document.getElementById('nameInput').style.display = 'none';
+                document.getElementById('targetInput').style.display = 'none';
+                document.getElementById('saveBtn').style.display = 'none';
+                document.getElementById('cancelBtn').style.display = 'none';
+                document.getElementById('editBtn').style.display = 'inline';
+            });
+        });
 
         // 初始化时应用高亮
         document.addEventListener('DOMContentLoaded', () => {
@@ -658,68 +829,68 @@ body.dark-mode .contact-info {
                 document.getElementById('editBtn').style.display = 'inline';
             });
         });
-// 获取保存的数据（如果有的话）
-const savedName = localStorage.getItem('savedName');
-const savedTarget = localStorage.getItem('savedTarget');
+    // 获取保存的数据（如果有的话）
+    const savedName = localStorage.getItem('savedName');
+    const savedTarget = localStorage.getItem('savedTarget');
 
-// 初始化时检查保存的数据
-document.addEventListener('DOMContentLoaded', () => {
-    if (savedName) {
-        document.getElementById('nameDisplay').textContent = savedName;
-        document.getElementById('nameInput').value = savedName;
-    }
+    // 初始化时检查保存的数据
+    document.addEventListener('DOMContentLoaded', () => {
+        if (savedName) {
+            document.getElementById('nameDisplay').textContent = savedName;
+            document.getElementById('nameInput').value = savedName;
+        }
 
-    if (savedTarget) {
-        document.getElementById('targetDisplay').textContent = savedTarget;
-        document.getElementById('targetInput').value = savedTarget;
-    }
-    
-    applyHighlight();
-    
-    // 添加事件监听器
-    document.getElementById('editBtn').addEventListener('click', () => {
-        document.getElementById('nameDisplay').style.display = 'none';
-        document.getElementById('targetDisplay').style.display = 'none';
-        document.getElementById('nameInput').style.display = 'inline';
-        document.getElementById('targetInput').style.display = 'inline';
-        document.getElementById('saveBtn').style.display = 'inline';
-        document.getElementById('cancelBtn').style.display = 'inline';
-        document.getElementById('editBtn').style.display = 'none';
+        if (savedTarget) {
+            document.getElementById('targetDisplay').textContent = savedTarget;
+            document.getElementById('targetInput').value = savedTarget;
+        }
+        
+        applyHighlight();
+        
+        // 添加事件监听器
+        document.getElementById('editBtn').addEventListener('click', () => {
+            document.getElementById('nameDisplay').style.display = 'none';
+            document.getElementById('targetDisplay').style.display = 'none';
+            document.getElementById('nameInput').style.display = 'inline';
+            document.getElementById('targetInput').style.display = 'inline';
+            document.getElementById('saveBtn').style.display = 'inline';
+            document.getElementById('cancelBtn').style.display = 'inline';
+            document.getElementById('editBtn').style.display = 'none';
+        });
+        
+        document.getElementById('saveBtn').addEventListener('click', () => {
+            const newName = document.getElementById('nameInput').value;
+            const newTarget = parseInt(document.getElementById('targetInput').value);
+        
+            // 保存到 localStorage
+            localStorage.setItem('savedName', newName);
+            localStorage.setItem('savedTarget', newTarget);
+        
+            document.getElementById('nameDisplay').textContent = newName;
+            document.getElementById('targetDisplay').textContent = newTarget;
+        
+            document.getElementById('nameDisplay').style.display = 'inline';
+            document.getElementById('targetDisplay').style.display = 'inline';
+            document.getElementById('nameInput').style.display = 'none';
+            document.getElementById('targetInput').style.display = 'none';
+            document.getElementById('saveBtn').style.display = 'none';
+            document.getElementById('cancelBtn').style.display = 'none';
+            document.getElementById('editBtn').style.display = 'inline';
+        });
+        
+        document.getElementById('cancelBtn').addEventListener('click', () => {
+            document.getElementById('nameInput').value = document.getElementById('nameDisplay').textContent;
+            document.getElementById('targetInput').value = document.getElementById('targetDisplay').textContent;
+        
+            document.getElementById('nameDisplay').style.display = 'inline';
+            document.getElementById('targetDisplay').style.display = 'inline';
+            document.getElementById('nameInput').style.display = 'none';
+            document.getElementById('targetInput').style.display = 'none';
+            document.getElementById('saveBtn').style.display = 'none';
+            document.getElementById('cancelBtn').style.display = 'none';
+            document.getElementById('editBtn').style.display = 'inline';
+        });
     });
-    
-    document.getElementById('saveBtn').addEventListener('click', () => {
-        const newName = document.getElementById('nameInput').value;
-        const newTarget = parseInt(document.getElementById('targetInput').value);
-    
-        // 保存到 localStorage
-        localStorage.setItem('savedName', newName);
-        localStorage.setItem('savedTarget', newTarget);
-    
-        document.getElementById('nameDisplay').textContent = newName;
-        document.getElementById('targetDisplay').textContent = newTarget;
-    
-        document.getElementById('nameDisplay').style.display = 'inline';
-        document.getElementById('targetDisplay').style.display = 'inline';
-        document.getElementById('nameInput').style.display = 'none';
-        document.getElementById('targetInput').style.display = 'none';
-        document.getElementById('saveBtn').style.display = 'none';
-        document.getElementById('cancelBtn').style.display = 'none';
-        document.getElementById('editBtn').style.display = 'inline';
-    });
-    
-    document.getElementById('cancelBtn').addEventListener('click', () => {
-        document.getElementById('nameInput').value = document.getElementById('nameDisplay').textContent;
-        document.getElementById('targetInput').value = document.getElementById('targetDisplay').textContent;
-    
-        document.getElementById('nameDisplay').style.display = 'inline';
-        document.getElementById('targetDisplay').style.display = 'inline';
-        document.getElementById('nameInput').style.display = 'none';
-        document.getElementById('targetInput').style.display = 'none';
-        document.getElementById('saveBtn').style.display = 'none';
-        document.getElementById('cancelBtn').style.display = 'none';
-        document.getElementById('editBtn').style.display = 'inline';
-    });
-});
     </script>
 <footer>
   <a href="http://dnsexit.com"><img src="http://dnsexit.com/images/dns.gif" border=0></a>
