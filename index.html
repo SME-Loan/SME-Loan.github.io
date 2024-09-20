@@ -733,6 +733,7 @@
 
             // 编辑按钮点击事件处理
             document.getElementById('editBtn').addEventListener('click', () => {
+                document.getElementById('targetInput').value = document.getElementById('targetDisplay').textContent; // 保留目标值
                 document.getElementById('nameDisplay').style.display = 'none';
                 document.getElementById('targetDisplay').style.display = 'none';
                 document.getElementById('nameInput').style.display = 'inline';
@@ -789,6 +790,7 @@
             
             // 编辑按钮点击事件处理
             document.getElementById('editBtn').addEventListener('click', () => {
+                document.getElementById('targetInput').value = document.getElementById('targetDisplay').textContent; // 保留目标值
                 document.getElementById('nameDisplay').style.display = 'none';
                 document.getElementById('targetDisplay').style.display = 'none';
                 document.getElementById('nameInput').style.display = 'inline';
@@ -849,6 +851,7 @@
         
         // 添加事件监听器
         document.getElementById('editBtn').addEventListener('click', () => {
+            document.getElementById('targetInput').value = document.getElementById('targetDisplay').textContent; // 保留目标值
             document.getElementById('nameDisplay').style.display = 'none';
             document.getElementById('targetDisplay').style.display = 'none';
             document.getElementById('nameInput').style.display = 'inline';
