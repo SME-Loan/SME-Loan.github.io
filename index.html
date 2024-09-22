@@ -384,11 +384,18 @@ document.querySelector('.green').addEventListener('click', () => {
             });
         });
 
-        // 为“一键复制”按钮添加点击音效
-        document.querySelector('.copy-button').addEventListener('click', () => {
-            copySound.currentTime = 0;  // 重置播放时间
-            copySound.play();  // 播放复制音效
-        });
+document.querySelector('.copy-button').addEventListener('click', () => {
+    const inputValue = document.getElementById('exampleInput').value;
+    navigator.clipboard.writeText(inputValue).then(() => {
+        // 在成功复制后播放音效
+        copySound.currentTime = 0;  // 重置播放时间
+        copySound.play();  // 播放复制音效
+        alert('结果已复制到剪贴板');  // 弹窗提示
+    }).catch(err => {
+        console.error('复制失败:', err);
+    });
+});
+
 
         
         document.addEventListener('DOMContentLoaded', () => {
