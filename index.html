@@ -332,72 +332,13 @@
             <button class="yellow">撤销本次计算</button>
             <button class="red">强制归零</button>
             <button class="copy-button">一键复制</button>
-        </div>   
-
-        <audio id="buttonCalculateSound" src="audio/button-calculate.wav" preload="auto"></audio>
-    <audio id="inputIncrementSound" src="audio/input-increment.wav" preload="auto"></audio>
-    <audio id="inputDecrementSound" src="audio/input-decrement.wav" preload="auto"></audio>
-    <audio id="buttonCopySound" src="audio/button-copy.wav" preload="auto"></audio>
+        </div>        
     
         <div id="result"></div>
     </div>
     
     <script>
 
-        const calculateSound = document.getElementById('buttonCalculateSound');
-
-// 为“立即计算”按钮添加点击事件
-document.querySelector('.green').addEventListener('click', () => {
-    calculateSound.play();  // 播放“立即计算”的声效
-});
-
-        const incrementSound = document.getElementById('inputIncrementSound');
-        const decrementSound = document.getElementById('inputDecrementSound');
-        const copySound = document.getElementById('buttonCopySound');
-
-        let isPlaying = false;  // 防止音效频繁触发
-
-        // 给带增减箭头的输入框添加增减音效
-        document.querySelectorAll('input[type="number"]').forEach(input => {
-            let previousValue = parseInt(input.value) || 0;  // 初始值
-
-            input.addEventListener('input', (event) => {
-                const currentValue = parseInt(event.target.value) || 0;
-
-                // 如果已经在播放音效，防止重叠播放
-                if (!isPlaying) {
-                    if (currentValue > previousValue) {
-                        incrementSound.currentTime = 0;  // 重置播放时间
-                        incrementSound.play();  // 播放增量音效
-                    } else if (currentValue < previousValue) {
-                        decrementSound.currentTime = 0;  // 重置播放时间
-                        decrementSound.play();  // 播放减量音效
-                    }
-
-                    isPlaying = true;
-                    setTimeout(() => {
-                        isPlaying = false;  // 允许下次音效触发
-                    }, 100);  // 冷却时间，防止音效重叠
-                }
-
-                previousValue = currentValue;  // 更新值
-            });
-        });
-
-document.querySelector('.copy-button').addEventListener('click', () => {
-    const inputValue = document.getElementById('exampleInput').value;
-    navigator.clipboard.writeText(inputValue).then(() => {
-        // 在成功复制后播放音效
-        copySound.currentTime = 0;  // 重置播放时间
-        copySound.play();  // 播放复制音效
-        alert('结果已复制到剪贴板');  // 弹窗提示
-    }).catch(err => {
-        console.error('复制失败:', err);
-    });
-});
-
-
-        
         document.addEventListener('DOMContentLoaded', () => {
             // 初始化已有报单的显示
             const fields = [
