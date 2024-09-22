@@ -355,6 +355,8 @@ document.querySelector('.green').addEventListener('click', () => {
         const decrementSound = document.getElementById('inputDecrementSound');
         const copySound = document.getElementById('buttonCopySound');
 
+        let isPlaying = false;  // 防止音效频繁触发
+
         // 给带增减箭头的输入框添加增减音效
         document.querySelectorAll('input[type="number"]').forEach(input => {
             let previousValue = parseInt(input.value) || 0;  // 初始值
@@ -362,10 +364,20 @@ document.querySelector('.green').addEventListener('click', () => {
             input.addEventListener('input', (event) => {
                 const currentValue = parseInt(event.target.value) || 0;
 
-                if (currentValue > previousValue) {
-                    incrementSound.play();  // 播放增量音效
-                } else if (currentValue < previousValue) {
-                    decrementSound.play();  // 播放减量音效
+                // 如果已经在播放音效，防止重叠播放
+                if (!isPlaying) {
+                    if (currentValue > previousValue) {
+                        incrementSound.currentTime = 0;  // 重置播放时间
+                        incrementSound.play();  // 播放增量音效
+                    } else if (currentValue < previousValue) {
+                        decrementSound.currentTime = 0;  // 重置播放时间
+                        decrementSound.play();  // 播放减量音效
+                    }
+
+                    isPlaying = true;
+                    setTimeout(() => {
+                        isPlaying = false;  // 允许下次音效触发
+                    }, 100);  // 冷却时间，防止音效重叠
                 }
 
                 previousValue = currentValue;  // 更新值
@@ -374,6 +386,7 @@ document.querySelector('.green').addEventListener('click', () => {
 
         // 为“一键复制”按钮添加点击音效
         document.querySelector('.copy-button').addEventListener('click', () => {
+            copySound.currentTime = 0;  // 重置播放时间
             copySound.play();  // 播放复制音效
         });
 
