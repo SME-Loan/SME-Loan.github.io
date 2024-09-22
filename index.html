@@ -335,7 +335,9 @@
         </div>   
 
         <audio id="buttonCalculateSound" src="audio/button-calculate.wav" preload="auto"></audio>
-
+    <audio id="inputIncrementSound" src="audio/input-increment.wav" preload="auto"></audio>
+    <audio id="inputDecrementSound" src="audio/input-decrement.wav" preload="auto"></audio>
+    <audio id="buttonCopySound" src="audio/button-copy.wav" preload="auto"></audio>
     
         <div id="result"></div>
     </div>
@@ -349,7 +351,33 @@ document.querySelector('.green').addEventListener('click', () => {
     calculateSound.play();  // 播放“立即计算”的声效
 });
 
+        const incrementSound = document.getElementById('inputIncrementSound');
+        const decrementSound = document.getElementById('inputDecrementSound');
+        const copySound = document.getElementById('buttonCopySound');
 
+        // 给带增减箭头的输入框添加增减音效
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            let previousValue = parseInt(input.value) || 0;  // 初始值
+
+            input.addEventListener('input', (event) => {
+                const currentValue = parseInt(event.target.value) || 0;
+
+                if (currentValue > previousValue) {
+                    incrementSound.play();  // 播放增量音效
+                } else if (currentValue < previousValue) {
+                    decrementSound.play();  // 播放减量音效
+                }
+
+                previousValue = currentValue;  // 更新值
+            });
+        });
+
+        // 为“一键复制”按钮添加点击音效
+        document.querySelector('.copy-button').addEventListener('click', () => {
+            copySound.play();  // 播放复制音效
+        });
+
+        
         document.addEventListener('DOMContentLoaded', () => {
             // 初始化已有报单的显示
             const fields = [
