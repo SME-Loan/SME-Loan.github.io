@@ -332,12 +332,23 @@
             <button class="yellow">撤销本次计算</button>
             <button class="red">强制归零</button>
             <button class="copy-button">一键复制</button>
-        </div>        
+        </div>   
+
+        <audio id="buttonCalculateSound" src="audio/button-calculate.wav" preload="auto"></audio>
+
     
         <div id="result"></div>
     </div>
     
     <script>
+
+        const calculateSound = document.getElementById('buttonCalculateSound');
+
+// 为“立即计算”按钮添加点击事件
+document.querySelector('.green').addEventListener('click', () => {
+    calculateSound.play();  // 播放“立即计算”的声效
+});
+
 
         document.addEventListener('DOMContentLoaded', () => {
             // 初始化已有报单的显示
