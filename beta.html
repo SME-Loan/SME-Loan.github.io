@@ -37,60 +37,45 @@
         }
 
       
-.tooltip {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    margin-left: 5px;
-    font-size: 13px;
-    border: 1px solid #87CEFA; 
-    border-radius: 50%;
-    width: 14px;
-    height: 14px;
-    text-align: center;
-    line-height: 15px;
-    color: #87CEFA;
-    background-color: white;
-    font-weight: bold;
-}
+            .tooltip {
+                display: inline-block;
+                position: relative;
+                cursor: pointer;
+                margin-left: 5px;
+                font-size: 13px;
+                border: 1px solid #87CEFA; 
+                border-radius: 50%;
+                width: 14px;
+                height: 14px;
+                text-align: center;
+                line-height: 15px;
+                color: #87CEFA;
+                background-color: white;
+                font-weight: bold;
+            }
 
-body.dark-mode .tooltip {
-    background-color: #333; 
-}
+                body.dark-mode .tooltip {
+                    background-color: #333; 
+                }
 
-.tooltip:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    top: -5px;
-    left: 25px;
-    background-color: #333;
-    color: #fff;
-    padding: 5px;
-    border-radius: 5px;
-    white-space: normal;
-    max-width: 200px; /* 限制最大宽度 */
-    z-index: 1;
-    font-size: 14px;
-    line-height: 1.5;
-    font-weight: normal;
-    text-align: left;
-    white-space: pre-wrap; /* 自动换行 */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* 增加阴影效果 */
-}
-
-.tooltip:hover::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent #333 transparent transparent; /* 三角箭头 */
-}
-
+            .tooltip:hover::after {
+                content: attr(data-tooltip);
+                position: absolute;
+                top: -5px;
+                left: 25px;
+                background-color: #333;
+                color: #fff;
+                padding: 5px;
+                border-radius: 5px;
+                white-space: normal; 
+                width: 200px; 
+                z-index: 1;
+                font-size: 14px;
+                line-height: 1.5;
+                font-weight: normal;
+                white-space: pre-wrap;
+                text-align: left; 
+            }
                 
                     .input-row {
                         margin-bottom: 5px;
@@ -579,7 +564,8 @@ body.dark-mode .tooltip {
     
         <div class="container">
             <div class="title">提额项目报单计数器 1.2.0-beta
-                <span class="tooltip" data-tooltip="使用说明：&#10;1. 将新增单数填入对应种类端口之后的输入框中；&#10;2. 全部填好之后点击【立即计算】按钮，即可自动生成报单文本；&#10;3. 再点击【一键复制】按钮。&#10;注：本计数器具有自动累计功能，页面刷新或浏览器重启都不会丢失数据。&#10; &#10;更新记录 v1.2.0-beta.20240927：&#10;i. 对于报单文本的显示界面新增了蓝屏LED、板书和打字机主题风格（切换按钮位于页面最底部中间靠右的位置）；&#10;ii. 对“立即计算”等按钮的风格样式进行了优化；&#10;iii. 新增了各小类端口前方的抽象符号；&#10;iv. 将原有的“切换主题”按钮改为了“夜间模式”切换按钮，并对按钮样式进行了优化；&#10;v. 将日间模式下“已有n单”中的数字颜色进行了微调。&#10; &#10;更新记录 v1.1.0.20240921：&#10;i. 修复了“姓名”和“当日目标”输入框的显示问题；&#10;ii. 新增了各小类端口“已有n单”的显示功能；&#10;iii. 对关键数字进行了颜色调整。&#10; &#10;如果你在使用过程中有任何不好的体验或者更多的功能需求，欢迎随时提出，你的意见和建议都会得到最高程度的重视！感谢友友们的使用 &#x2764;">?</span>
+                <span class="tooltip" data-tooltip="使用说明：&#10;1. 将新增单数填入对应种类端口之后的输入框中；&#10;2. 全部填好之后点击【立即计算】按钮，即可自动生成报单文本；&#10;3. 再点击【一键复制】按钮。&#10;注：本计数器具有自动累计功能，页面刷新或浏览器重启都不会丢失数据。&#10; &#10;更新记录 v. 1.1.0.20240921：&#10;i. 修复了“姓名”和“当日目标”输入框的显示问题；&#10;ii. 新增了各小类端口“已有n单”的显示功能；&#10;iii. 对关键数字进行了颜色调整。&#10; &#10;如果你在使用过程中有任何不好的体验或者更多的功能需求，欢迎随时提出，你的意见和建议都会得到最高程度的重视！">?</span>
+                <div class="portal">
                     点击返回<a href="https://www.sme-loan.work.gd" target="_blank">报单计数器1.1.0</a>
                 </div>
             </div>
