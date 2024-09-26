@@ -37,45 +37,60 @@
         }
 
       
-            .tooltip {
-                display: inline-block;
-                position: relative;
-                cursor: pointer;
-                margin-left: 5px;
-                font-size: 13px;
-                border: 1px solid #87CEFA; 
-                border-radius: 50%;
-                width: 14px;
-                height: 14px;
-                text-align: center;
-                line-height: 15px;
-                color: #87CEFA;
-                background-color: white;
-                font-weight: bold;
-            }
+.tooltip {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 13px;
+    border: 1px solid #87CEFA; 
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    line-height: 15px;
+    color: #87CEFA;
+    background-color: white;
+    font-weight: bold;
+}
 
-                body.dark-mode .tooltip {
-                    background-color: #333; 
-                }
+body.dark-mode .tooltip {
+    background-color: #333; 
+}
 
-            .tooltip:hover::after {
-                content: attr(data-tooltip);
-                position: absolute;
-                top: -5px;
-                left: 25px;
-                background-color: #333;
-                color: #fff;
-                padding: 5px;
-                border-radius: 5px;
-                white-space: normal; 
-                width: 200px; 
-                z-index: 1;
-                font-size: 14px;
-                line-height: 1.5;
-                font-weight: normal;
-                white-space: pre-wrap;
-                text-align: left; 
-            }
+.tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -5px;
+    left: 25px;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: normal;
+    max-width: 200px; /* 限制最大宽度 */
+    z-index: 1;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: normal;
+    text-align: left;
+    white-space: pre-wrap; /* 自动换行 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* 增加阴影效果 */
+}
+
+.tooltip:hover::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #333 transparent transparent; /* 三角箭头 */
+}
+
                 
                     .input-row {
                         margin-bottom: 5px;
