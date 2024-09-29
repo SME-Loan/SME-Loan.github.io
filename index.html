@@ -666,7 +666,7 @@
 
             <!-- 下拉菜单，选择主题 -->
             <select id="theme-selector">
-                <option value="default">默认风格</option>
+                <option value="default">旧版风格</option>
                 <option value="led">蓝屏LED风格</option>
                 <option value="blackboard">板书风格</option>
                 <option value="typewriter">打字机风格</option>
@@ -1188,13 +1188,13 @@ window.addEventListener('DOMContentLoaded', () => {
         // 如果有保存的主题，则应用该主题
         document.body.classList.toggle('dark-mode', savedTheme === 'dark');
         
-        const selectedTheme = localStorage.getItem('selectedTheme') || 'default';
+        const selectedTheme = localStorage.getItem('selectedTheme') || 'led';
         resultElement.className = selectedTheme;
         themeSelector.value = selectedTheme;
     } else {
         // 如果没有保存的主题，则应用默认风格
-        resultElement.classList.add('default');
-        themeSelector.value = 'default';
+        resultElement.classList.add('led');
+        themeSelector.value = 'led';
     }
 });
 
