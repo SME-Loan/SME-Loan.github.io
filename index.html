@@ -1214,7 +1214,33 @@ document.getElementById('theme-selector').addEventListener('change', function() 
 });
 
 
+// 夜间模式图标路径
+const nightIcons = {
+    credit: "images/icons/night/credit-icon-32px.png",
+    bank: "images/icons/night/bank-icon-32px.png",
+    tax: "images/icons/night/tax-icon-32px.png",
+    wechat: "images/icons/night/wechat-icon-32px.png",
+    house: "images/icons/night/house-icon-32px.png",
+};
 
+// 切换模式的函数
+function toggleNightMode() {
+    const isNightMode = document.body.classList.toggle('night-mode'); // 切换夜间模式类
+
+    const icons = document.querySelectorAll('.icon'); // 获取所有图标
+
+    icons.forEach(icon => {
+        const iconType = icon.alt.split('图标')[0]; // 获取图标类型，取alt的前半部分
+        if (isNightMode && nightIcons[iconType]) {
+            icon.src = nightIcons[iconType]; // 切换到夜间图标
+        } else {
+            icon.src = icon.src.replace('night/', ''); // 切换回白天图标
+        }
+    });
+}
+
+// 绑定按钮点击事件
+document.getElementById('theme-toggle').addEventListener('click', toggleNightMode);
 
 
     
