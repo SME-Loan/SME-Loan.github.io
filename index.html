@@ -1225,20 +1225,13 @@ const nightIcons = {
 };
 
 // 切换模式的函数
-// 切换模式的函数
 function toggleNightMode() {
-    const isNightMode = document.body.classList.toggle('dark-mode'); // 切换夜间模式类
+    const isNightMode = document.body.classList.toggle('night-mode'); // 切换夜间模式类
 
     const icons = document.querySelectorAll('.icon'); // 获取所有图标
 
     icons.forEach(icon => {
-        // 根据 alt 属性的英文部分匹配类型
-        const iconType = icon.alt.includes('征信') ? 'credit' :
-                         icon.alt.includes('银行') ? 'bank' :
-                         icon.alt.includes('发票') ? 'tax' :
-                         icon.alt.includes('微信') ? 'wechat' :
-                         icon.alt.includes('房产') ? 'house' : '';
-        
+        const iconType = icon.alt.split('图标')[0]; // 获取图标类型，取alt的前半部分
         if (isNightMode && nightIcons[iconType]) {
             icon.src = nightIcons[iconType]; // 切换到夜间图标
         } else {
