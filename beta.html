@@ -485,103 +485,110 @@
                 background-color: #bbb;
             }
 
-        .wave-container {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            margin: 20px auto;
-            border-radius: 50%;
-            overflow: hidden;
-            background: radial-gradient(circle at 70% 30%, rgba(150, 180, 255, 0.5), rgba(60, 100, 150, 0.2) 70%, rgba(0, 50, 80, 0.5) 100%);
-            border: 5px solid rgba(100, 180, 255, 0.4);
-            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.1),
-                        0 0 30px rgba(100, 180, 255, 0.3);
-        }
+        /* Styles from Pure Css Wave Progress bar Animation */
+/* 水晶球容器样式 */
+.wave-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    background: radial-gradient(circle at 70% 30%, rgba(150, 180, 255, 0.5), rgba(60, 100, 150, 0.2) 70%, rgba(0, 50, 80, 0.5) 100%);
+    border: 5px solid rgba(100, 180, 255, 0.4);
+    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.1),
+                0 0 30px rgba(100, 180, 255, 0.3);
+}
 
-        /* 调整光斑效果 */
-        .wave-container::before {
-            content: '';
-            position: absolute;
-            top: 15px; 
-            left: 110px;  
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); 
-            opacity: 0.4;  
-            pointer-events: none;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); 
-            z-index: 4;
-        }
+/* 调整光斑效果 */
+.wave-container::before {
+    content: '';
+    position: absolute;
+    top: 15px;  /* 微调位置 */
+    left: 110px;  /* 微调位置 */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); /* 调整光斑颜色 */
+    opacity: 0.4;  /* 降低光斑透明度 */
+    pointer-events: none;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);  /* 适度增加阴影效果 */
+    z-index: 4;
+}
 
-        /* 调整辅助反光区域 */
-        .wave-container::after {
-            content: '';
-            position: absolute;
-            top: 50px;
-            left: 50px;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(150, 180, 255, 0.3), transparent 70%);
-            opacity: 0.4; 
-            pointer-events: none;
-            z-index: 3;
-        }
+/* 调整辅助反光区域 */
+.wave-container::after {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(150, 180, 255, 0.3), transparent 70%);
+    opacity: 0.4; /* 适度降低透明度 */
+    pointer-events: none;
+    z-index: 3;
+}
 
-        /* 波浪动画的夜间模式适配 */
-        .wave-change {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            left: 0;
-            top: 0;
-            animation: change 12s linear forwards;
-            z-index: 2;
-        }
+/* 波浪动画的夜间模式适配 */
+.wave-change {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 0;
+    top: 0;
+    animation: change 12s linear forwards;
+    z-index: 2;
+}
 
-        .wave-change::before,
-        .wave-change::after {
-            content: "";
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            top: 0;
-            left: 50%;
-            background-color: rgba(150, 180, 255, 0.2); 
-            transform: translate(-50%, -70%) rotate(0);
-            animation: rotate 7s linear infinite;
-            z-index: 1;
-        }
+.wave-change::before,
+.wave-change::after {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 0;
+    left: 50%;
+    background-color: rgba(150, 180, 255, 0.2); /* 夜间模式柔和波纹 */
+    border-radius: 45% 47% 43% 46%;
+    transform: translate(-50%, -70%) rotate(0);
+    animation: rotate 7s linear infinite;
+    z-index: 1;
+}
 
-        .wave-change::after {
-            border-radius: 47% 42% 46% 44%;
-            background-color: rgba(150, 180, 255, 0.3);
-            animation: rotate 9s linear -4s infinite;
-            z-index: 1;
-        }
+.wave-change::after {
+    border-radius: 47% 42% 46% 44%;
+    background-color: rgba(150, 180, 255, 0.3);
+    animation: rotate 9s linear -4s infinite;
+    z-index: 1;
+}
 
-            body.dark-mode .wave-container {
-                background: radial-gradient(circle at 70% 30%, rgba(60, 100, 150, 0.4), rgba(30, 60, 100, 0.2) 70%, rgba(10, 30, 50, 0.6) 100%);
-                border: 5px solid rgba(60, 100, 150, 0.6);
-                box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05),
-                            0 0 20px rgba(60, 100, 150, 0.5);
-            }
+/* 夜间模式的样式 */
+body.dark-mode .wave-container {
+    background: radial-gradient(circle at 70% 30%, rgba(60, 100, 150, 0.4), rgba(30, 60, 100, 0.2) 70%, rgba(10, 30, 50, 0.6) 100%);
+    border: 5px solid rgba(60, 100, 150, 0.6);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05),
+                0 0 20px rgba(60, 100, 150, 0.5);
+}
 
-            body.dark-mode .wave-container::before {
-                background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0)); 
-                opacity: 0.3; 
-                box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
-            }
+body.dark-mode .wave-container::before {
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0)); /* 增加透光性 */
+    opacity: 0.3; /* 增加透明度 */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
 
-            body.dark-mode .wave-change::before,
-            body.dark-mode .wave-change::after {
-                background-color: rgba(30, 60, 100, 0.2); 
-            }
+body.dark-mode .wave-change::before,
+body.dark-mode .wave-change::after {
+    background-color: rgba(30, 60, 100, 0.2); /* 调整夜间模式下的波纹色调 */
+}
 
-            body.dark-mode .wave-change::after {
-                background-color: rgba(30, 60, 100, 0.3); 
-            }
+body.dark-mode .wave-change::after {
+    background-color: rgba(30, 60, 100, 0.3); /* 更深的夜间波纹 */
+}
+
+
+
 
         .wave {
             position: relative;
@@ -591,6 +598,37 @@
             border-radius: 50%;
         }
 
+//        .wave::before,
+//        .wave::after {
+//           content: "";
+//            position: absolute;
+//            width: 400px;
+//            height: 400px;
+//           top: 0;
+//            left: 50%;
+//            background-color: rgba(255, 255, 255, .4);
+//            border-radius: 45%;
+//            transform: translate(-50%, -70%) rotate(0);
+//            animation: rotate 6s linear infinite;
+//            z-index: 1;
+//       }
+
+//        .wave::after {
+//            border-radius: 47%;
+//            background-color: rgba(255, 255, 255, .9);
+//            animation: rotate 10s linear -5s infinite;
+//            z-index: 2;
+//        }
+
+        p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+           transform: translate(-50%, -50%);
+            font-size: 36px;
+            color: #000;
+            z-index: 10;
+        }
 
         @keyframes rotate {
             50% {
@@ -601,6 +639,7 @@
             }
         }
 
+        /* Keyframe will be updated dynamically using JS */
         @keyframes change {
             from {
                 top: 90px;
@@ -609,6 +648,7 @@
                 top: -120px;
             }
         }
+
 
         .percentage-display {
             text-align: center; 
