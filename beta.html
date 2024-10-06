@@ -690,19 +690,21 @@ body.dark-mode .wave-change::after {
 
     </style>
 
-<script>
-    window.addEventListener('load', function () {
-        // 定义当前页面的版本号
-        const currentVersion = '2.0.0';  // 每次更新页面时修改这个版本号
+    <script>
+        window.addEventListener('load', function () {
+            // 定义当前页面的版本号
+            const currentVersion = '2.0.0';  // 每次更新页面时修改这个版本号
 
-        // 检查本地存储的版本号是否与当前页面的版本号匹配
-        if (localStorage.getItem('version') !== currentVersion) {
-            // 如果版本不匹配，更新版本并刷新页面
-            localStorage.setItem('version', currentVersion);
-            location.reload(true);  // 强制刷新页面
-        }
-    });
-</script>
+            // 获取本地存储的版本号
+            const storedVersion = localStorage.getItem('version');
+
+            // 如果没有版本号，或者版本号不匹配，刷新页面并更新版本号
+            if (!storedVersion || storedVersion !== currentVersion) {
+                localStorage.setItem('version', currentVersion);
+                location.reload(true);  // 强制刷新页面
+            }
+        });
+    </script>
 
         <link rel="icon" href="images/logo.ico" type="image/x-icon">
         <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
