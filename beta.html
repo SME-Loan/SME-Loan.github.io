@@ -1,0 +1,1597 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提额项目报单计数器</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            position: relative;
+            display: inline-block;
+            text-align: left;
+            max-width: 450px;
+            margin: auto;
+            padding-bottom: 50px; 
+            box-sizing: border-box;
+        }
+    
+        .section {
+            border: 1px solid lightgray;
+            padding: 5px;
+            margin-bottom: 20px;
+            max-width: 450px;
+        }
+    
+        .title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+      
+            .tooltip {
+                display: inline-block;
+                position: relative;
+                cursor: pointer;
+                margin-left: 5px;
+                font-size: 13px;
+                border: 1px solid #87CEFA; 
+                border-radius: 50%;
+                width: 14px;
+                height: 14px;
+                text-align: center;
+                line-height: 15px;
+                color: #87CEFA;
+                background-color: white;
+                font-weight: bold;
+            }
+
+                body.dark-mode .tooltip {
+                    background-color: #333; 
+                }
+
+            .tooltip:hover::after {
+                content: attr(data-tooltip);
+                position: absolute;
+                top: -5px;
+                left: 25px;
+                background-color: #333;
+                color: #fff;
+                padding: 5px;
+                border-radius: 5px;
+                white-space: normal; 
+                width: 200px; 
+                z-index: 1;
+                font-size: 14px;
+                line-height: 1.5;
+                font-weight: normal;
+                white-space: pre-wrap;
+                text-align: left; 
+            }
+                
+                    .input-row {
+                        margin-bottom: 5px;
+                    }
+                
+                    input[type="number"] {
+                        width: 40px; 
+                        height: 20px; 
+                        padding: 3px;
+                        font-size: 16px;
+                    }
+
+                    .input-row input[type="number"]#targetInput {
+                        width: 40px; 
+                        -moz-appearance: textfield; /* Firefox */
+                        -webkit-appearance: none; /* Safari 和 Chrome */
+                        appearance: none; /* 现代浏览器 */
+                    }
+
+                    .input-row input[type="number"]#targetInput::-webkit-inner-spin-button,
+                    .input-row input[type="number"]#targetInput::-webkit-outer-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+
+                    .input-row span#nameDisplay {
+                        margin-right: 15px; 
+                    }
+
+
+                    .buttons {
+                        margin-top: 20px;
+                    }
+                
+                    button {
+                    padding: 0px 15px;
+                    font-size: 16px;
+                    height: 40px; /* 按钮高度 */
+                    line-height: 40px; /* 与高度相等 */
+                    text-align: center; 
+                    border: 2px solid rgba(255, 255, 255, 0.5); 
+                    border-radius: 5px; 
+                    cursor: pointer; 
+                    transition: all 0.3s ease;
+                    background-color: #f0f0f0; 
+                    color: #333; 
+                    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1), 
+                                0 2px 5px rgba(0, 0, 0, 0.2);
+                    font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif; 
+                    font-weight: 600; 
+                    letter-spacing: 0.5px;
+                    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7); 
+                }
+
+
+
+                .green {
+                    background-color: #4CAF50; /* 深绿色 */
+                    color: white; /* 白色文字 */
+                }
+
+                .green:hover {
+                    background-color: #45a049; /* 悬停时更深的绿色 */
+                }
+
+                .green:active {
+                    background-color: #66ff66; /* 点击时的亮绿色 */
+                    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7), /* 发光效果 */
+                                inset 0 0 5px rgba(255, 255, 255, 0.7); /* 内部发光 */
+                }
+
+                .yellow {
+                    background-color: #FFC107; /* 深黄色 */
+                    color: #0D2035; /* 深色文字 */
+                }
+
+                .yellow:hover {
+                    background-color: #ffb300; /* 悬停时更深的黄色 */
+                }
+
+                .yellow:active {
+                    background-color: #ffff66; /* 点击时的亮黄色 */
+                    box-shadow: 0 0 10px rgba(255, 255, 0, 0.7), /* 发光效果 */
+                                inset 0 0 5px rgba(255, 255, 255, 0.7); /* 内部发光 */
+                }
+
+                .red {
+                    background-color: #f44336; /* 深红色 */
+                    color: white; /* 白色文字 */
+                }
+
+                .red:hover {
+                    background-color: #e53935; /* 悬停时更深的红色 */
+                }
+
+                .red:active {
+                    background-color: #ff6666; /* 点击时的亮红色 */
+                    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7), /* 发光效果 */
+                                inset 0 0 5px rgba(255, 255, 255, 0.7); /* 内部发光 */
+                }
+
+
+                .copy-button {
+    background-color: #2196F3; /* 亮蓝色 */
+    color: white; /* 白色文字 */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* 保持边框 */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1), /* 内阴影 */
+                0 2px 5px rgba(0, 0, 0, 0.2); /* 外阴影 */
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7); /* 文字阴影 */
+}
+
+.copy-button:hover {
+    background-color: #1976D2; /* 悬停时更深的蓝色 */
+}
+
+.copy-button:active {
+    background-color: #64B5F6; /* 点击时的浅蓝色 */
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.7), /* 发光效果 */
+                inset 0 0 5px rgba(255, 255, 255, 0.7); /* 内部发光 */
+    transform: scale(0.98); /* 点击时稍微缩小 */
+}
+
+
+
+
+
+                    .highlight {
+                        background-color: yellow; 
+                    }
+                    #nameInput {
+                        width: 60px; 
+                        height: 20px; 
+                        font-size: 16px; 
+                    }
+
+
+
+
+
+
+
+
+
+                    #theme-selector {
+                        position: absolute;
+                        bottom: -40px; /* 距离 #result 底部的距离 */
+                        right: 10px;   /* 距离右侧的距离 */
+                        padding: 5px;
+                        font-size: 14px;
+                        cursor: pointer;
+                        z-index: 10;
+                        }
+
+                    #result.default {
+                        word-wrap: break-word; 
+                        overflow-wrap: break-word; 
+                        white-space: normal; 
+                        width: 450px; 
+                        box-sizing: border-box; 
+                        padding: 10px; 
+                        margin-top: 20px; 
+                        border: 1px solid lightgray; 
+                        background-color: #f9f9f9; 
+                    }
+
+                        body.dark-mode #result.default {
+                            background-color: #333; 
+                            color: #f1f1f1; 
+                            border: 1px solid #555; 
+                        }
+
+                  
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+             
+                    #result.led {
+                        word-wrap: break-word; 
+                        overflow-wrap: break-word; 
+                        white-space: normal; 
+                        width: 450px; 
+                        box-sizing: border-box; 
+                        padding: 20px; 
+                        margin-top: 20px; 
+                        border: 2px solid rgba(0, 0, 255, 0.5); 
+                        background-color: #000; 
+                        font-family: 'Press Start 2P', cursive;
+                        color: #00bfff; 
+                        text-shadow: 
+                            0 0 5px rgba(0, 191, 255, 0.8), 
+                            0 0 10px rgba(0, 191, 255, 0.6), 
+                            0 0 15px rgba(0, 191, 255, 0.4); 
+                        border-radius: 10px; 
+                        box-shadow: 0 4px 10px rgba(0, 191, 255, 0.3);
+                    }
+
+            
+                    body.dark-mode #result.led {
+                        background-color: #000; 
+                        color: #00bfff; 
+                        border: 2px solid rgba(0, 0, 255, 0.5);
+                        text-shadow: 
+                            0 0 5px rgba(0, 191, 255, 0.8), 
+                            0 0 10px rgba(0, 191, 255, 0.6), 
+                            0 0 15px rgba(0, 191, 255, 0.4);
+                    }
+
+
+                   
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+                  
+                    #result.blackboard {
+                        word-wrap: break-word; 
+                        overflow-wrap: break-word; 
+                        white-space: normal; 
+                        width: 450px; 
+                        box-sizing: border-box; 
+                        padding: 20px; 
+                        margin-top: 20px; 
+                        border: 5px solid #8B4513; 
+                        background-color: #005f2f; 
+                        font-family: 'Permanent Marker', cursive; 
+                        color: #ffffff; 
+                        border-radius: 10px; 
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+                    }
+
+          
+                    body.dark-mode #result.blackboard {
+                        background-color: #003d1f; 
+                        color: #ffffff; 
+                    }
+
+                   
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+                  
+                    #result.typewriter {
+                        word-wrap: break-word; 
+                        overflow-wrap: break-word; 
+                        white-space: normal; 
+                        width: 450px; 
+                        box-sizing: border-box; 
+                        padding: 20px; 
+                        margin-top: 20px; 
+                        border: 1px solid #000; 
+                        background-color: #f8f8f8; 
+                        font-family: 'Courier Prime', monospace; 
+                        color: #333;
+                        border-radius: 5px; 
+                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                    }
+
+                  
+                    body.dark-mode #result.typewriter {
+                        background-color: #333;
+                        color: #f8f8f8; 
+                        border: 1px solid #fff; 
+                    }
+
+
+
+                    
+
+
+
+
+
+
+
+
+
+
+                    .contact-info {
+                        position: fixed;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        background-color: #f1f1f1; 
+                        text-align: center;
+                        padding: 1px; 
+                        border-top: 1px solid lightgray;
+                        box-sizing: border-box;
+                        color: black; 
+                        z-index: 1000;
+                    }
+
+                        body.dark-mode .contact-info {
+                            background-color: #1a1a1a; 
+                            color: #e0e0e0; 
+                            border-top: 1px solid #444; 
+                        }
+
+            @media (max-width: 768px) {
+            .container {
+                padding: 3px;
+            }
+            .title {
+                font-size: 20px;
+            }
+            button {
+                font-size: 14px;
+                padding: 0px 10px;
+            }
+            #result {
+                font-size: 14px;
+                width: 440px;
+                max-width: 100%;
+            }
+        }
+
+        body {
+            background-color: white;
+            color: black;
+        }
+
+        body.dark-mode {
+            background-color: black;
+            color: white;
+        }
+
+        .theme-switcher {
+            position: absolute;
+            top: 1px; 
+            right: 1px; 
+        }
+
+        .icon {
+            width: 24px; /* 设定图标宽度 */
+            height: 24px; /* 设定图标高度 */
+            margin-right: 8px; /* 设定图标与文字的间距 */
+            vertical-align: middle; /* 使图标与文字垂直居中对齐 */
+        }
+
+        /* 为父容器使用 flex 布局，保证垂直居中 */
+        .theme-switcher {
+            display: flex;
+            align-items: center; /* 垂直居中对齐 */
+        }
+
+        .power-switch {
+            width: 60px;
+            height: 30px;
+            border-radius: 15px;
+            background-color: #ccc;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .power-switch:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .power-switch::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #ffffff, #e0e0e0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), inset 0 -2px 6px rgba(0, 0, 0, 0.3);
+            transform: translateY(-50%);
+            transition: left 0.3s, transform 0.3s;
+        }
+
+        .power-switch.active {
+            background-color: #4caf50;
+            box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .power-switch.active::before {
+            left: calc(100% - 30px);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* 标签样式 */
+        .mode-label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-right: 10px;
+            color: #555;
+            background: linear-gradient(45deg, #eeeeee, #cccccc); /* 默认背景 */
+            padding: 3px 10px;
+            border-radius: 5px;
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            transition: color 0.3s, background 0.3s;
+        }
+
+        .mode-label:hover {
+            background: linear-gradient(45deg, #cccccc, #bbbbbb);
+            color: #333;
+        }
+
+    
+        body.dark-mode .mode-label {
+            background: linear-gradient(45deg, #333333, #555555); 
+            color: #ddd; 
+        }
+
+
+.simple-btn {
+    padding: 0px 15px;
+    font-size: 16px;
+    height: calc(40px * 2 / 3); /* 调整按钮高度为当前的 2/3 */
+    line-height: calc(40px * 2 / 3); /* 与高度相等，保证文字垂直居中 */
+    text-align: center;
+    border: 2px solid rgba(0, 0, 0, 0.2); /* 更简洁的边框 */
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #333;
+    box-shadow: none; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 悬停和点击效果 */
+.simple-btn:hover {
+    background-color: #ddd;
+}
+
+.simple-btn:active {
+    background-color: #bbb;
+}
+
+
+        /* Styles from Pure Css Wave Progress bar Animation */
+/* 水晶球容器样式 */
+.wave-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    background: radial-gradient(circle at 70% 30%, rgba(150, 180, 255, 0.5), rgba(60, 100, 150, 0.2) 70%, rgba(0, 50, 80, 0.5) 100%);
+    border: 5px solid rgba(100, 180, 255, 0.4);
+    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.1),
+                0 0 30px rgba(100, 180, 255, 0.3);
+}
+
+/* 调整光斑效果 */
+.wave-container::before {
+    content: '';
+    position: absolute;
+    top: 15px;  /* 微调位置 */
+    left: 110px;  /* 微调位置 */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); /* 调整光斑颜色 */
+    opacity: 0.4;  /* 降低光斑透明度 */
+    pointer-events: none;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);  /* 适度增加阴影效果 */
+    z-index: 4;
+}
+
+/* 调整辅助反光区域 */
+.wave-container::after {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(150, 180, 255, 0.3), transparent 70%);
+    opacity: 0.4; /* 适度降低透明度 */
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* 波浪动画的夜间模式适配 */
+.wave-change {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 0;
+    top: 0;
+    animation: change 12s linear forwards;
+    z-index: 2;
+}
+
+.wave-change::before,
+.wave-change::after {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 0;
+    left: 50%;
+    background-color: rgba(150, 180, 255, 0.2); /* 夜间模式柔和波纹 */
+    border-radius: 45% 47% 43% 46%;
+    transform: translate(-50%, -70%) rotate(0);
+    animation: rotate 7s linear infinite;
+    z-index: 1;
+}
+
+.wave-change::after {
+    border-radius: 47% 42% 46% 44%;
+    background-color: rgba(150, 180, 255, 0.3);
+    animation: rotate 9s linear -4s infinite;
+    z-index: 1;
+}
+
+/* 夜间模式的样式 */
+body.dark-mode .wave-container {
+    background: radial-gradient(circle at 70% 30%, rgba(60, 100, 150, 0.4), rgba(30, 60, 100, 0.2) 70%, rgba(10, 30, 50, 0.6) 100%);
+    border: 5px solid rgba(60, 100, 150, 0.6);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05),
+                0 0 20px rgba(60, 100, 150, 0.5);
+}
+
+body.dark-mode .wave-container::before {
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0)); /* 增加透光性 */
+    opacity: 0.3; /* 增加透明度 */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .wave-change::before,
+body.dark-mode .wave-change::after {
+    background-color: rgba(30, 60, 100, 0.2); /* 调整夜间模式下的波纹色调 */
+}
+
+body.dark-mode .wave-change::after {
+    background-color: rgba(30, 60, 100, 0.3); /* 更深的夜间波纹 */
+}
+
+
+
+
+        .wave {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: rgb(118, 218, 255);
+            border-radius: 50%;
+        }
+
+//        .wave::before,
+//        .wave::after {
+//           content: "";
+//            position: absolute;
+//            width: 400px;
+//            height: 400px;
+//           top: 0;
+//            left: 50%;
+//            background-color: rgba(255, 255, 255, .4);
+//            border-radius: 45%;
+//            transform: translate(-50%, -70%) rotate(0);
+//            animation: rotate 6s linear infinite;
+//            z-index: 1;
+//       }
+
+//        .wave::after {
+//            border-radius: 47%;
+//            background-color: rgba(255, 255, 255, .9);
+//            animation: rotate 10s linear -5s infinite;
+//            z-index: 2;
+//        }
+
+        p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+           transform: translate(-50%, -50%);
+            font-size: 36px;
+            color: #000;
+            z-index: 10;
+        }
+
+        @keyframes rotate {
+            50% {
+                transform: translate(-50%, -73%) rotate(180deg);
+            }
+            100% {
+                transform: translate(-50%, -70%) rotate(360deg);
+            }
+        }
+
+        /* Keyframe will be updated dynamically using JS */
+        @keyframes change {
+            from {
+                top: 90px;
+            }
+            to {
+                top: -120px;
+            }
+        }
+
+
+
+
+        /* 百分比显示的样式 */
+        .percentage-display {
+            text-align: center; 
+            font-size: 18px; 
+            color: #76daff; 
+        }
+
+    </style>
+
+<script>
+    window.addEventListener('load', function () {
+        // 定义当前页面的版本号
+        const currentVersion = '2.0.0';  // 每次更新页面时修改这个版本号
+
+        // 检查本地存储的版本号是否与当前页面的版本号匹配
+        if (localStorage.getItem('version') !== currentVersion) {
+            // 如果版本不匹配，更新版本并刷新页面
+            localStorage.setItem('version', currentVersion);
+            location.reload(true);  // 强制刷新页面
+        }
+    });
+</script>
+
+        <link rel="icon" href="images/logo.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2GKERV0V0Y"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-2GKERV0V0Y');
+        </script>
+
+
+        <!-- Matomo -->
+        <script>
+          var _paq = window._paq = window._paq || [];
+          /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+          _paq.push(['trackPageView']);
+          _paq.push(['enableLinkTracking']);
+          (function() {
+            var u="https://smeloanworkgd02.matomo.cloud/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src='https://cdn.matomo.cloud/smeloanworkgd02.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+          })();
+        </script>
+        <!-- End Matomo Code -->
+
+
+</head>
+<body>
+
+
+        <div class="theme-switcher">
+            <span class="mode-label">夜间模式</span> <!-- 标签 -->
+            <button id="theme-toggle" class="power-switch"></button>
+        </div>
+        
+    
+    
+    
+        <div class="container">
+            <div class="title">提额项目报单计数器 1.2.0
+                <span class="tooltip" data-tooltip="使用说明：&#10;1. 将新增单数填入对应种类端口之后的输入框中；&#10;2. 全部填好之后点击【立即计算】按钮，即可自动生成报单文本；&#10;3. 再点击【一键复制】按钮。&#10;注：本计数器具有自动累计功能，页面刷新或浏览器重启都不会丢失数据。&#10; &#10;更新记录 v1.2.0(beta).20240927：&#10;i. 对于报单文本的显示界面新增了蓝屏LED、板书和打字机主题风格（切换按钮位于页面最底部中间靠右的位置）；&#10;ii. 对“立即计算”等按钮的风格样式进行了优化；&#10;iii. 新增了各小类端口前方的抽象符号；&#10;iv. 将原有的“切换主题”按钮改为了“夜间模式”切换按钮，并对按钮样式进行了优化；&#10;v. 将日间模式下“已有n单”中的数字颜色进行了微调。&#10; &#10;感谢友友们的使用 &#10;祝捷报频传 &#x2764;">?</span>
+            </div>
+            
+        <div class="contact-info">
+            联系方式：programmeursauvage@hotmail.com
+        </div>
+        
+        <div class="input-row">
+            姓名：<span id="nameDisplay">鲍得快</span>
+            <input type="text" id="nameInput" style="display: none;" value="鲍得快">
+            当日目标：<span id="targetDisplay">500</span>
+            <input type="number" id="targetInput" style="display: none;" value="500">
+            元
+            <button id="editBtn" class="simple-btn">编辑</button>
+            <button id="saveBtn" class="simple-btn" style="display: none;">保存</button>
+            <button id="cancelBtn" class="simple-btn" style="display: none;">取消</button>            
+        </div>
+        
+    
+    
+    
+        <div class="section">
+            <h3>AI端口</h3>
+            <div class="input-row">
+                <img src="images/icons/credit-icon-32px.png" alt="credit图标" class="icon"> 
+                授权<b>征信</b>(<b style="color: #F56C73;">25</b>元/单)：<input type="number" id="aiCredit" min="0" value="0">
+                <span id="aiCreditTotal" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
+                授权<b>银行流水-超网</b>(<b style="color: #F56C73;">45</b>元/单)：<input type="number" id="aiBank1" min="0" value="0">
+                <span id="aiBank1Total" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
+                授权<b>银行流水-邮箱</b>(<b style="color: #F56C73;">80</b>元/单)：<input type="number" id="aiBank2" min="0" value="0">
+                <span id="aiBank2Total" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                <img src="images/icons/tax-icon-32px.png" alt="tax图标" class="icon"> 
+                授权<b>发票明细-RPA</b>(<b style="color: #F56C73;">80</b>元/单)：<input type="number" id="aiTax" min="0" value="0">
+                <span id="aiTaxTotal" style="display: inline;">已有0单</span>
+            </div>
+
+
+            <div class="input-row">
+                <img src="images/icons/wechat-icon-32px.png" alt="wechat图标" class="icon">
+                授权<b>微信账单</b>(<b style="color: #F56C73;">35</b>元/单)：<input type="number" id="aiWechat" min="0" value="0">
+                <span id="aiWechatTotal" style="display: inline;">已有0单</span>
+            </div>
+            
+
+            <div class="input-row">
+                <img src="images/icons/house-icon-32px.png" alt="house图标" class="icon"> 
+                授权<b>房产信息-直连</b>(<b style="color: #F56C73;">45</b>元/单)：<input type="number" id="aiHouse1" min="0" value="0">
+                <span id="aiHouse1Total" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                <img src="images/icons/house-icon-32px.png" alt="house图标" class="icon"> 
+                授权<b>房产信息-复杂</b>(<b style="color: #F56C73;">80</b>元/单)：<input type="number" id="aiHouse2" min="0" value="0">
+                <span id="aiHouse2Total" style="display: inline;">已有0单</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>离线端口</h3>
+            <div class="input-row">
+                <img src="images/icons/credit-icon-32px.png" alt="credit图标" class="icon"> 
+                授权<b>征信</b>(<b style="color: #F56C73;">30</b>元/单)：<input type="number" id="offlineCredit" min="0" value="0">
+                <span id="offlineCreditTotal" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
+                授权<b>银行流水-超网</b>(<b style="color: #F56C73;">60</b>元/单)：<input type="number" id="offlineBank1" min="0" value="0">
+                <span id="offlineBank1Total" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
+                授权<b>银行流水-邮箱</b>(<b style="color: #F56C73;">100</b>元/单)：<input type="number" id="offlineBank2" min="0" value="0">
+                <span id="offlineBank2Total" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                <img src="images/icons/tax-icon-32px.png" alt="tax图标" class="icon"> 
+                授权<b>发票明细-RPA</b>(<b style="color: #F56C73;">80</b>元/单)：<input type="number" id="offlineTax" min="0" value="0">
+                <span id="offlineTaxTotal" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                <img src="images/icons/wechat-icon-32px.png" alt="wechat图标" class="icon">
+                授权<b>微信账单</b>(<b style="color: #F56C73;">40</b>元/单)：<input type="number" id="offlineWechat" min="0" value="0">
+                <span id="offlineWechatTotal" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                <img src="images/icons/house-icon-32px.png" alt="house图标" class="icon"> 
+                授权<b>房产信息-直连</b>(<b style="color: #F56C73;">60</b>元/单)：<input type="number" id="offlineHouse1" min="0" value="0">
+                <span id="offlineHouse1Total" style="display: inline;">已有0单</span>
+            </div>
+            <div class="input-row">
+                <img src="images/icons/house-icon-32px.png" alt="house图标" class="icon"> 
+                授权<b>房产信息-复杂</b>(<b style="color: #F56C73;">100</b>元/单)：<input type="number" id="offlineHouse2" min="0" value="0">
+                <span id="offlineHouse2Total" style="display: inline;">已有0单</span>
+            </div>
+        </div>
+        
+    
+        <div class="buttons">
+            <button class="green">立即计算</button>
+            <button class="yellow">撤销本次计算</button>
+            <button class="red">强制归零</button>
+            <button class="copy-button">一键复制</button>
+        </div>        
+    
+        <div id="result"></div>
+
+                    <!-- Wave animation container -->
+    <div class="wave-container">
+        <div class="wave"></div>
+        <div class="wave-change"></div>
+    </div>
+
+    <!-- 显示百分比的元素，放在外部 -->
+    <div class="percentage-display">
+        0%
+    </div>
+
+            <!-- 下拉菜单，选择主题 -->
+            <select id="theme-selector">
+                <option value="default">旧版风格</option>
+                <option value="led">蓝屏LED风格</option>
+                <option value="blackboard">板书风格</option>
+                <option value="typewriter">打字机风格</option>
+            </select>
+
+
+
+    </div>
+    
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => { // DOM 1
+            // 初始化已有报单的显示
+            const fields = [
+                'aiCredit', 'aiBank1', 'aiBank2', 'aiTax', 'aiWechat', 'aiHouse1', 'aiHouse2',
+                'offlineCredit', 'offlineBank1', 'offlineBank2', 'offlineTax', 'offlineWechat', 
+                'offlineHouse1', 'offlineHouse2'
+            ];
+
+            // 初始化显示已存储的累计订单数
+            fields.forEach(field => {
+                const total = parseInt(localStorage.getItem(`${field}Total`)) || 0;
+                updateDisplay(field, total);
+            });
+
+            // 临时保存用户输入的数值
+            let tempValues = {};
+            fields.forEach(field => tempValues[field] = 0);
+
+            // 监听输入框变化，暂时存储输入的值并应用高亮
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                input.addEventListener('input', (event) => {
+                    const id = event.target.id;
+                    const value = parseInt(event.target.value) || 0;
+                    tempValues[id] = value;  // 保存用户输入
+                    applyHighlight();         // 应用高亮
+                });
+            });
+
+
+            // 保存上次计算结果以便撤销
+            let lastCalculation = {};
+
+            // 点击“立即计算”按钮
+            document.querySelector('.green').addEventListener('click', () => {
+                // 保存当前状态用于撤销
+                lastCalculation = fields.reduce((acc, field) => {
+                    acc[field] = parseInt(localStorage.getItem(`${field}Total`)) || 0;
+                    return acc;
+                }, {});
+
+                // 累加用户输入的临时值
+                fields.forEach(field => {
+                    const previousTotal = parseInt(localStorage.getItem(`${field}Total`)) || 0;
+                    const newTotal = previousTotal + tempValues[field];
+                    localStorage.setItem(`${field}Total`, newTotal);
+                    updateDisplay(field, newTotal);
+                });
+
+                // 清空临时值
+                fields.forEach(field => tempValues[field] = 0);
+                document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+            });
+
+            // 点击“撤销本次计算”按钮
+            document.querySelector('.yellow').addEventListener('click', () => {
+                if (Object.keys(lastCalculation).length > 0) {
+                    fields.forEach(field => {
+                        localStorage.setItem(`${field}Total`, lastCalculation[field]);
+                        updateDisplay(field, lastCalculation[field]);
+                    });
+                    lastCalculation = {};  // 重置撤销状态
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => { // DOM 2
+            const savedName = localStorage.getItem('savedName');
+            const savedTarget = localStorage.getItem('savedTarget');
+
+            if (savedName) {
+                document.getElementById('nameDisplay').textContent = savedName;
+                document.getElementById('nameInput').value = savedName;
+            }
+
+            if (savedTarget) {
+                document.getElementById('targetDisplay').textContent = savedTarget;
+                document.getElementById('targetInput').value = savedTarget;
+            }
+
+            applyHighlight();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => { // DOM 3
+            // 获取并应用保存的主题
+            const currentTheme = localStorage.getItem('theme');
+
+            if (currentTheme === 'dark') {
+                // 如果是夜间模式，则添加 dark-mode 类，并保持按钮的 active 状态
+                document.body.classList.add('dark-mode');
+                document.getElementById('theme-toggle').classList.add('active');
+            } else {
+                // 如果是日间模式，确保按钮状态未激活
+                document.getElementById('theme-toggle').classList.remove('active');
+            }
+
+            // 根据当前主题更新所有显示的字段
+            updateAllDisplays();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {  // DOM 4
+            // 加载并显示保存的结果
+            const savedResult = localStorage.getItem('calculationResult');
+            if (savedResult) {
+                document.getElementById('result').textContent = JSON.parse(savedResult).resultText;
+            }
+
+            // 应用高亮效果
+            applyHighlight();
+
+            // 编辑按钮点击事件处理
+            document.getElementById('editBtn').addEventListener('click', () => {
+                document.getElementById('targetInput').value = document.getElementById('targetDisplay').textContent; // 保留目标值
+                document.getElementById('nameDisplay').style.display = 'none';
+                document.getElementById('targetDisplay').style.display = 'none';
+                document.getElementById('nameInput').style.display = 'inline';
+                document.getElementById('targetInput').style.display = 'inline';
+                document.getElementById('saveBtn').style.display = 'inline';
+                document.getElementById('cancelBtn').style.display = 'inline';
+                document.getElementById('editBtn').style.display = 'none';
+            });
+
+            // 保存按钮点击事件处理
+            document.getElementById('saveBtn').addEventListener('click', () => {
+                const newName = document.getElementById('nameInput').value;
+                const newTarget = parseInt(document.getElementById('targetInput').value);
+
+                // 保存到 localStorage
+                localStorage.setItem('savedName', newName);
+                localStorage.setItem('savedTarget', newTarget);
+
+                document.getElementById('nameDisplay').textContent = newName;
+                document.getElementById('targetDisplay').textContent = newTarget;
+
+                document.getElementById('nameDisplay').style.display = 'inline';
+                document.getElementById('targetDisplay').style.display = 'inline';
+                document.getElementById('nameInput').style.display = 'none';
+                document.getElementById('targetInput').style.display = 'none';
+                document.getElementById('saveBtn').style.display = 'none';
+                document.getElementById('cancelBtn').style.display = 'none';
+                document.getElementById('editBtn').style.display = 'inline';
+            });
+
+            // 取消按钮点击事件处理
+            document.getElementById('cancelBtn').addEventListener('click', () => {
+                document.getElementById('nameInput').value = document.getElementById('nameDisplay').textContent;
+                document.getElementById('targetInput').value = document.getElementById('targetDisplay').textContent;
+
+                document.getElementById('nameDisplay').style.display = 'inline';
+                document.getElementById('targetDisplay').style.display = 'inline';
+                document.getElementById('nameInput').style.display = 'none';
+                document.getElementById('targetInput').style.display = 'none';
+                document.getElementById('saveBtn').style.display = 'none';
+                document.getElementById('cancelBtn').style.display = 'none';
+                document.getElementById('editBtn').style.display = 'inline';
+            });
+        });
+
+
+
+
+                // 更新显示函数
+                function updateDisplay(field, total) {
+                    const displayElement = document.getElementById(`${field}Total`);
+                    
+                    // 判断是否为夜间模式（假设使用 dark-mode 类来区分）
+                    const isDarkMode = document.body.classList.contains('dark-mode');
+                    
+                    // 根据模式选择颜色：夜间模式为金色，日间模式为橙色
+                    const color = isDarkMode ? 'gold' : 'orange';
+                    
+                    const totalText = total > 0 ? `<span style="font-weight: bold; color: ${color};">${total}</span>` : '0';
+                    displayElement.innerHTML = `已有${totalText}单`;
+                }
+
+                // 更新所有字段的显示
+                function updateAllDisplays() {
+                    const fields = [
+                        'aiCredit', 'aiBank1', 'aiBank2', 'aiTax', 'aiWechat', 'aiHouse1', 'aiHouse2',
+                        'offlineCredit', 'offlineBank1', 'offlineBank2', 'offlineTax', 'offlineWechat', 
+                        'offlineHouse1', 'offlineHouse2'
+                    ];
+                    
+                    fields.forEach(field => {
+                        const total = parseInt(localStorage.getItem(`${field}Total`)) || 0;
+                        updateDisplay(field, total);
+                    });
+                }
+
+                    let totalOrders = parseInt(localStorage.getItem('totalOrders')) || 0;
+                    let totalAmount = parseInt(localStorage.getItem('totalAmount')) || 0;
+                    let aiTotalOrders = parseInt(localStorage.getItem('aiTotalOrders')) || 0;
+                    let lastCalculation = JSON.parse(localStorage.getItem('lastCalculation')) || {};
+                    let prevState = {};  
+    
+        function calculate() {
+            const name = document.getElementById('nameDisplay').textContent;
+            const target = parseInt(document.getElementById('targetDisplay').textContent);
+    
+            const aiCredit = parseInt(document.getElementById('aiCredit').value);
+            const aiBank1 = parseInt(document.getElementById('aiBank1').value);
+            const aiBank2 = parseInt(document.getElementById('aiBank2').value);
+            const aiTax = parseInt(document.getElementById('aiTax').value);
+            const aiWechat = parseInt(document.getElementById('aiWechat').value);
+            const aiHouse1 = parseInt(document.getElementById('aiHouse1').value);
+            const aiHouse2 = parseInt(document.getElementById('aiHouse2').value);
+            
+            const offlineCredit = parseInt(document.getElementById('offlineCredit').value);
+            const offlineBank1 = parseInt(document.getElementById('offlineBank1').value);
+            const offlineBank2 = parseInt(document.getElementById('offlineBank2').value);
+            const offlineTax = parseInt(document.getElementById('offlineTax').value);
+            const offlineWechat = parseInt(document.getElementById('offlineWechat').value);
+            const offlineHouse1 = parseInt(document.getElementById('offlineHouse1').value);
+            const offlineHouse2 = parseInt(document.getElementById('offlineHouse2').value);
+            
+            // 计算当次完成订单总金额
+            const totalCurrent = (aiCredit * 25) + (aiBank1 * 45) + (aiBank2 * 80) + (aiTax * 80) + (aiWechat * 35) + (aiHouse1 * 45) + (aiHouse2 * 80)
+                                + (offlineCredit * 30) + (offlineBank1 * 60) + (offlineBank2 * 100) + (offlineTax * 80) + (offlineWechat * 40) + (offlineHouse1 * 60) + (offlineHouse2 * 100);
+            
+            // 更新总单数
+            const totalCurrentOrders = aiCredit + aiBank1 + aiBank2 + aiTax + aiWechat + aiHouse1 + aiHouse2 
+                                        + offlineCredit + offlineBank1 + offlineBank2 + offlineTax + offlineWechat + offlineHouse1 + offlineHouse2;
+            
+            // 保存当前状态到 prevState
+            prevState = {
+                totalOrders, 
+                totalAmount, 
+                aiTotalOrders, 
+                resultText: document.getElementById('result').textContent 
+            };
+            
+            totalOrders += totalCurrentOrders;
+            totalAmount += totalCurrent;
+            aiTotalOrders += (aiCredit + aiBank1 + aiBank2 + aiTax + aiWechat + aiHouse1 + aiHouse2);
+            
+            const diff = target - totalAmount;
+            const diffText = diff >= 0 ? `差额 ${diff} 元` : `超额 ${Math.abs(diff)} 元`;
+            
+            const resultText = `日目标 ${target} 元，${name}本次新增完成 ${totalCurrent} 元，总单 ${totalOrders} 单（AI ${aiTotalOrders} 单），当日累计完成 ${totalAmount} 元，${diffText}，其他伙伴加油[加油]`;
+            document.getElementById('result').textContent = resultText;
+
+
+            // 保存计算结果
+            const result = {
+            dayGoal: target,
+            totalCompletedOrders: totalCurrent,
+            aiCompletedOrders: aiTotalOrders,
+            difference: diff,
+            resultText: resultText
+            };
+            localStorage.setItem('calculationResult', JSON.stringify(result));
+
+            // 保存最近一次的计算结果以便撤销
+            lastCalculation = {
+                aiCredit,
+                aiBank1,
+                aiBank2,
+                aiTax,
+                aiWechat,
+                aiHouse1,
+                aiHouse2,
+                offlineCredit,
+                offlineBank1,
+                offlineBank2,
+                offlineTax,
+                offlineWechat,
+                offlineHouse1,
+                offlineHouse2,
+                resultText
+            };
+            localStorage.setItem('lastCalculation', JSON.stringify(lastCalculation));
+            
+            // 保存当前总单数和金额
+            localStorage.setItem('totalOrders', totalOrders);
+            localStorage.setItem('totalAmount', totalAmount);
+            localStorage.setItem('aiTotalOrders', aiTotalOrders);
+            
+            // 清空所有输入框的值
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                input.value = 0;
+            });
+            
+            // 重新应用高亮
+            applyHighlight();
+        }
+    
+        function undo() {
+            if (Object.keys(prevState).length > 0) { // 判断是否有保存的状态
+                const { aiCredit, aiBank1, aiBank2, aiTax, aiWechat, aiHouse1, aiHouse2, 
+                        offlineCredit, offlineBank1, offlineBank2, offlineTax, offlineWechat, 
+                        offlineHouse1, offlineHouse2, resultText, totalOrders: prevTotalOrders, 
+                        totalAmount: prevTotalAmount, aiTotalOrders: prevAiTotalOrders } = prevState; // 使用 prevState 代替 lastCalculation
+    
+                document.getElementById('aiCredit').value = aiCredit || 0;
+                document.getElementById('aiBank1').value = aiBank1 || 0;
+                document.getElementById('aiBank2').value = aiBank2 || 0;
+                document.getElementById('aiTax').value = aiTax || 0;
+                document.getElementById('aiWechat').value = aiWechat || 0;
+                document.getElementById('aiHouse1').value = aiHouse1 || 0;
+                document.getElementById('aiHouse2').value = aiHouse2 || 0;
+                document.getElementById('offlineCredit').value = offlineCredit || 0;
+                document.getElementById('offlineBank1').value = offlineBank1 || 0;
+                document.getElementById('offlineBank2').value = offlineBank2 || 0;
+                document.getElementById('offlineTax').value = offlineTax || 0;
+                document.getElementById('offlineWechat').value = offlineWechat || 0;
+                document.getElementById('offlineHouse1').value = offlineHouse1 || 0;
+                document.getElementById('offlineHouse2').value = offlineHouse2 || 0;
+            
+                // 恢复保存的订单总数和AI订单总数
+                totalOrders = prevTotalOrders;
+                totalAmount = prevTotalAmount;
+                aiTotalOrders = prevAiTotalOrders;
+            
+                // 更新本地存储
+                localStorage.setItem('totalOrders', totalOrders);
+                localStorage.setItem('totalAmount', totalAmount);
+                localStorage.setItem('aiTotalOrders', aiTotalOrders);
+            
+                // 显示最近一次的计算结果
+                document.getElementById('result').textContent = resultText;
+                
+                // save the latest result of function undo()
+                const result = {
+                dayGoal: parseInt(document.getElementById('targetDisplay').textContent),
+                totalCompletedOrders: totalAmount,
+                aiCompletedOrders: aiTotalOrders,
+                difference: parseInt(document.getElementById('targetDisplay').textContent) - totalAmount,
+                resultText: resultText
+                };
+                localStorage.setItem('calculationResult', JSON.stringify(result));
+
+            
+                // 清空 prevState，防止多次撤销
+                prevState = {};
+            }
+            
+            // 重新应用高亮效果
+            applyHighlight();
+        }
+    
+        // 添加事件监听
+        document.querySelector('.green').addEventListener('click', calculate);
+        document.querySelector('.yellow').addEventListener('click', undo);
+        document.querySelector('.red').addEventListener('click', confirmReset);
+        document.querySelector('.copy-button').addEventListener('click', copyResult);
+
+        function confirmReset() {
+            if (confirm('确定真的强制归零？')) {
+                // 强制将所有值归零
+                document.querySelectorAll('input[type="number"]').forEach(input => {
+                    input.value = 0;
+                });
+
+                // 清除本地存储中的数据
+                localStorage.removeItem('totalOrders');
+                localStorage.removeItem('totalAmount');
+                localStorage.removeItem('aiTotalOrders');
+                localStorage.removeItem('lastCalculation');
+                localStorage.removeItem('calculationResult'); // 清除计算结果
+
+                // 清除结果栏
+                document.getElementById('result').textContent = '';
+
+                // 重置内存中的数据
+                totalOrders = 0;
+                totalAmount = 0;
+                aiTotalOrders = 0;
+                lastCalculation = {};
+
+                // 更新本地存储中的数据
+                localStorage.setItem('totalOrders', totalOrders);
+                localStorage.setItem('totalAmount', totalAmount);
+                localStorage.setItem('aiTotalOrders', aiTotalOrders);
+                localStorage.setItem('lastCalculation', JSON.stringify(lastCalculation));
+
+                // 重新应用高亮
+                applyHighlight();
+
+                resetOrderDisplay();
+            }
+        }
+
+        function resetOrderDisplay() {
+            const fields = ['aiCredit', 'aiBank1', 'aiBank2', 'aiTax', 'aiWechat', 'aiHouse1', 'aiHouse2',
+                            'offlineCredit', 'offlineBank1', 'offlineBank2', 'offlineTax', 'offlineWechat', 
+                            'offlineHouse1', 'offlineHouse2']; 
+            fields.forEach(field => {
+                localStorage.setItem(`${field}Total`, 0);
+                document.getElementById(`${field}Total`).innerHTML = `已有<span>${0}</span>单`; // 使用正常样式
+            });
+        }
+
+
+    
+        function copyResult() {
+            const resultText = document.getElementById('result').textContent;
+            navigator.clipboard.writeText(resultText)
+                .then(() => alert('结果已复制到剪贴板'))
+                .catch(err => alert('复制失败'));
+        }
+    
+        function applyHighlight() {
+    const isDarkMode = document.body.classList.contains('dark-mode');
+
+    document.querySelectorAll('input[type="number"]').forEach(input => {
+        const label = input.parentElement.querySelector('b');
+
+        const highlightStyles = {
+            lightMode: {
+                backgroundColor: 'yellow',
+                color: 'black'
+            },
+            darkMode: {
+                backgroundColor: 'indigo',
+                color: 'yellow'
+            }
+        };
+
+        // 选择当前模式的高亮样式
+        const currentHighlightStyles = isDarkMode ? highlightStyles.darkMode : highlightStyles.lightMode;
+
+        if (input.id !== 'targetInput') {
+            if (input.value > 0) {
+                input.classList.add('highlight');
+                input.style.backgroundColor = currentHighlightStyles.backgroundColor;
+                input.style.color = currentHighlightStyles.color;
+                if (label) {
+                    label.classList.add('highlight');
+                    label.style.backgroundColor = currentHighlightStyles.backgroundColor;
+                    label.style.color = currentHighlightStyles.color;
+                }
+            } else {
+                input.classList.remove('highlight');
+                input.style.backgroundColor = ''; // 恢复默认样式
+                input.style.color = '';
+                if (label) {
+                    label.classList.remove('highlight');
+                    label.style.backgroundColor = ''; // 恢复默认样式
+                    label.style.color = '';
+                }
+            }
+        } else {
+            input.classList.remove('highlight');
+            input.style.backgroundColor = ''; // 恢复默认样式
+            input.style.color = '';
+            if (label) {
+                label.classList.remove('highlight');
+                label.style.backgroundColor = ''; // 恢复默认样式
+                label.style.color = '';
+            }
+        }
+    });
+}
+
+
+// 更新显示函数
+function updateDisplay(field, total) {
+    const displayElement = document.getElementById(`${field}Total`);
+    
+    // 判断是否为夜间模式（假设使用 dark-mode 类来区分）
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    
+    // 根据模式选择颜色：夜间模式为金色，日间模式为橙色
+    const color = isDarkMode ? 'gold' : 'orange';
+    
+    const totalText = total > 0 ? `<span style="font-weight: bold; color: ${color};">${total}</span>` : '0';
+    displayElement.innerHTML = `已有${totalText}单`;
+}
+
+// 更新所有字段的显示
+function updateAllDisplays() {
+    const fields = [
+        'aiCredit', 'aiBank1', 'aiBank2', 'aiTax', 'aiWechat', 'aiHouse1', 'aiHouse2',
+        'offlineCredit', 'offlineBank1', 'offlineBank2', 'offlineTax', 'offlineWechat', 
+        'offlineHouse1', 'offlineHouse2'
+    ];
+    
+    fields.forEach(field => {
+        const total = parseInt(localStorage.getItem(`${field}Total`)) || 0;
+        updateDisplay(field, total);
+    });
+}
+
+document.getElementById('theme-toggle').addEventListener('click', () => {
+    // 切换 dark-mode 类
+    const isDarkMode = document.body.classList.toggle('dark-mode');
+    
+    // 保存当前主题到 localStorage
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
+    // 切换按钮的 active 状态（如果需要切换按钮外观）
+    document.getElementById('theme-toggle').classList.toggle('active');
+
+    // 切换主题后更新所有显示的字段
+    updateAllDisplays();
+});
+
+
+
+
+// 页面加载时应用默认或用户选择的主题
+window.addEventListener('DOMContentLoaded', () => {
+    // 检查 localStorage 中的主题设置
+    const savedTheme = localStorage.getItem('theme');
+    const resultElement = document.getElementById('result');
+    const themeSelector = document.getElementById('theme-selector');
+    
+    if (savedTheme) {
+        // 如果有保存的主题，则应用该主题
+        document.body.classList.toggle('dark-mode', savedTheme === 'dark');
+        
+        const selectedTheme = localStorage.getItem('selectedTheme') || 'led';
+        resultElement.className = selectedTheme;
+        themeSelector.value = selectedTheme;
+    } else {
+        // 如果没有保存的主题，则应用默认风格
+        resultElement.classList.add('led');
+        themeSelector.value = 'led';
+    }
+});
+
+// 切换主题时，应用选择的样式
+document.getElementById('theme-selector').addEventListener('change', function() {
+    const selectedTheme = this.value;
+    const resultElement = document.getElementById('result');
+
+    // 移除之前的主题
+    resultElement.className = '';
+
+    // 应用新的主题
+    resultElement.classList.add(selectedTheme);
+
+    // 保存用户选择的主题到 localStorage
+    localStorage.setItem('selectedTheme', selectedTheme);
+});
+
+
+// 夜间模式图标路径
+const nightIcons = {
+    credit: "images/icons/night/credit-icon-32px.png",
+    bank: "images/icons/night/bank-icon-32px.png",
+    tax: "images/icons/night/tax-icon-32px.png",
+    wechat: "images/icons/night/wechat-icon-32px.png",
+    house: "images/icons/night/house-icon-32px.png",
+};
+
+// 切换模式的函数
+function toggleNightMode() {
+    const isNightMode = document.body.classList.toggle('night-mode'); // 切换夜间模式类
+
+    const icons = document.querySelectorAll('.icon'); // 获取所有图标
+
+    icons.forEach(icon => {
+        const iconType = icon.alt.split('图标')[0]; // 获取图标类型，取alt的前半部分
+        if (isNightMode && nightIcons[iconType]) {
+            icon.src = nightIcons[iconType]; // 切换到夜间图标
+        } else {
+            icon.src = icon.src.replace('night/', ''); // 切换回白天图标
+        }
+    });
+}
+
+        
+// 绑定按钮点击事件
+document.getElementById('theme-toggle').addEventListener('click', toggleNightMode);
+
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('theme-toggle').classList.add('active');
+        toggleNightMode();  // 确保图标切换到夜间模式
+    }
+});
+
+
+let previousLiquidHeightRatio = 0; // 保存上一次的液面高度比例
+    const radius = 100; // 假设球体半径为 100px
+
+    // 动态更新波浪动画
+    function calculateWaveAnimation() {
+        // 获取已有的 totalAmount 和 target 值
+        const totalAmount = parseFloat(localStorage.getItem('totalAmount')) || 0;
+        const target = parseFloat(document.getElementById('targetDisplay').textContent) || 1;
+
+        if (target === 0) {
+            alert("目标不能为0");
+            return;
+        }
+
+        // 计算新的 percentageOfCompletion
+        const percentageOfCompletion = totalAmount / target;
+
+const percentageDisplay = document.querySelector('.percentage-display');
+
+// 更新百分比显示
+percentageDisplay.textContent = `${(percentageOfCompletion * 100).toFixed(0)}%`;
+
+
+         // 在这里输出调试信息
+    console.log(`Previous Ratio: ${previousLiquidHeightRatio}, Percentage of Completion: ${percentageOfCompletion}`);
+
+        // 计算新的液面高度占比 liquidHeightRatio
+        let newLiquidHeightRatio = getLiquidHeightRatio(percentageOfCompletion);
+
+            // 在这里输出新液面高度
+    console.log(`New Ratio: ${newLiquidHeightRatio}`);
+
+        // 计算起始和结束的 top 值
+        const startTop = 90 - 210 * previousLiquidHeightRatio; // 使用之前保存的高度比例
+        const endTop = 90 - 210 * newLiquidHeightRatio; // 使用新的高度比例
+
+
+// 输出起始和结束的 top 值
+console.log("Start Top:", startTop);
+console.log("End Top:", endTop);
+
+
+// 计算动画时长
+const heightDifference = Math.abs(newLiquidHeightRatio - previousLiquidHeightRatio);
+const animationDuration = Math.max(0.5, 12 * heightDifference); // 最短0.5秒，最长12秒
+
+// 强制浏览器重绘动画
+const waveChange = document.querySelector('.wave-change');
+waveChange.style.animation = 'none';
+requestAnimationFrame(() => {
+    waveChange.style.animation = ''; // 恢复动画
+});
+
+// 动态生成并插入新的 @keyframes 动画规则
+const styleSheet = document.styleSheets[0];
+const keyframesRule = `@keyframes change {
+    from { top: ${startTop}px; }
+    to { top: ${endTop}px; }
+}`;
+
+// 删除现有的 keyframes 规则
+for (let i = 0; i < styleSheet.cssRules.length; i++) {
+    if (styleSheet.cssRules[i].name === 'change') {
+        styleSheet.deleteRule(i);
+        break;
+    }
+}
+
+// 插入新的 keyframes 规则
+styleSheet.insertRule(keyframesRule, styleSheet.cssRules.length);
+
+// 触发液面高度变化的动画，并让动画结束后保持在最终位置
+waveChange.style.animation = `change ${animationDuration}s linear forwards`;
+
+
+        // 更新保存的液面高度占比
+        previousLiquidHeightRatio = newLiquidHeightRatio;
+    }
+
+
+    
+    function getLiquidHeightRatio(percentageOfCompletion) {
+    const r = 1; // 假设半径为1，您可以根据实际情况修改
+    const totalVolume = (4 / 3) * Math.PI * Math.pow(r, 3); // 完全球体的体积
+    const targetVolume = totalVolume * percentageOfCompletion; // 目标体积
+
+        // 检查是否达到或超过100%
+        if (percentageOfCompletion >= 1) {
+        return 1; // 直接返回100%
+    }
+
+    let liquidHeight = 0; // 初始液面高度
+    const increment = 0.001; // 液面高度增量
+
+    while (true) {
+        // 计算当前高度的液体体积
+        const volume = (Math.PI * Math.pow(liquidHeight, 2) * (3 * r - liquidHeight)) / 3;
+
+        if (volume >= targetVolume) {
+            break; // 达到或超过目标体积，停止迭代
+        }
+        liquidHeight += increment; // 增加液面高度
+    }
+
+    return liquidHeight / (r * 2); // 返回高度比例，相对于直径
+}
+
+
+
+
+
+
+
+
+
+
+
+    // 点击 "立即计算" 按钮后执行计算和动画更新
+    document.querySelector('.green').addEventListener('click', calculateWaveAnimation);
+
+    document.addEventListener('DOMContentLoaded', calculateWaveAnimation);
+
+    document.querySelector('.yellow').addEventListener('click', calculateWaveAnimation);
+    document.querySelector('.red').addEventListener('click', calculateWaveAnimation);
+
+    
+    </script>
+<footer>
+  <a href="http://dnsexit.com"><img src="http://dnsexit.com/images/dns.gif" border=0></a>
+</footer>
+</body>
+</html>
