@@ -214,11 +214,10 @@
             font-size: 16px; 
         }
 
-        /* mailbox 容器 */
         #mailbox-container {
             position: absolute;
-            bottom: -40px; /* 与 #theme-selector 的 bottom 对齐 */
-            left: 10px; /* 与 #theme-selector 的 right 对称 */
+            bottom: -40px; 
+            left: 10px; 
             width: 32px;
             height: 32px;
         }
@@ -232,15 +231,15 @@
             border-radius: 5px;
             padding: 5px;
             position: absolute;
-            bottom: 40px; /* 根据需要调整位置 */
-            left: 0;
+            bottom: 40px;
+            left: 50%; 
+            transform: translateX(-50%); 
             z-index: 1;
             white-space: nowrap;
             font-size: 12px;
             line-height: 1.4;
         }
-
-        /* 显示提示框时 */
+        
         #mailbox-container:hover #tooltip {
             visibility: visible;
         }
