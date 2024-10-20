@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用资料</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            font-weight: normal;
+            padding: 10px 0;
+            margin: 10px 0;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0 10px;
+        }
+
+        ul li {
+            padding: 5px 0;
+        }
+
+        .collapsed {
+            display: none;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2::after {
+            content: '▸';
+            float: right;
+        }
+
+        h2.active::after {
+            content: '▾';
+        }
+    </style>
+</head>
+<body>
+
+    <h1>目录页</h1>
+
+    <h2>工具类</h2>
+    <ul>
+        <li>提额项目报单计数器</li>
+        <li>...</li>
+    </ul>
+
+    <h2 id="toggle-bank">信息类-银行流水</h2>
+    <ul id="bank-list" class="collapsed">
+        <li><a href="https://www.sme-loan.work.gd/library/bank-statement/Bank-of-China.html">中国银行</a></li>
+        <li>招商银行</li>
+        <li>中国建设银行</li>
+        <li>...</li>
+    </ul>
+
+    <h2 id="toggle-property">信息类-房产信息</h2>
+    <ul id="property-list" class="collapsed">
+        <li>浙江</li>
+        <li>江苏</li>
+        <li>河南</li>
+        <li>广东</li>
+        <li>...</li>
+    </ul>
+
+    <h2 id="toggle-RPA">信息类-税票自证</h2>
+    <ul id="RPA-list" class="collapsed">
+        <li>...</li>
+    </ul>
+
+
+    <script>
+        document.getElementById("toggle-bank").addEventListener("click", function() {
+            const bankList = document.getElementById("bank-list");
+            bankList.classList.toggle("collapsed");
+            this.classList.toggle("active");
+        });
+
+        document.getElementById("toggle-property").addEventListener("click", function() {
+            const propertyList = document.getElementById("property-list");
+            propertyList.classList.toggle("collapsed");
+            this.classList.toggle("active");
+        });
+
+        document.getElementById("toggle-RPA").addEventListener("click", function() {
+            const RPAList = document.getElementById("RPA-list");
+            RPAList.classList.toggle("collapsed");
+            this.classList.toggle("active");
+        });
+
+    </script>
+
+</body>
+</html>
