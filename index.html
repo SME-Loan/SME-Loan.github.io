@@ -222,12 +222,11 @@
             height: 32px;
         }
 
-        /* 自定义提示框 */
-        #tooltip {
+        #mailbox-tooltip {
             visibility: hidden;
             background-color: #333;
             color: #fff;
-            text-align: center;
+            text-align: left;
             border-radius: 5px;
             padding: 5px;
             position: absolute;
@@ -238,9 +237,14 @@
             white-space: nowrap;
             font-size: 12px;
             line-height: 1.4;
+            cursor: pointer;
         }
-        
-        #mailbox-container:hover #tooltip {
+
+        #mailbox {
+            cursor: pointer; 
+        }
+
+        #mailbox-container:hover #mailbox-tooltip {
             visibility: visible;
         }
 
@@ -857,7 +861,7 @@
 
         <div id="mailbox-container">
             <img id="mailbox" src="images/mailbox_32px.png" alt="mailbox图标">
-            <div id="tooltip">点击左键复制联系方式：<br>ProgrammeurSauvage@hotmail.com</div>
+            <div id="mailbox-tooltip">点击鼠标左键复制联系方式：<br>ProgrammeurSauvage@hotmail.com</div>
         </div>
 
         <select id="theme-selector">
