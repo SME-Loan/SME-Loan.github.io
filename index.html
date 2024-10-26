@@ -217,7 +217,7 @@
         #mailbox-container {
             position: absolute;
             bottom: -40px; 
-            left: 10px; 
+            left: 110px; 
             width: 32px;
             height: 32px;
         }
@@ -251,7 +251,7 @@
         #library-container {
             position: absolute;
             bottom: -40px; 
-            left: 60px; 
+            left: 10px; 
             width: 32px;
             height: 32px;
         }
@@ -279,6 +279,40 @@
         }
 
         #library-container:hover #library-tooltip {
+            visibility: visible;
+        }
+
+        #starship-container {
+            position: absolute;
+            bottom: -40px; 
+            left: 60px; 
+            width: 32px;
+            height: 32px;
+        }
+
+        #starship-tooltip {
+            visibility: hidden;
+            background-color: #333;
+            color: #fff;
+            text-align: left;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            bottom: 40px;
+            left: 50%; 
+            transform: translateX(-50%); 
+            z-index: 1;
+            white-space: nowrap;
+            font-size: 12px;
+            line-height: 1.4;
+            cursor: pointer;
+        }
+
+        #starship {
+            cursor: pointer; 
+        }
+
+        #starship-container:hover #starship-tooltip {
             visibility: visible;
         }
 
@@ -726,7 +760,7 @@
 
     <script>
         window.addEventListener('load', function () {
-            const currentVersion = '1.4.0';  
+            const currentVersion = '1.4.1';  
 
             const storedVersion = localStorage.getItem('version');
 
@@ -780,8 +814,8 @@
             <div class="title"><span class="metal-plate">提额项目报单计数器
                 <span class="corner left"></span>
                 <span class="corner right"></span>
-            </span> 1.4.0
-                <span class="tooltip" data-tooltip="使用说明：&#10;1. 将新增单数填入对应种类端口之后的输入框中；&#10;2. 全部填好之后点击【立即计算】按钮，即可自动生成报单文本；&#10;3. 再点击【一键复制】按钮。&#10;注：本计数器具有自动累计功能，页面刷新或浏览器重启都不会丢失数据。&#10; &#10;更新记录 v1.4.0.20241020：&#10;i. 新增了一个“常用资料”的功能，计划把一些经常会用到的信息汇总到一起方便查阅。&#10;注：功能的入口是位于页面最下方左侧的一个叠放的书本标志。&#10; &#10;感谢友友们的使用 &#10;祝捷报频传 &#x2764;">?</span>
+            </span> 1.4.1
+                <span class="tooltip" data-tooltip="使用说明：&#10;1. 将新增单数填入对应种类端口之后的输入框中；&#10;2. 全部填好之后点击【立即计算】按钮，即可自动生成报单文本；&#10;3. 再点击【一键复制】按钮。&#10;注：本计数器具有自动累计功能，页面刷新或浏览器重启都不会丢失数据。&#10; &#10;更新记录 v1.4.0.20241020：&#10;i. 新增了一个“常用资料”的功能，计划把一些经常会用到的信息汇总到一起方便查阅。&#10;注：功能的入口是位于页面最下方左侧的一个叠放的书本标志。&#10; &#10;更新记录 v1.4.1.20241026：&#10;i. 新增了一个“星舰控制台”的页面风格。&#10;注：功能的入口是位于页面最下方左侧的一个星际飞船标志。&#10; &#10;感谢友友们的使用 &#10;祝捷报频传 &#x2764;">?</span>
             </div>
         
         <div class="input-row">
@@ -902,6 +936,11 @@
                 <img id="library" src="images/library_32px.png" alt="library图标">
             </a>
             <div id="library-tooltip">常用资料<br>（待完善）</div>
+        </div>
+
+        <div id="starship-container">
+            <img id="starship" src="images/starship_32px.png" alt="starship图标" onclick="redirectToControlPanel()">
+            <div id="starship-tooltip">点击鼠标左键切换为“星舰控制台风格”</div>
         </div>
         
 
@@ -1601,6 +1640,12 @@
             console.error('复制到剪贴板失败：', err);
         });
     });
+
+
+
+    function redirectToControlPanel() {
+        window.location.href = "https://www.wsd.work.gd/starship-control-panel-style";
+    }
 
 
 
