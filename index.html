@@ -1018,6 +1018,17 @@
                 document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
 
             });
+
+
+
+            document.querySelector('.red').addEventListener('click', () => {
+
+                fields.forEach(field => tempValues[field] = 0);
+                document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+
+            });
+
+
         });
 
         document.addEventListener('DOMContentLoaded', () => { // DOM 2
@@ -1114,36 +1125,11 @@
 
 
 
-                function updateDisplay(field, total) {
-                    const displayElement = document.getElementById(`${field}Total`);
-                    
-                    const isDarkMode = document.body.classList.contains('dark-mode');
-                    
-                    const color = isDarkMode ? 'gold' : 'orange';
-                    
-                    const totalText = total > 0 ? `<span style="font-weight: bold; color: ${color};">${total}</span>` : '0';
-                    displayElement.innerHTML = `已有${totalText}单`;
-                }
-
-
-                function updateAllDisplays() {
-                    const fields = [
-                        'aiCredit', 'aiBank1', 'aiBank2', 'aiTax', 'aiWechat', 'aiHouse1', 'aiHouse2',
-                        'offlineCredit', 'offlineBank1', 'offlineBank2', 'offlineTax', 'offlineWechat', 
-                        'offlineHouse1', 'offlineHouse2'
-                    ];
-                    
-                    fields.forEach(field => {
-                        const total = parseInt(localStorage.getItem(`${field}Total`)) || 0;
-                        updateDisplay(field, total);
-                    });
-                }
-
-                    let totalOrders = parseInt(localStorage.getItem('totalOrders')) || 0;
-                    let totalAmount = parseInt(localStorage.getItem('totalAmount')) || 0;
-                    let aiTotalOrders = parseInt(localStorage.getItem('aiTotalOrders')) || 0;
-                    let lastCalculation = JSON.parse(localStorage.getItem('lastCalculation')) || {};
-                    let prevState = {};  
+        let totalOrders = parseInt(localStorage.getItem('totalOrders')) || 0;
+        let totalAmount = parseInt(localStorage.getItem('totalAmount')) || 0;
+        let aiTotalOrders = parseInt(localStorage.getItem('aiTotalOrders')) || 0;
+        let lastCalculation = JSON.parse(localStorage.getItem('lastCalculation')) || {};
+        let prevState = {};  
     
         function calculate() {
             const name = document.getElementById('nameDisplay').textContent;
@@ -1342,9 +1328,6 @@
                 document.getElementById(`${field}Total`).innerHTML = `已有<span>${0}</span>单`; // 使用正常样式
             });
 
-            fields.forEach(field => tempValues[field] = 0);
-            document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
-
         }
 
 
@@ -1420,6 +1403,7 @@
             displayElement.innerHTML = `已有${totalText}单`;
         }
 
+
         function updateAllDisplays() {
             const fields = [
                 'aiCredit', 'aiBank1', 'aiBank2', 'aiTax', 'aiWechat', 'aiHouse1', 'aiHouse2',
@@ -1432,6 +1416,7 @@
                 updateDisplay(field, total);
             });
         }
+
 
         document.getElementById('theme-toggle').addEventListener('click', () => {
             const isDarkMode = document.body.classList.toggle('dark-mode');
