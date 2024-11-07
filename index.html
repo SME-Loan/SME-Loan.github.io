@@ -815,7 +815,7 @@
                 <span class="corner left"></span>
                 <span class="corner right"></span>
             </span> 1.5.2
-                <span class="tooltip" data-tooltip="使用说明：&#10;1. 将新增单数填入对应种类端口之后的输入框中；&#10;2. 全部填好之后点击【立即计算】按钮，即可自动生成报单文本；&#10;3. 再点击【一键复制】按钮。&#10;注：本计数器具有自动累计功能，页面刷新或浏览器重启都不会丢失数据。&#10; &#10;更新记录 v1.5.0.20241026：&#10;i. 新增了一种“星舰控制台”的页面风格。&#10;注：切换页面风格的按钮是位于页面最下方左侧的一个星际飞船或者传送门的标志。&#10; &#10;更新记录 v1.5.1.20241102：&#10;i. 修复了之前当完成率发生变化时无法正常触发液面高度变动动画的bug。&#10; &#10;更新记录 v1.5.2.20241107：&#10;i. 修复了之前当单数输入框未清零时点击【撤销本次计算】按钮会导致“已有单数”错误显示的bug。&#10; &#10;感谢友友们的使用 &#10;祝捷报频传 &#x2764;">?</span>
+                <span class="tooltip" data-tooltip="使用说明：&#10;1. 将新增单数填入对应种类端口之后的输入框中；&#10;2. 全部填好之后点击【立即计算】按钮，即可自动生成报单文本；&#10;3. 再点击【一键复制】按钮。&#10;注：本计数器具有自动累计功能，页面刷新或浏览器重启都不会丢失数据。&#10; &#10;更新记录 v1.5.0.20241026：&#10;i. 新增了一种“星舰控制台”的页面风格。&#10;注：切换页面风格的按钮是位于页面最下方左侧的一个星际飞船或者传送门的标志。&#10; &#10;更新记录 v1.5.1.20241102：&#10;i. 修复了之前当完成率发生变化时无法正常触发液面高度变动动画的bug。&#10; &#10;更新记录 v1.5.2.20241107：&#10;i. 修复了之前当单数输入框未清零时点击【撤销本次计算】或【强制归零】按钮会导致“已有单数”错误显示的bug。&#10; &#10;感谢友友们的使用 &#10;祝捷报频传 &#x2764;">?</span>
             </div>
         
         <div class="input-row">
@@ -1308,7 +1308,7 @@
                 localStorage.removeItem('totalAmount');
                 localStorage.removeItem('aiTotalOrders');
                 localStorage.removeItem('lastCalculation');
-                localStorage.removeItem('calculationResult'); 
+                localStorage.removeItem('calculationResult'); // 清除计算结果
 
                 // 清除结果栏
                 document.getElementById('result').textContent = '';
@@ -1336,10 +1336,15 @@
             const fields = ['aiCredit', 'aiBank1', 'aiBank2', 'aiTax', 'aiWechat', 'aiHouse1', 'aiHouse2',
                             'offlineCredit', 'offlineBank1', 'offlineBank2', 'offlineTax', 'offlineWechat', 
                             'offlineHouse1', 'offlineHouse2']; 
+
             fields.forEach(field => {
                 localStorage.setItem(`${field}Total`, 0);
                 document.getElementById(`${field}Total`).innerHTML = `已有<span>${0}</span>单`; // 使用正常样式
             });
+
+            fields.forEach(field => tempValues[field] = 0);
+            document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+
         }
 
 
