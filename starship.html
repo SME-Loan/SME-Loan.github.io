@@ -1011,7 +1011,6 @@ body.dark-mode .mode-label {
                 document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
             });
 
-
             document.querySelector('.yellow').addEventListener('click', () => {
                 if (Object.keys(lastCalculation).length > 0) {
                     fields.forEach(field => {
@@ -1020,7 +1019,18 @@ body.dark-mode .mode-label {
                     });
                     lastCalculation = {};  
                 }
+
+                fields.forEach(field => tempValues[field] = 0);
+                document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+
             });
+
+            document.querySelector('.red').addEventListener('click', () => {
+
+                fields.forEach(field => tempValues[field] = 0);
+                document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+            });
+            
         });
 
         document.addEventListener('DOMContentLoaded', () => { // DOM 2
@@ -1128,25 +1138,6 @@ body.dark-mode .mode-label {
                     displayElement.innerHTML = `已有${totalText}单`;
                 }
 
-
-                function updateAllDisplays() {
-                    const fields = [
-                        'aiCredit', 'aiBank1', 'aiBank2', 'aiTax', 'aiWechat', 'aiHouse1', 'aiHouse2',
-                        'offlineCredit', 'offlineBank1', 'offlineBank2', 'offlineTax', 'offlineWechat', 
-                        'offlineHouse1', 'offlineHouse2'
-                    ];
-                    
-                    fields.forEach(field => {
-                        const total = parseInt(localStorage.getItem(`${field}Total`)) || 0;
-                        updateDisplay(field, total);
-                    });
-                }
-
-                    let totalOrders = parseInt(localStorage.getItem('totalOrders')) || 0;
-                    let totalAmount = parseInt(localStorage.getItem('totalAmount')) || 0;
-                    let aiTotalOrders = parseInt(localStorage.getItem('aiTotalOrders')) || 0;
-                    let lastCalculation = JSON.parse(localStorage.getItem('lastCalculation')) || {};
-                    let prevState = {};  
     
         function calculate() {
             const name = document.getElementById('nameDisplay').textContent;
