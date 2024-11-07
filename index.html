@@ -1019,19 +1019,14 @@
 
             });
 
-            document.querySelector('.red').addEventListener('click', () => {
 
-                fields.forEach(field => {
-                localStorage.setItem(`${field}Total`, 0);
-                updateDisplay(field, 0);
-                });
+
+            document.querySelector('.red').addEventListener('click', () => {
 
                 fields.forEach(field => tempValues[field] = 0);
                 document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
-                });
-            
-            });
 
+            });
 
 
         });
