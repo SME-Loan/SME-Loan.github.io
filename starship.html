@@ -998,7 +998,7 @@ body.dark-mode .mode-label {
                     return acc;
                 }, {});
 
-   
+
                 fields.forEach(field => {
                     const previousTotal = parseInt(localStorage.getItem(`${field}Total`)) || 0;
                     const newTotal = previousTotal + tempValues[field];
@@ -1010,6 +1010,7 @@ body.dark-mode .mode-label {
                 fields.forEach(field => tempValues[field] = 0);
                 document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
             });
+
 
             document.querySelector('.yellow').addEventListener('click', () => {
                 if (Object.keys(lastCalculation).length > 0) {
@@ -1025,6 +1026,7 @@ body.dark-mode .mode-label {
 
             });
 
+
             document.querySelector('.red').addEventListener('click', () => {
 
                 fields.forEach(field => {
@@ -1034,9 +1036,11 @@ body.dark-mode .mode-label {
 
                 fields.forEach(field => tempValues[field] = 0);
                 document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
-                });
-            
+                    
             });
+
+
+        });
 
         document.addEventListener('DOMContentLoaded', () => { // DOM 2
             const savedName = localStorage.getItem('savedName');
@@ -1132,17 +1136,12 @@ body.dark-mode .mode-label {
 
 
 
-                function updateDisplay(field, total) {
-                    const displayElement = document.getElementById(`${field}Total`);
-                    
-                    const isDarkMode = document.body.classList.contains('dark-mode');
-                    
-                    const color = isDarkMode ? 'gold' : 'orange';
-                    
-                    const totalText = total > 0 ? `<span style="font-weight: bold; color: ${color};">${total}</span>` : '0';
-                    displayElement.innerHTML = `已有${totalText}单`;
-                }
 
+            let totalOrders = parseInt(localStorage.getItem('totalOrders')) || 0;
+            let totalAmount = parseInt(localStorage.getItem('totalAmount')) || 0;
+            let aiTotalOrders = parseInt(localStorage.getItem('aiTotalOrders')) || 0;
+            let lastCalculation = JSON.parse(localStorage.getItem('lastCalculation')) || {};
+            let prevState = {};  
     
         function calculate() {
             const name = document.getElementById('nameDisplay').textContent;
