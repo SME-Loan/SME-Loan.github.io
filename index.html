@@ -1022,13 +1022,11 @@
 
             document.querySelector('.red').addEventListener('click', () => {
 
-                fields.forEach(field => {
-                localStorage.setItem(`${field}Total`, 0);
-                updateDisplay(field, 0);
-                });
-
                 fields.forEach(field => tempValues[field] = 0);
+
                 document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+
+                applyHighlight();
                     
             });
 
@@ -1331,7 +1329,6 @@
                 localStorage.setItem(`${field}Total`, 0);
                 document.getElementById(`${field}Total`).innerHTML = `已有<span>${0}</span>单`; // 使用正常样式
             });
-
         }
 
 
