@@ -1030,13 +1030,11 @@ body.dark-mode .mode-label {
 
             document.querySelector('.red').addEventListener('click', () => {
 
-                fields.forEach(field => {
-                localStorage.setItem(`${field}Total`, 0);
-                updateDisplay(field, 0);
-                });
-
                 fields.forEach(field => tempValues[field] = 0);
+
                 document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+
+                applyHighlight();
                     
             });
 
@@ -1335,6 +1333,7 @@ body.dark-mode .mode-label {
             const fields = ['aiCredit', 'aiBank1', 'aiBank2', 'aiTax', 'aiWechat', 'aiHouse1', 'aiHouse2',
                             'offlineCredit', 'offlineBank1', 'offlineBank2', 'offlineTax', 'offlineWechat', 
                             'offlineHouse1', 'offlineHouse2']; 
+                            
             fields.forEach(field => {
                 localStorage.setItem(`${field}Total`, 0);
                 document.getElementById(`${field}Total`).innerHTML = `已有<span>${0}</span>单`; // 使用正常样式
