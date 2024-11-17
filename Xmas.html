@@ -701,20 +701,35 @@
 
                   
         #result.blackboard {
-            word-wrap: break-word; 
-            overflow-wrap: break-word; 
-            white-space: normal; 
-            width: 450px; 
-            box-sizing: border-box; 
-            padding: 20px; 
-            margin-top: 20px; 
-            border: 5px solid #8B4513; 
-            background-color: #005f2f; 
-            font-family: 'Permanent Marker', cursive; 
-            color: #ffffff; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
-        }
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    width: 450px;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #005f2f;
+    font-family: 'Permanent Marker', cursive;
+    color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+    /* 修改为不锈钢效果边框 */
+    border: 5px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+}
+#result.blackboard::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #e6e6e6, #c0c0c0, #a8a8a8, #e6e6e6);
+}
 
 
             body.dark-mode #result.blackboard {
