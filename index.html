@@ -747,14 +747,14 @@
     position: absolute;
     top: 100px;
     right: 5px;
-    width: 450px;
-    max-height: 300px; 
+    width: 400px;
+    height: 300px; 
     background-color: transparent;
     color: black;
     overflow-y: auto;
     padding: 5px;
     text-align: left;
-    border: 1px solid gray; /* 添加1像素的黑色实线边框 */
+    border: 1px solid lightgray; /* 添加1像素的黑色实线边框 */
     border-radius: 3px; /* 可选：让边框有圆角 */
 }
 
@@ -764,40 +764,35 @@ body.dark-mode #recordContainer {
     border: 1px solid #555; /* 更暗的边框 */
 }
 
-/* When the container is empty, remove the border */
-#recordContainer:empty {
-    border: none;
-}
-
 
 #archiveButton {
-    position: absolute; /* 独立定位，与 recordContainer 无关 */
+    position: absolute; 
     top: 420px;
-    right: 225px; /* 与 recordContainer 的右边对齐 */
+    right: 225px; 
     font-size: 14px;
     cursor: pointer;
 }
 
 #paperShredderButton {
-    position: absolute; /* 独立定位，与 recordContainer 无关 */
+    position: absolute; 
     top: 420px;
-    right: 20px; /* 与 recordContainer 的右边对齐 */
+    right: 10px; 
     font-size: 14px;
     cursor: pointer;
 }
 
 #compareBtn {
-    position: absolute; /* 独立定位，与 recordContainer 无关 */
+    position: absolute; 
     top: 610px;
-    left: 10px; /* 与 recordContainer 的右边对齐 */
+    left: 10px; 
     font-size: 14px;
     cursor: pointer;
 }
 
 #clearPasteAreaBtn {
-    position: absolute; /* 独立定位，与 recordContainer 无关 */
+    position: absolute; 
     top: 610px;
-    left: 280px; /* 与 recordContainer 的右边对齐 */
+    left: 280px; 
     font-size: 14px;
     cursor: pointer;
 }
@@ -818,14 +813,14 @@ body.dark-mode #recordContainer {
     position: absolute;
     top: 100px;
     left: 5px;
-    width: 450px;
-    max-height: 300px; 
+    width: 400px;
+    height: 300px; 
     background-color: transparent;
     color: black;
     overflow-y: auto;
     padding: 5px;
     text-align: left;
-    border: 1px solid gray; /* 添加1像素的黑色实线边框 */
+    border: 1px solid lightgray; /* 添加1像素的黑色实线边框 */
     border-radius: 3px; /* 可选：让边框有圆角 */
 }
 
@@ -833,11 +828,6 @@ body.dark-mode #recordLastDayContainer {
     background-color: #333;
     color: white;
     border: 1px solid #555;
-}
-
-/* When the container is empty, remove the border */
-#recordLastDayContainer:empty {
-    border: none;
 }
 
 .last-day-record {
@@ -855,7 +845,7 @@ body.dark-mode #recordLastDayContainer {
 .this-day-record {
   position: absolute;
   top: 70px;
-  right: 368px;
+  right: 317px;
   font-size: 14px;
   padding: 3px 8px;
   background-color: #f1f1f1;
@@ -868,7 +858,7 @@ body.dark-mode #recordLastDayContainer {
     position: absolute;
     top: 680px;
     left: 5px;
-    width: 450px;
+    width: 400px;
     height: 200px;
     overflow-y: auto; /* 添加滚动条以防内容超出 */
     border: 1px solid #ccc; /* 边框样式，可选 */
@@ -890,7 +880,7 @@ body.dark-mode #difference {
 #data-comparison-result-title {
   position: absolute;
   top: 650px;
-  left: 130px;
+  left: 103px;
   font-size: 14px; /* 增加字体大小 */
   padding: 2px 1px; /* 增加内边距 */
   background: linear-gradient(45deg, #1a1a1a, #333333); /* 线性渐变背景 */
@@ -929,7 +919,7 @@ body.dark-mode #difference {
 /* 默认模式样式 */
 #excelData {
     position: absolute;
-    top: 450px;
+    top: 440px;
     left: 5px;
     height: 150px;
     width: 400px;
@@ -939,6 +929,7 @@ body.dark-mode #difference {
     padding: 1px; /* 内边距 */
     font-family: Arial, sans-serif; /* 字体 */
     font-size: 14px; /* 字号 */
+    padding: 5px;
 }
 
 /* 暗黑模式样式 */
@@ -1047,11 +1038,11 @@ body.dark-mode #excelData {
             </div>
         
         <div class="input-row">
-            姓名：<span id="nameDisplay" style="font-family: 'Garamond', 'FangSong', serif; font-weight: bold;">鲍得快</span>
+            姓名：<span id="nameDisplay" style="font-family: 'FangSong', serif; font-weight: bold;">鲍得快</span>
             <input type="text" id="nameInput" style="display: none;" value="鲍得快">
-            当日目标：<span id="targetDisplay" style="font-family: 'Garamond', 'FangSong', serif; font-weight: bold;">500</span>
+            当日目标：<span id="targetDisplay" style="font-family: 'FangSong', serif; font-weight: bold;">500</span>
             <input type="number" id="targetInput" style="display: none;" value="500">
-            <span style="font-family: 'Garamond', 'FangSong', serif; font-weight: bold;">元</span>
+            <span style="font-family: 'FangSong', serif; font-weight: bold;">元</span>
             <button id="editBtn" class="simple-btn">编辑</button>
             <button id="saveBtn" class="simple-btn" style="display: none;">保存</button>
             <button id="cancelBtn" class="simple-btn" style="display: none;">取消</button>            
@@ -1061,43 +1052,43 @@ body.dark-mode #excelData {
             <h3>AI端口</h3>
             <div class="input-row">
                 <img src="images/icons/credit-icon-32px.png" alt="credit图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">授权<b>征信记录</b></span>(<b style="color: #F56C73;">25</b>元/单)：
+                <span style="font-family: 'Fangsong';">授权<b>征信记录</b></span>(<b style="color: #F56C73;">25</b>元/单)：
                 <input type="checkbox" id="aiCredit">
                 <span id="aiCreditTotal" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">发送<b>银行流水-超网</b></span>(<b style="color: #F56C73;">45</b>元/单)：
+                <span style="font-family: 'Fangsong';">发送<b>银行流水-超网</b></span>(<b style="color: #F56C73;">45</b>元/单)：
                 <input type="checkbox" id="aiBank1">
                 <span id="aiBank1Total" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">发送<b>银行流水-邮箱</b></span>(<b style="color: #F56C73;">80</b>元/单)：
+                <span style="font-family: 'Fangsong';">发送<b>银行流水-邮箱</b></span>(<b style="color: #F56C73;">80</b>元/单)：
                 <input type="checkbox" id="aiBank2">
                 <span id="aiBank2Total" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/tax-icon-32px.png" alt="tax图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">授权<b>发票明细-RPA</b></span>(<b style="color: #F56C73;">80</b>元/单)：
+                <span style="font-family: 'Fangsong';">授权<b>发票明细-RPA</b></span>(<b style="color: #F56C73;">80</b>元/单)：
                 <input type="checkbox" id="aiTax">
                 <span id="aiTaxTotal" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/wechat-icon-32px.png" alt="wechat图标" class="icon">
-                <span style="font-family: 'Garamond', 'Fangsong';">发送<b>微信账单</b></span>(<b style="color: #F56C73;">35</b>元/单)： 
+                <span style="font-family: 'Fangsong';">发送<b>微信账单</b></span>(<b style="color: #F56C73;">35</b>元/单)： 
                 <input type="checkbox" id="aiWechat">
                 <span id="aiWechatTotal" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/house-icon-32px.png" alt="house图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">提交<b>房产信息-直连</b></span>(<b style="color: #F56C73;">45</b>元/单)： 
+                <span style="font-family: 'Fangsong';">提交<b>房产信息-直连</b></span>(<b style="color: #F56C73;">45</b>元/单)： 
                 <input type="checkbox" id="aiHouse1">
                 <span id="aiHouse1Total" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/house-icon-32px.png" alt="house图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">提交<b>房产信息-复杂</b></span>(<b style="color: #F56C73;">80</b>元/单)： 
+                <span style="font-family: 'Fangsong';">提交<b>房产信息-复杂</b></span>(<b style="color: #F56C73;">80</b>元/单)： 
                 <input type="checkbox" id="aiHouse2">
                 <span id="aiHouse2Total" style="display: inline;">已有0单</span>
             </div>
@@ -1107,43 +1098,43 @@ body.dark-mode #excelData {
             <h3>离线端口</h3>
             <div class="input-row">
                 <img src="images/icons/credit-icon-32px.png" alt="credit图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">授权<b>征信记录</b></span>(<b style="color: #F56C73;">30</b>元/单)： 
+                <span style="font-family: 'Fangsong';">授权<b>征信记录</b></span>(<b style="color: #F56C73;">30</b>元/单)： 
                 <input type="checkbox" id="offlineCredit">
                 <span id="offlineCreditTotal" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">发送<b>银行流水-超网</b></span>(<b style="color: #F56C73;">60</b>元/单)： 
+                <span style="font-family: 'Fangsong';">发送<b>银行流水-超网</b></span>(<b style="color: #F56C73;">60</b>元/单)： 
                 <input type="checkbox" id="offlineBank1">
                 <span id="offlineBank1Total" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">发送<b>银行流水-邮箱</b></span>(<b style="color: #F56C73;">100</b>元/单)： 
+                <span style="font-family: 'Fangsong';">发送<b>银行流水-邮箱</b></span>(<b style="color: #F56C73;">100</b>元/单)： 
                 <input type="checkbox" id="offlineBank2">
                 <span id="offlineBank2Total" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/tax-icon-32px.png" alt="tax图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">授权<b>发票明细-RPA</b></span>(<b style="color: #F56C73;">80</b>元/单)： 
+                <span style="font-family: 'Fangsong';">授权<b>发票明细-RPA</b></span>(<b style="color: #F56C73;">80</b>元/单)： 
                 <input type="checkbox" id="offlineTax">
                 <span id="offlineTaxTotal" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/wechat-icon-32px.png" alt="wechat图标" class="icon">
-                <span style="font-family: 'Garamond', 'Fangsong';">发送<b>微信账单</b></span>(<b style="color: #F56C73;">40</b>元/单)： 
+                <span style="font-family: 'Fangsong';">发送<b>微信账单</b></span>(<b style="color: #F56C73;">40</b>元/单)： 
                 <input type="checkbox" id="offlineWechat">
                 <span id="offlineWechatTotal" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/house-icon-32px.png" alt="house图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">提交<b>房产信息-直连</b></span>(<b style="color: #F56C73;">60</b>元/单)： 
+                <span style="font-family: 'Fangsong';">提交<b>房产信息-直连</b></span>(<b style="color: #F56C73;">60</b>元/单)： 
                 <input type="checkbox" id="offlineHouse1">
                 <span id="offlineHouse1Total" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/house-icon-32px.png" alt="house图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">提交<b>房产信息-复杂</b></span>(<b style="color: #F56C73;">100</b>元/单)： 
+                <span style="font-family: 'Fangsong';">提交<b>房产信息-复杂</b></span>(<b style="color: #F56C73;">100</b>元/单)： 
                 <input type="checkbox" id="offlineHouse2">
                 <span id="offlineHouse2Total" style="display: inline;">已有0单</span>
             </div>
@@ -1585,9 +1576,9 @@ function formatGroupedData(groupedData) {
 
         // 显示比对结果
         differenceDiv.innerHTML = `
-        <p>&#x1F973;<strong style="font-family: 'FangSong', serif;">Excel中有而线上成交记录中没有的数据：</strong></p>
+        <p>&#x270C;<strong style="font-family: 'FangSong', serif;"> Excel中有而线上成交记录中没有的数据：</strong></p>
         ${formatGroupedData(groupedNotInLocal)}
-        <p>&#x1F624;<strong style="font-family: 'FangSong', serif;">线上成交记录中有而Excel中没有的数据：</strong></p>
+        <p>&#x270D;<strong style="font-family: 'FangSong', serif;"> 线上成交记录中有而Excel中没有的数据：</strong></p>
         ${formatGroupedData(groupedNotInExcel)}
         `;
 
