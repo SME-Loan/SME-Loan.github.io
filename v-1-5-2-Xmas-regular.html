@@ -1,0 +1,2020 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提额项目报单计数器</title>
+    <!-- Embed code in the <head> of your html Mountains of Christmas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+
+.mountains-of-christmas-regular {
+  font-family: "Mountains of Christmas", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.mountains-of-christmas-bold {
+  font-family: "Mountains of Christmas", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+
+        /* snowglobe CSS start */
+                body {
+                    background-color: #9b3715;
+                    color: #ECECEC;
+                    font-family: Arial, sans-serif;
+                    text-align: center;
+                    margin: 0;
+                    padding-top: 20px;
+                    padding-bottom: 0;
+                }
+        
+                body.dark-mode {
+                        background-color: black;
+                        color: white;
+                    }
+        
+                .snowglobe {
+          width: 200.0px;
+          height: 200.0px;
+          margin: auto;
+          position: relative;
+          margin-top: 15px;
+        }
+        
+        .branch-top {
+          -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          width: 20.0px;
+          height: 37.5px;
+          background-color: #62838C;
+          position: absolute;
+          top: 2.5px;
+          left: 15.0px;
+        }
+        
+        .branch-top-snow {
+          background: linear-gradient(135deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(225deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(315deg, #dbe8fc 25%, transparent 25%), linear-gradient(45deg, #dbe8fc 25%, transparent 25%);
+          background-size: 16.0px 16.0px;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+        }
+        
+        .branch-mid {
+          -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          width: 37.5px;
+          height: 57.5px;
+          background-color: #2D4959;
+          position: absolute;
+          top: 17.5px;
+          left: 6.2px;
+        }
+        
+        .branch-mid-snow {
+          background: linear-gradient(135deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(225deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(315deg, #dbe8fc 25%, transparent 25%), linear-gradient(45deg, #dbe8fc 25%, transparent 25%);
+          background-size: 16.0px 16.0px;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+        }
+        
+        .branch-bot {
+          -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          width: 50.0px;
+          height: 62.5px;
+          background-color: #142833;
+          position: absolute;
+          top: 40.0px;
+        }
+        
+        .branch-bot-snow {
+          background: linear-gradient(135deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(225deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(315deg, #dbe8fc 25%, transparent 25%), linear-gradient(45deg, #dbe8fc 25%, transparent 25%);
+          background-size: 16.0px 16.0px;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+        }
+        
+        .branch-shadow {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          background: linear-gradient(to bottom, #12434f 0%, rgba(255, 255, 255, 0) 100%);
+          mix-blend-mode: multiply;
+        }
+        
+        .tree {
+          width: 50.0px;
+          height: 102.5px;
+          position: relative;
+          left: 100.0px;
+          top: 30.0px;
+        }
+        
+        .sg-bg {
+          width: 200.0px;
+          height: 200.0px;
+          border-radius: 100%;
+          position: absolute;
+          top: 0.0px;
+          background: rgba(255, 255, 255, 0.5);
+        }
+        
+        .sg-fg {
+          width: 200.0px;
+          height: 200.0px;
+          border-radius: 100%;
+          position: absolute;
+          top: 0.0px;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(246, 246, 246, 0.2) 47%, rgba(237, 237, 237, 0) 100%);
+        }
+        
+        .grnd-snow {
+          width: 190.0px;
+          height: 190.0px;
+          border-radius: 100%;
+          position: absolute;
+          top: 5.0px;
+          left: 5.0px;
+          background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 68%, #f0f0f0 68%, #ebeff5 79%, #c5d3e8 100%);
+        }
+        
+        .snow-surface {
+          width: 178.0px;
+          height: 20.0px;
+          background: #fff;
+          position: relative;
+          top: 118.0px;
+          border-radius: 100%;
+          margin: auto;
+        }
+        
+        .star {
+          width: 0.0px;
+          height: 0.0px;
+          border-right: 10.0px solid transparent;
+          border-bottom: 7.0px solid gold;
+          border-left: 10.0px solid transparent;
+          transform: rotate(35deg);
+          position: absolute;
+          top: 0.0px;
+          left: 15.0px;
+        }
+        
+        .star:before {
+          border-bottom: 8.0px solid gold;
+          border-left: 3.0px solid transparent;
+          border-right: 3.0px solid transparent;
+          position: absolute;
+          height: 0;
+          width: 0;
+          top: -4.5px;
+          left: -6.5px;
+          content: "";
+          transform: rotate(-35deg);
+        }
+        
+        .star:after {
+          position: absolute;
+          top: 0.3px;
+          left: -10.5px;
+          width: 0.0px;
+          height: 0.0px;
+          border-right: 10.0px solid transparent;
+          border-bottom: 7.0px solid gold;
+          border-left: 10.0px solid transparent;
+          transform: rotate(-70deg);
+          content: "";
+        }
+        
+        .falling-snow-wrap {
+          overflow: hidden;
+          opacity: 0.99;
+          height: 130.0px;
+          width: 200.0px;
+          position: absolute;
+          top: 0.0px;
+        }
+        
+        .falling-snow {
+          width: 190.0px;
+          height: 190.0px;
+          border-radius: 100%;
+          position: absolute;
+          top: 5.0px;
+          left: 5.0px;
+          overflow: hidden;
+          opacity: 0.99;
+        }
+        
+        .flakes1 {
+          font-size: 50%; 
+          width: 200.0px;
+          height: 400.0px;
+          position: absolute;
+          top: 0.0px;
+          color: #fff;
+          opacity: 0.5;
+          -webkit-animation: sfanim linear 151.7s;
+                  animation: sfanim linear 151.7s;
+          -webkit-animation-iteration-count: infinite;
+                  animation-iteration-count: infinite;
+          text-shadow: 151.5px 58.5px, 16.0px 44.5px, 161.5px 59.5px, 49.0px 91.5px, 63.0px 117.5px, 0.0px 85.5px, 190.0px 30.5px, 134.5px 8.5px, 0.0px 75.5px, 60.5px 172.0px, 114.5px 68.0px, 118.5px 140.0px, 151.5px 15.0px, 105.5px 157.0px, 189.0px 142.5px, 5.0px 143.5px, 46.5px 172.5px, 146.0px 162.0px, 111.5px 146.0px, 78.0px 80.0px, 126.5px 29.0px, 102.5px 97.5px, 72.5px 53.0px, 39.5px 156.0px, 91.0px 179.5px, 139.5px 49.5px, 174.5px 62.0px, 2.5px 16.5px, 108.0px 73.5px, 194.0px 58.5px, 35.0px 147.5px, 74.5px 159.0px, 48.0px 33.0px, 64.5px 108.5px, 69.0px 109.0px, 120.5px 155.0px, 115.5px 184.0px, 9.0px 163.5px, 86.5px 106.5px, 59.0px 5.0px, 123.0px 104.0px, 79.5px 122.0px, 134.0px 188.0px, 83.5px 131.0px, 42.5px 119.0px, 138.5px 23.5px, 193.0px 96.0px, 129.5px 182.0px, 162.5px 163.5px, 139.5px 100.5px, 151.5px 258.5px, 16.0px 244.5px, 161.5px 259.5px, 49.0px 291.5px, 63.0px 317.5px, 0.0px 285.5px, 190.0px 230.5px, 134.5px 208.5px, 0.0px 275.5px, 60.5px 372.0px, 114.5px 268.0px, 118.5px 340.0px, 151.5px 215.0px, 105.5px 357.0px, 189.0px 342.5px, 5.0px 343.5px, 46.5px 372.5px, 146.0px 362.0px, 111.5px 346.0px, 78.0px 280.0px, 126.5px 229.0px, 102.5px 297.5px, 72.5px 253.0px, 39.5px 356.0px, 91.0px 379.5px, 139.5px 249.5px, 174.5px 262.0px, 2.5px 216.5px, 108.0px 273.5px, 194.0px 258.5px, 35.0px 347.5px, 74.5px 359.0px, 48.0px 233.0px, 64.5px 308.5px, 69.0px 309.0px, 120.5px 355.0px, 115.5px 384.0px, 9.0px 363.5px, 86.5px 306.5px, 59.0px 205.0px, 123.0px 304.0px, 79.5px 322.0px, 134.0px 388.0px, 83.5px 331.0px, 42.5px 319.0px, 138.5px 223.5px, 193.0px 296.0px, 129.5px 382.0px, 162.5px 363.5px, 139.5px 300.5px;
+        }
+        
+        .flakes2 {
+          font-size: 50%; 
+          width: 200.0px;
+          height: 400.0px;
+          position: absolute;
+          top: 0.0px;
+          color: #fff;
+          -webkit-animation: sfanim linear 75.85s;
+                  animation: sfanim linear 75.85s;
+          -webkit-animation-iteration-count: infinite;
+                  animation-iteration-count: infinite;
+          text-shadow: 187.5px 242.5px, 5.5px 344.5px, 127.0px 392.0px, 2.5px 343.0px, 133.0px 352.5px, 194.0px 349.0px, 90.0px 353.5px, 18.0px 206.5px, 37.0px 347.5px, 119.0px 345.0px, 192.0px 317.5px, 0.5px 347.0px, 22.5px 269.0px, 65.5px 375.0px, 129.0px 260.0px, 78.5px 352.5px, 48.0px 374.5px, 162.5px 359.5px, 66.0px 344.0px, 83.5px 255.5px, 151.5px 204.0px, 170.0px 310.0px, 197.0px 214.0px, 93.5px 374.0px, 108.5px 312.0px, 178.0px 315.0px, 16.5px 379.0px, 119.0px 381.0px, 178.5px 293.0px, 126.5px 399.0px, 34.0px 393.0px, 82.0px 331.0px, 59.5px 299.0px, 110.5px 278.5px, 63.0px 268.5px, 141.0px 251.5px, 5.5px 227.5px, 109.5px 316.0px, 30.0px 298.5px, 20.5px 264.5px, 123.5px 225.5px, 108.5px 322.0px, 152.0px 200.0px, 107.0px 210.5px, 143.5px 378.5px, 38.0px 202.0px, 188.0px 367.5px, 84.5px 286.0px, 122.5px 395.0px, 33.0px 358.5px, 187.5px 42.5px, 5.5px 144.5px, 127.0px 192.0px, 2.5px 143.0px, 133.0px 152.5px, 194.0px 149.0px, 90.0px 153.5px, 18.0px 6.5px, 37.0px 147.5px, 119.0px 145.0px, 192.0px 117.5px, 0.5px 147.0px, 22.5px 69.0px, 65.5px 175.0px, 129.0px 60.0px, 78.5px 152.5px, 48.0px 174.5px, 162.5px 159.5px, 66.0px 144.0px, 83.5px 55.5px, 151.5px 4.0px, 170.0px 110.0px, 197.0px 14.0px, 93.5px 174.0px, 108.5px 112.0px, 178.0px 115.0px, 16.5px 179.0px, 119.0px 181.0px, 178.5px 93.0px, 126.5px 199.0px, 34.0px 193.0px, 82.0px 131.0px, 59.5px 99.0px, 110.5px 78.5px, 63.0px 68.5px, 141.0px 51.5px, 5.5px 27.5px, 109.5px 116.0px, 30.0px 98.5px, 20.5px 64.5px, 123.5px 25.5px, 108.5px 122.0px, 152.0px 0.0px, 107.0px 10.5px, 143.5px 178.5px, 38.0px 2.0px, 188.0px 167.5px, 84.5px 86.0px, 122.5px 195.0px, 33.0px 158.5px;
+        }
+        
+        @-webkit-keyframes sfanim {
+          0% {
+            transform: translate(0.0px, -200.0px);
+          }
+          100% {
+            transform: translate(0.0px, 0.0px);
+          }
+        }
+        
+        @keyframes sfanim {
+          0% {
+            transform: translate(0.0px, -200.0px);
+          }
+          100% {
+            transform: translate(0.0px, 0.0px);
+          }
+        }
+        .baubles {
+          width: 8.0px;
+          height: 8.0px;
+          background-color: #bf1131;
+          border-radius: 100%;
+          position: absolute;
+          top: 20.0px;
+          left: 20.0px;
+          box-shadow: 4.0px 22.0px 0.0px 0.0px #960028, -4.0px 40.0px 0.0px 0.0px #ce0037, 10.0px 50.0px 0.0px 0.0px #ce0025, -12.0px 66.0px 0.0px 0.0px #bf1131, 16.0px 70.0px 0.0px 0.0px #bf1131;
+        }
+        
+        .tree-shadow {
+          width: 100.0px;
+          height: 10.0px;
+          background: radial-gradient(ellipse at center, #0d5466 0%, rgba(138, 174, 188, 0) 65%, rgba(206, 223, 235, 0) 100%);
+          position: absolute;
+          bottom: -5.0px;
+          left: -17.5px;
+        }
+        
+        .stand-curved {
+          height: 90.0px;
+          width: 250.0px;
+          border-radius: 50%;
+          border: 50.0px solid maroon;
+          position: absolute;
+          bottom: 0.0px;
+          left: -35.0px;
+        }
+        
+        .stand-curved-wrap {
+          width: 280.0px;
+          height: 66.7px;
+          position: absolute;
+          bottom: -68.0px;
+          margin-left: -40.0px;
+          position: relative;
+          -webkit-clip-path: polygon(30% 10%, 70% 10%, 80% 100%, 20% 100%);
+        }
+        
+        .ground {
+          width: 100%;
+          height: 75.0px;
+          position: absolute;
+          top: 200.0px;
+          background: radial-gradient(ellipse at center, #010101 0%, rgba(1, 1, 1, 0.7) 4%, rgba(1, 1, 1, 0) 8%), linear-gradient(to bottom, #250506 0%, #631307 40%, #a44121 100%);
+        }
+        
+        .sm-shadow {
+          width: 50.0px;
+          height: 10.0px;
+          background: radial-gradient(ellipse at center, rgba(13, 84, 102, 0.4) 0%, rgba(138, 174, 188, 0) 65%, rgba(206, 223, 235, 0) 100%);
+          position: absolute;
+          bottom: 62.5px;
+          left: 45.0px;
+        }
+        
+        .snowman-bot {
+          background: linear-gradient(to bottom, white 0%, #dbe8fc 100%);
+          width: 30.0px;
+          height: 30.0px;
+          border-radius: 50%;
+          position: absolute;
+          bottom: 66.0px;
+          left: 50.0px;
+        }
+        
+        .snowman-top {
+          background: linear-gradient(to bottom, white 0%, #dbe8fc 100%);
+          width: 20.0px;
+          height: 20.0px;
+          border-radius: 50%;
+          position: absolute;
+          bottom: 92.0px;
+          left: 54.0px;
+        }
+        
+        .coal {
+          width: 2.5px;
+          height: 2.5px;
+          border-radius: 50%;
+          position: absolute;
+          box-shadow: 60.0px -5.0px 0.0px 0.0px black, 68.5px -6.0px 0.0px 0.0px black, 59.5px 0.0px 0.0px 0.0px black, 62.5px 1.0px 0.0px 0.0px black, 66.0px 1.0px 0.0px 0.0px black, 69.0px -1.0px 0.0px 0.0px black, 65.0px 7.5px 0.0px 0.0px black, 66.0px 13.5px 0.0px 0.0px black, 66.0px 19.5px 0.0px 0.0px black;
+        }
+        
+        .carrot {
+          width: 0.0px;
+          height: 0.0px;
+          border-left: 10.0px solid #f98e13;
+          border-top: 1.5px solid transparent;
+          border-bottom: 1.5px solid transparent;
+          position: absolute;
+          left: 65.0px;
+          top: 99.0px;
+        }
+        
+                .container {
+                    position: relative;
+                    display: inline-block;
+                    text-align: left;
+                    max-width: 450px;
+                    margin: auto;
+                    padding-bottom: 50px; 
+                    box-sizing: border-box;
+                }
+            
+                .section {
+                    background-color: #C3A784;
+                    color: black;
+                    border: 2px solid white;
+                    border-radius: 10px;
+                    padding: 5px;
+                    margin-bottom: 20px;
+                    max-width: 450px;
+                }
+                /* snowglobe CSS end */
+            
+                .title {
+                    text-align: center;
+                    font-size: 24px;
+                    margin-bottom: 10px;
+                }
+        
+              
+                    .tooltip {
+                        display: inline-block;
+                        position: relative;
+                        cursor: pointer;
+                        margin-left: 5px;
+                        font-size: 13px;
+                        border: 1px solid #87CEFA; 
+                        border-radius: 50%;
+                        width: 14px;
+                        height: 14px;
+                        text-align: center;
+                        line-height: 15px;
+                        color: #87CEFA;
+                        background-color: white;
+                        font-weight: bold;
+                    }
+        
+                        body.dark-mode .tooltip {
+                            background-color: #333; 
+                        }
+        
+                    .tooltip:hover::after {
+                        content: attr(data-tooltip);
+                        position: absolute;
+                        top: -5px;
+                        left: 25px;
+                        background-color: #333;
+                        color: #fff;
+                        padding: 5px;
+                        border-radius: 5px;
+                        white-space: normal; 
+                        width: 200px; 
+                        z-index: 1;
+                        font-size: 14px;
+                        line-height: 1.5;
+                        font-weight: normal;
+                        white-space: pre-wrap;
+                        text-align: left; 
+                    }
+                        
+                .input-row {
+                    margin-bottom: 5px;
+                }
+            
+                input[type="number"] {
+                    width: 40px; 
+                    height: 20px; 
+                    padding: 3px;
+                    font-size: 16px;
+                }
+        
+                .input-row input[type="number"]#targetInput {
+                    width: 40px; 
+                    -moz-appearance: textfield; /* Firefox */
+                    -webkit-appearance: none; /* Safari 和 Chrome */
+                    appearance: none; /* 现代浏览器 */
+                }
+        
+                .input-row input[type="number"]#targetInput::-webkit-inner-spin-button,
+                .input-row input[type="number"]#targetInput::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+        
+                .input-row span#nameDisplay {
+                    margin-right: 15px; 
+                }
+        
+        
+                .buttons {
+                    margin-top: 20px;
+                }
+            
+                button {
+                    padding: 0px 15px;
+                    font-size: 16px;
+                    height: 40px; 
+                    line-height: 40px; 
+                    text-align: center; 
+                    border: 2px solid rgba(255, 255, 255, 0.5); 
+                    border-radius: 5px; 
+                    cursor: pointer; 
+                    transition: all 0.3s ease;
+                    background-color: #f0f0f0; 
+                    color: #333; 
+                    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1), 
+                                0 2px 5px rgba(0, 0, 0, 0.2);
+                    font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif; 
+                    font-weight: 600; 
+                    letter-spacing: 0.5px;
+                    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7); 
+                }
+        
+        
+        
+                .green {
+                    background-color: #4CAF50; 
+                    color: white; 
+                }
+        
+                .green:hover {
+                    background-color: #45a049; 
+                }
+        
+                .green:active {
+                    background-color: #66ff66; 
+                    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7), 
+                                inset 0 0 5px rgba(255, 255, 255, 0.7); 
+                }
+        
+                .yellow {
+                    background-color: #FFC107; 
+                    color: #0D2035; 
+                }
+        
+                .yellow:hover {
+                    background-color: #ffb300; 
+                }
+        
+                .yellow:active {
+                    background-color: #ffff66; 
+                    box-shadow: 0 0 10px rgba(255, 255, 0, 0.7), 
+                                inset 0 0 5px rgba(255, 255, 255, 0.7); 
+                }
+        
+                .red {
+                    background-color: #f44336; 
+                    color: white; 
+                }
+        
+                .red:hover {
+                    background-color: #e53935; 
+                }
+        
+                .red:active {
+                    background-color: #ff6666; 
+                    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7), 
+                                inset 0 0 5px rgba(255, 255, 255, 0.7); 
+                }
+        
+        
+                .copy-button {
+                    background-color: #2196F3; 
+                    color: white; 
+                    border: 2px solid rgba(255, 255, 255, 0.5); 
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1), 
+                                0 2px 5px rgba(0, 0, 0, 0.2); 
+                    font-weight: 600;
+                    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7); 
+                }
+        
+                .copy-button:hover {
+                    background-color: #1976D2; 
+                }
+        
+                .copy-button:active {
+                    background-color: #64B5F6; 
+                    box-shadow: 0 0 10px rgba(33, 150, 243, 0.7), 
+                                inset 0 0 5px rgba(255, 255, 255, 0.7); 
+                    transform: scale(0.98); 
+                }
+        
+                .highlight {
+                    background-color: yellow; 
+                }
+                
+                #nameInput {
+                    width: 60px; 
+                    height: 20px; 
+                    font-size: 16px; 
+                }
+        
+                #mailbox-container {
+                    position: absolute;
+                    bottom: -40px; 
+                    left: 110px; 
+                    width: 32px;
+                    height: 32px;
+                }
+        
+                #mailbox-tooltip {
+                    visibility: hidden;
+                    background-color: #333;
+                    color: #fff;
+                    text-align: left;
+                    border-radius: 5px;
+                    padding: 5px;
+                    position: absolute;
+                    bottom: 40px;
+                    left: 50%; 
+                    transform: translateX(-50%); 
+                    z-index: 1;
+                    white-space: nowrap;
+                    font-size: 12px;
+                    line-height: 1.4;
+                    cursor: pointer;
+                }
+        
+                #mailbox {
+                    cursor: pointer; 
+                }
+        
+                #mailbox-container:hover #mailbox-tooltip {
+                    visibility: visible;
+                }
+        
+                #library-container {
+                    position: absolute;
+                    bottom: -40px; 
+                    left: 10px; 
+                    width: 32px;
+                    height: 32px;
+                }
+        
+                #library-tooltip {
+                    visibility: hidden;
+                    background-color: #333;
+                    color: #fff;
+                    text-align: center;
+                    border-radius: 5px;
+                    padding: 5px;
+                    position: absolute;
+                    bottom: 40px;
+                    left: 50%; 
+                    transform: translateX(-50%); 
+                    z-index: 1;
+                    white-space: nowrap;
+                    font-size: 12px;
+                    line-height: 1.4;
+                    cursor: pointer;
+                }
+        
+                #library {
+                    cursor: pointer; 
+                }
+        
+                #library-container:hover #library-tooltip {
+                    visibility: visible;
+                }
+        
+                #starship-container {
+                    position: absolute;
+                    bottom: -40px; 
+                    left: 60px; 
+                    width: 32px;
+                    height: 32px;
+                }
+        
+                #starship-tooltip {
+                    visibility: hidden;
+                    background-color: #333;
+                    color: #fff;
+                    text-align: left;
+                    border-radius: 5px;
+                    padding: 5px;
+                    position: absolute;
+                    bottom: 40px;
+                    left: 50%; 
+                    transform: translateX(-50%); 
+                    z-index: 1;
+                    white-space: nowrap;
+                    font-size: 12px;
+                    line-height: 1.4;
+                    cursor: pointer;
+                }
+        
+                #starship {
+                    cursor: pointer; 
+                }
+        
+                #starship-container:hover #starship-tooltip {
+                    visibility: visible;
+                }
+        
+                #theme-selector {
+                    position: absolute;
+                    bottom: -40px; 
+                    right: 10px;   
+                    padding: 5px;
+                    font-size: 14px;
+                    cursor: pointer;
+                    z-index: 10;
+                    }
+        
+                /* #result.default {
+                    word-wrap: break-word; 
+                    overflow-wrap: break-word; 
+                    white-space: normal; 
+                    width: 450px; 
+                    box-sizing: border-box; 
+                    padding: 10px; 
+                    margin-top: 20px; 
+                    border: 1px solid lightgray; 
+                    background-color: #f9f9f9; 
+                }
+        
+                    body.dark-mode #result.default {
+                        background-color: #333; 
+                        color: #f1f1f1; 
+                        border: 1px solid #555; 
+                    } */
+        
+                          
+                /* @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+                    
+                #result.led {
+                    word-wrap: break-word; 
+                    overflow-wrap: break-word; 
+                    white-space: normal; 
+                    width: 450px; 
+                    box-sizing: border-box; 
+                    padding: 20px; 
+                    margin-top: 20px; 
+                    border: 2px solid rgba(0, 0, 255, 0.5); 
+                    background-color: #000; 
+                    font-family: 'Press Start 2P', cursive;
+                    color: #00bfff; 
+                    text-shadow: 
+                        0 0 5px rgba(0, 191, 255, 0.8), 
+                        0 0 10px rgba(0, 191, 255, 0.6), 
+                        0 0 15px rgba(0, 191, 255, 0.4); 
+                    border-radius: 10px; 
+                    box-shadow: 0 4px 10px rgba(0, 191, 255, 0.3);
+                }
+        
+        
+                    body.dark-mode #result.led {
+                        background-color: #000; 
+                        color: #00bfff; 
+                        border: 2px solid rgba(0, 0, 255, 0.5);
+                        text-shadow: 
+                            0 0 5px rgba(0, 191, 255, 0.8), 
+                            0 0 10px rgba(0, 191, 255, 0.6), 
+                            0 0 15px rgba(0, 191, 255, 0.4);
+                    } */
+        
+        
+                           
+                @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+                          
+                #result.blackboard {
+                    word-wrap: break-word;
+                    overflow-wrap: break-word;
+                    white-space: normal;
+                    width: 450px;
+                    box-sizing: border-box;
+                    padding: 20px;
+                    margin-top: 20px;
+                    background-color: #005f2f;
+                    font-family: 'Permanent Marker', cursive;
+                    color: #ffffff;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        
+                    /* 修改为不锈钢效果边框 */
+                    border: 5px solid transparent;
+                    background-clip: padding-box;
+                    position: relative;
+                }
+        
+                #result.blackboard::before {
+                    content: '';
+                    position: absolute;
+                    top: -5px;
+                    left: -5px;
+                    right: -5px;
+                    bottom: -5px;
+                    z-index: -1;
+                    border-radius: 10px;
+                    background: linear-gradient(135deg, #e6e6e6, #c0c0c0, #a8a8a8, #e6e6e6);
+                }
+        
+        
+                body.dark-mode #result.blackboard {
+                    background-color: #003d1f; 
+                    color: #ffffff; 
+                }
+        
+                           
+                /* @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+        
+                          
+                #result.typewriter {
+                    word-wrap: break-word; 
+                    overflow-wrap: break-word; 
+                    white-space: normal; 
+                    width: 450px; 
+                    box-sizing: border-box; 
+                    padding: 20px; 
+                    margin-top: 20px; 
+                    border: 1px solid #000; 
+                    background-color: #f8f8f8; 
+                    font-family: 'Courier Prime', monospace; 
+                    color: #333;
+                    border-radius: 5px; 
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                }
+        
+                
+                    body.dark-mode #result.typewriter {
+                        background-color: #333;
+                        color: #f8f8f8; 
+                        border: 1px solid #fff; 
+                    } */
+        
+        
+                @media (max-width: 768px) {
+                    .container {
+                        padding: 3px;
+                    }
+                    .title {
+                        font-size: 20px;
+                    }
+                    button {
+                        font-size: 14px;
+                        padding: 0px 10px;
+                    }
+                    #result {
+                        font-size: 14px;
+                        width: 440px;
+                        max-width: 100%;
+                    }
+                }
+        
+                .theme-switcher {
+                    position: absolute;
+                    top: 1px; 
+                    right: 1px; 
+                }
+        
+                .icon {
+                    width: 24px; 
+                    height: 24px; 
+                    margin-right: 8px; 
+                    vertical-align: middle; 
+                }
+        
+                .theme-switcher {
+                    display: flex;
+                    align-items: center; 
+                }
+        
+                .power-switch {
+                    width: 60px;
+                    height: 30px;
+                    border-radius: 15px;
+                    background-color: #ccc;
+                    position: relative;
+                    cursor: pointer;
+                    outline: none;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                    transition: background-color 0.3s, box-shadow 0.3s;
+                }
+        
+                    .power-switch:hover {
+                        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+                    }
+        
+                    .power-switch::before {
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        left: 5px;
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 50%;
+                        background: radial-gradient(circle at 30% 30%, #ffffff, #e0e0e0);
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), inset 0 -2px 6px rgba(0, 0, 0, 0.3);
+                        transform: translateY(-50%);
+                        transition: left 0.3s, transform 0.3s;
+                    }
+        
+                    .power-switch.active {
+                        background-color: #4caf50;
+                        box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2);
+                    }
+        
+                    .power-switch.active::before {
+                        left: calc(100% - 30px);
+                        transform: translateY(-50%) scale(1.1);
+                    }
+        
+                .mode-label {
+                    font-size: 16px;
+                    font-weight: bold;
+                    margin-right: 10px;
+                    color: #555;
+                    background: linear-gradient(45deg, #eeeeee, #cccccc); 
+                    padding: 3px 10px;
+                    border-radius: 5px;
+                    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+                    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+                    display: inline-block;
+                    transition: color 0.3s, background 0.3s;
+                }
+        
+                    .mode-label:hover {
+                        background: linear-gradient(45deg, #cccccc, #bbbbbb);
+                        color: #333;
+                    }
+        
+                
+                    body.dark-mode .mode-label {
+                        background: linear-gradient(45deg, #333333, #555555); 
+                        color: #ddd; 
+                    }
+        
+        
+                    .simple-btn {
+                        padding: 0px 15px;
+                        font-size: 16px;
+                        height: calc(40px * 2 / 3); 
+                        line-height: calc(40px * 2 / 3); 
+                        text-align: center;
+                        border: 2px solid #333;
+                        border-radius: 0;
+                        background-color: #f0f0f0;
+                        color: #333;
+                        box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+                        font-family: 'KaiTi', 'Noto Sans SC', 'Microsoft YaHei', sans-serif; 
+                        cursor: pointer;
+                        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+                    }
+        
+                        .simple-btn:hover {
+                            background-color: #e0e0e0;
+                            box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+                        }
+        
+                        .simple-btn:active {
+                            background-color: #ccc;
+                            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+                        }
+        /* palantir container */
+                /* Styles from Pure Css Wave Progress bar Animation
+                .wave-container {
+                    position: relative;
+                    width: 200px;
+                    height: 200px;
+                    margin: 20px auto;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    background: radial-gradient(circle at 70% 30%, rgba(150, 180, 255, 0.5), rgba(60, 100, 150, 0.2) 70%, rgba(0, 50, 80, 0.5) 100%);
+                    border: 5px solid rgba(100, 180, 255, 0.4);
+                    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.1),
+                                0 0 30px rgba(100, 180, 255, 0.3);
+                } */
+        
+                /* 调整光斑效果 */
+                /* .wave-container::before {
+                    content: '';
+                    position: absolute;
+                    top: 15px;  
+                    left: 110px;  
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); 
+                    opacity: 0.4;  
+                    pointer-events: none;
+                    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);  
+                    z-index: 4;
+                } */
+        
+                /* 调整辅助反光区域 */
+                /* .wave-container::after {
+                    content: '';
+                    position: absolute;
+                    top: 50px;
+                    left: 50px;
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    background: radial-gradient(circle at 30% 30%, rgba(150, 180, 255, 0.3), transparent 70%);
+                    opacity: 0.4; 
+                    pointer-events: none;
+                    z-index: 3;
+                } */
+        
+        
+                /* .wave-change {
+                    position: absolute;
+                    width: 200px;
+                    height: 200px;
+                    left: 0;
+                    top: 0;
+                    animation: change 12s linear forwards;
+                    z-index: 2;
+                }
+        
+                .wave-change::before,
+                .wave-change::after {
+                    content: "";
+                    position: absolute;
+                    width: 400px;
+                    height: 400px;
+                    top: 0;
+                    left: 50%;
+                    background-color: rgba(150, 180, 255, 0.2); 
+                    border-radius: 45% 47% 43% 46%;
+                    transform: translate(-50%, -70%) rotate(0);
+                    animation: rotate 7s linear infinite;
+                    z-index: 1;
+                }
+        
+                .wave-change::after {
+                    border-radius: 47% 42% 46% 44%;
+                    background-color: rgba(150, 180, 255, 0.3);
+                    animation: rotate 9s linear -4s infinite;
+                    z-index: 1;
+                }
+        
+        
+                body.dark-mode .wave-container {
+                    background: radial-gradient(circle at 70% 30%, rgba(60, 100, 150, 0.4), rgba(30, 60, 100, 0.2) 70%, rgba(10, 30, 50, 0.6) 100%);
+                    border: 5px solid rgba(60, 100, 150, 0.6);
+                    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05),
+                                0 0 20px rgba(60, 100, 150, 0.5);
+                }
+        
+                body.dark-mode .wave-container::before {
+                    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0)); 
+                    opacity: 0.3; 
+                    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+                }
+        
+                body.dark-mode .wave-change::before,
+                body.dark-mode .wave-change::after {
+                    background-color: rgba(30, 60, 100, 0.2); 
+                }
+        
+                body.dark-mode .wave-change::after {
+                    background-color: rgba(30, 60, 100, 0.3); 
+                }
+        
+        
+                .wave {
+                    position: relative;
+                    width: 200px;
+                    height: 200px;
+                    background-color: rgb(118, 218, 255);
+                    border-radius: 50%;
+                }
+        
+                @keyframes rotate {
+                    50% {
+                        transform: translate(-50%, -73%) rotate(180deg);
+                    }
+                    100% {
+                        transform: translate(-50%, -70%) rotate(360deg);
+                    }
+                }
+        
+                @keyframes change {
+                    from {
+                        top: 90px;
+                    }
+                    to {
+                        top: -120px;
+                    }
+                } */
+        
+        
+                .percentage-display {
+                    text-align: center; 
+                    font-size: 18px; 
+                    color: white; 
+                    margin-top: 50px;
+                }
+        
+        
+                .metal-plate {
+                    font-family: 'SimHei', sans-serif;
+                    font-size: 1.0em;
+                    color: #3a3a3a;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+        
+                    
+                    background: linear-gradient(135deg, 
+                        #d7d7d7 0%, 
+                        #f2f2f2 40%, 
+                        #bdbdbd 60%, 
+                        #e0e0e0 100%);
+                    border-radius: 20px;
+                    padding: 5px 20px;
+                    display: inline-block;
+                    text-align: center;
+                    position: relative;
+                    border: 1px solid #a5a5a5;
+                    box-shadow: 
+                        inset 2px 2px 5px rgba(0, 0, 0, 0.3), 
+                        inset -2px -2px 5px rgba(255, 255, 255, 0.8), 
+                        5px 5px 15px rgba(0, 0, 0, 0.3);
+                }
+        
+              
+                .corner {
+                    position: absolute;
+                    width: 6px; 
+                    height: 6px;
+                    background: radial-gradient(circle, #999 25%, #555 75%);
+                    border-radius: 50%;
+                    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+                }
+        
+                
+                .left {
+                    top: 50%; 
+                    left: 10px; 
+                    transform: translateY(-50%); 
+                }
+        
+                .right {
+                    top: 50%; 
+                    right: 10px; 
+                    transform: translateY(-50%); 
+                }
+        
+        
+            </style>
+
+    <script>
+        window.addEventListener('load', function () {
+            const currentVersion = '1.5.2';  
+
+            const storedVersion = localStorage.getItem('version');
+
+            if (!storedVersion || storedVersion !== currentVersion) {
+                localStorage.setItem('version', currentVersion);
+                location.reload(true);  
+            }
+        });
+    </script>
+
+        <link rel="icon" href="images/logo-crystalBall.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="images/logo-crystalBall.ico" type="image/x-icon"> 
+
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2GKERV0V0Y"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-2GKERV0V0Y');
+        </script>
+
+    <!-- Matomo -->
+    <script>
+      var _paq = window._paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="https://wsdworkgd03.matomo.cloud/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src='https://cdn.matomo.cloud/wsdworkgd03.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
+
+</head>
+<body>
+    <div class="theme-switcher">
+        <span class="mode-label">夜间模式</span> 
+        <button id="theme-toggle" class="power-switch"></button>
+    </div>
+    
+    <div class="container">
+        <div class="title" style="overflow: visible; white-space: nowrap;"><span class="metal-plate" style="margin-left: 45px;">提额项目报单计数器
+            <span class="corner left"></span>
+            <span class="corner right"></span>
+        </span> 1.5.2
+            <span class="tooltip" data-tooltip="使用说明：&#10;1. 将新增单数填入对应种类端口之后的输入框中；&#10;2. 全部填好之后点击【立即计算】按钮，即可自动生成报单文本；&#10;3. 再点击【一键复制】按钮。&#10;注：本计数器具有自动累计功能，页面刷新或浏览器重启都不会丢失数据。&#10; &#10;更新记录 v1.5.0.20241026：&#10;i. 新增了一种“星舰控制台”的页面风格。&#10;注：切换页面风格的按钮是位于页面最下方左侧的一个星际飞船或者传送门的标志。&#10; &#10;更新记录 v1.5.1.20241102：&#10;i. 修复了之前当完成率发生变化时无法正常触发液面高度变动动画的bug。&#10; &#10;更新记录 v1.5.2.20241107：&#10;i. 修复了之前当单数输入框未清零时点击【撤销本次计算】或【强制归零】按钮会导致“已有单数”错误显示的bug。&#10; &#10;感谢友友们的使用 &#10;祝捷报频传 &#x2764;">?</span>
+            <span class="mountains-of-christmas-regular"> Merry Christmas! (2024.12.24-12.25)</span>
+        </div>
+    
+    <div class="input-row">
+        姓名：<span id="nameDisplay" style="font-family:  'FangSong', serif; font-weight: bold;">鲍得快</span>
+        <input type="text" id="nameInput" style="display: none;" value="鲍得快">
+        当日目标：<span id="targetDisplay" style="font-family:  'FangSong', serif; font-weight: bold;">500</span>
+        <input type="number" id="targetInput" style="display: none;" value="500">
+        <span style="font-family:  'FangSong', serif; font-weight: bold;">元</span>
+        <button id="editBtn" class="simple-btn">编辑</button>
+        <button id="saveBtn" class="simple-btn" style="display: none;">保存</button>
+        <button id="cancelBtn" class="simple-btn" style="display: none;">取消</button>            
+    </div>
+
+    <div class="section">
+        <h3>AI端口</h3>
+        <div class="input-row">
+            <img src="images/icons/credit-icon-32px.png" alt="credit图标" class="icon"> 
+            <span style="font-family:  'Fangsong';">授权<b>征信记录</b></span>(<b style="color: #62272A;">25</b>元/单)：<input type="number" id="aiCredit" min="0" value="0">
+            <span id="aiCreditTotal" style="display: inline;">已有0单</span>
+        </div>
+        <div class="input-row">
+            <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
+            <span style="font-family:  'Fangsong';">发送<b>银行流水-超网</b></span>(<b style="color: #62272A;">45</b>元/单)：<input type="number" id="aiBank1" min="0" value="0">
+            <span id="aiBank1Total" style="display: inline;">已有0单</span>
+        </div>
+        <div class="input-row">
+            <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
+            <span style="font-family:  'Fangsong';">发送<b>银行流水-邮箱</b></span>(<b style="color: #62272A;">80</b>元/单)：<input type="number" id="aiBank2" min="0" value="0">
+            <span id="aiBank2Total" style="display: inline;">已有0单</span>
+        </div>
+        <div class="input-row">
+            <img src="images/icons/tax-icon-32px.png" alt="tax图标" class="icon"> 
+            <span style="font-family:  'Fangsong';">授权<b>发票明细-RPA</b></span>(<b style="color: #62272A;">80</b>元/单)：<input type="number" id="aiTax" min="0" value="0">
+            <span id="aiTaxTotal" style="display: inline;">已有0单</span>
+        </div>
+        <div class="input-row">
+            <img src="images/icons/wechat-icon-32px.png" alt="wechat图标" class="icon">
+            <span style="font-family:  'Fangsong';">发送<b>微信账单</b></span>(<b style="color: #62272A;">35</b>元/单)：<input type="number" id="aiWechat" min="0" value="0">
+            <span id="aiWechatTotal" style="display: inline;">已有0单</span>
+        </div>
+        <div class="input-row">
+            <img src="images/icons/house-icon-32px-Xmas.png" alt="house图标" class="icon"> 
+            <span style="font-family:  'Fangsong';">提交<b>房产信息-直连</b></span>(<b style="color: #62272A;">45</b>元/单)：<input type="number" id="aiHouse1" min="0" value="0">
+            <span id="aiHouse1Total" style="display: inline;">已有0单</span>
+        </div>
+        <div class="input-row">
+            <img src="images/icons/house-icon-32px-Xmas.png" alt="house图标" class="icon"> 
+            <span style="font-family:  'Fangsong';">提交<b>房产信息-复杂</b></span>(<b style="color: #62272A;">80</b>元/单)：<input type="number" id="aiHouse2" min="0" value="0">
+            <span id="aiHouse2Total" style="display: inline;">已有0单</span>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>离线端口</h3>
+        <div class="input-row">
+            <img src="images/icons/credit-icon-32px.png" alt="credit图标" class="icon"> 
+            <span style="font-family:  'Fangsong';">授权<b>征信记录</b></span>(<b style="color: #62272A;">30</b>元/单)：<input type="number" id="offlineCredit" min="0" value="0">
+            <span id="offlineCreditTotal" style="display: inline;">已有0单</span>
+        </div>
+        <div class="input-row">
+            <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
+            <span style="font-family:  'Fangsong';">发送<b>银行流水-超网</b></span>(<b style="color: #62272A;">60</b>元/单)：<input type="number" id="offlineBank1" min="0" value="0">
+            <span id="offlineBank1Total" style="display: inline;">已有0单</span>
+        </div>
+        <div class="input-row">
+            <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
+            <span style="font-family:  'Fangsong';">发送<b>银行流水-邮箱</b></span>(<b style="color: #62272A;">100</b>元/单)：<input type="number" id="offlineBank2" min="0" value="0">
+            <span id="offlineBank2Total" style="display: inline;">已有0单</span>
+        </div>
+        <div class="input-row">
+            <img src="images/icons/tax-icon-32px.png" alt="tax图标" class="icon"> 
+            <span style="font-family:  'Fangsong';">授权<b>发票明细-RPA</b></span>(<b style="color: #62272A;">80</b>元/单)：<input type="number" id="offlineTax" min="0" value="0">
+            <span id="offlineTaxTotal" style="display: inline;">已有0单</span>
+        </div>
+        <div class="input-row">
+            <img src="images/icons/wechat-icon-32px.png" alt="wechat图标" class="icon">
+            <span style="font-family:  'Fangsong';">发送<b>微信账单</b></span>(<b style="color: #62272A;">40</b>元/单)：<input type="number" id="offlineWechat" min="0" value="0">
+            <span id="offlineWechatTotal" style="display: inline;">已有0单</span>
+        </div>
+        <div class="input-row">
+            <img src="images/icons/house-icon-32px-Xmas.png" alt="house图标" class="icon"> 
+            <span style="font-family:  'Fangsong';">提交<b>房产信息-直连</b></span>(<b style="color: #62272A;">60</b>元/单)：<input type="number" id="offlineHouse1" min="0" value="0">
+            <span id="offlineHouse1Total" style="display: inline;">已有0单</span>
+        </div>
+        <div class="input-row">
+            <img src="images/icons/house-icon-32px-Xmas.png" alt="house图标" class="icon"> 
+            <span style="font-family:  'Fangsong';">提交<b>房产信息-复杂</b></span>(<b style="color: #62272A;">100</b>元/单)：<input type="number" id="offlineHouse2" min="0" value="0">
+            <span id="offlineHouse2Total" style="display: inline;">已有0单</span>
+        </div>
+    </div>
+    
+
+    <div class="buttons">
+        <button class="green">立即计算</button>
+        <button class="yellow">撤销本次计算</button>
+        <button class="red">强制归零</button>
+        <button class="copy-button">一键复制</button>
+    </div>        
+
+    <div id="result" class="blackboard"></div>
+
+<!-- partial:index.partial.html -->
+
+<div class="snowglobe">
+<div class="sg-bg"></div>
+<div class="grnd-snow">
+  <div class="snow-surface"></div>
+</div>
+<div class="tree">
+  <div class="tree-shadow"></div>
+  <div class="branch-bot">
+    <div class="branch-bot-snow"></div>
+    <div class="branch-shadow"> </div>
+  </div>
+  <div class="branch-mid">
+    <div class="branch-mid-snow"></div>
+    <div class="branch-shadow"> </div>
+  </div>
+  <div class="branch-top">
+    <div class="branch-top-snow"></div>
+  </div>
+  <div class="star"></div>
+  <div class="baubles"></div>
+</div>
+<div class="sm-shadow"></div>
+<div class="snowman">
+  <div class="snowman-bot"></div>
+  <div class="snowman-top"></div>
+  <div class="coal"></div>
+  <div class="carrot"></div>
+</div>
+<div class="falling-snow-wrap">
+  <div class="falling-snow">
+    <div class="flakes1">
+      <p>*</p>
+    </div>
+    <div class="flakes2">
+      <p>*</p>
+    </div>
+  </div>
+</div>
+<div class="sg-fg"></div>
+<div class="stand-curved-wrap">
+  <div class="stand-curved"></div>
+</div>
+</div>
+
+<div class="percentage-display">
+0%
+</div>
+
+<!-- partial -->
+
+
+
+    <!-- <div id="mailbox-container">
+        <img id="mailbox" src="images/mailbox_32px.png" alt="mailbox图标">
+        <div id="mailbox-tooltip">点击鼠标左键复制联系方式：<br>ProgrammeurSauvage@hotmail.com</div>
+    </div>
+
+    <div id="library-container">
+        <a href="https://www.wsd.work.gd/library" target="_blank">
+            <img id="library" src="images/library_32px.png" alt="library图标">
+        </a>
+        <div id="library-tooltip">常用资料<br>（待完善）</div>
+    </div>
+
+    <div id="starship-container">
+        <img id="starship" src="images/starship_32px.png" alt="starship图标" onclick="redirectToControlPanel()">
+        <div id="starship-tooltip">点击鼠标左键切换为“星舰控制台风格”</div>
+    </div>
+    
+
+    <select id="theme-selector">
+        <option value="default">旧版风格</option>
+        <option value="led">蓝屏LED风格</option>
+        <option value="blackboard">板书风格</option>
+        <option value="typewriter">打字机风格</option>
+    </select> -->
+
+</div>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => { // DOM 1
+
+            const fields = [
+                'aiCredit', 'aiBank1', 'aiBank2', 'aiTax', 'aiWechat', 'aiHouse1', 'aiHouse2',
+                'offlineCredit', 'offlineBank1', 'offlineBank2', 'offlineTax', 'offlineWechat', 
+                'offlineHouse1', 'offlineHouse2'
+            ];
+
+
+            fields.forEach(field => {
+                const total = parseInt(localStorage.getItem(`${field}Total`)) || 0;
+                updateDisplay(field, total);
+            });
+
+
+            let tempValues = {};
+            fields.forEach(field => tempValues[field] = 0);
+
+
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                input.addEventListener('input', (event) => {
+                    const id = event.target.id;
+                    const value = parseInt(event.target.value) || 0;
+                    tempValues[id] = value;  
+                    applyHighlight();         
+                });
+            });
+
+
+            let lastCalculation = {};
+
+            document.querySelector('.green').addEventListener('click', () => {
+
+                lastCalculation = fields.reduce((acc, field) => {
+                    acc[field] = parseInt(localStorage.getItem(`${field}Total`)) || 0;
+                    return acc;
+                }, {});
+
+   
+                fields.forEach(field => {
+                    const previousTotal = parseInt(localStorage.getItem(`${field}Total`)) || 0;
+                    const newTotal = previousTotal + tempValues[field];
+                    localStorage.setItem(`${field}Total`, newTotal);
+                    updateDisplay(field, newTotal);
+                });
+
+
+                fields.forEach(field => tempValues[field] = 0);
+                document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+            });
+
+
+            document.querySelector('.yellow').addEventListener('click', () => {
+                if (Object.keys(lastCalculation).length > 0) {
+                    fields.forEach(field => {
+                        localStorage.setItem(`${field}Total`, lastCalculation[field]);
+                        updateDisplay(field, lastCalculation[field]);
+                    });
+                    lastCalculation = {};  
+                }
+
+                fields.forEach(field => tempValues[field] = 0);
+                document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+                applyHighlight();
+            });
+
+
+            document.querySelector('.red').addEventListener('click', () => {
+
+                fields.forEach(field => tempValues[field] = 0);
+
+                document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+
+                applyHighlight();
+                    
+            });
+
+
+        });
+
+        document.addEventListener('DOMContentLoaded', () => { // DOM 2
+            const savedName = localStorage.getItem('savedName');
+            const savedTarget = localStorage.getItem('savedTarget');
+
+            if (savedName) {
+                document.getElementById('nameDisplay').textContent = savedName;
+                document.getElementById('nameInput').value = savedName;
+            }
+
+            if (savedTarget) {
+                document.getElementById('targetDisplay').textContent = savedTarget;
+                document.getElementById('targetInput').value = savedTarget;
+            }
+
+            applyHighlight();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => { // DOM 3
+
+            const currentTheme = localStorage.getItem('theme');
+
+            if (currentTheme === 'dark') {
+
+                document.body.classList.add('dark-mode');
+                document.getElementById('theme-toggle').classList.add('active');
+            } else {
+
+                document.getElementById('theme-toggle').classList.remove('active');
+            }
+
+
+            updateAllDisplays();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {  // DOM 4
+
+            const savedResult = localStorage.getItem('calculationResult');
+            if (savedResult) {
+                document.getElementById('result').textContent = JSON.parse(savedResult).resultText;
+            }
+
+
+            applyHighlight();
+
+
+            document.getElementById('editBtn').addEventListener('click', () => {
+                document.getElementById('targetInput').value = document.getElementById('targetDisplay').textContent; // 保留目标值
+                document.getElementById('nameDisplay').style.display = 'none';
+                document.getElementById('targetDisplay').style.display = 'none';
+                document.getElementById('nameInput').style.display = 'inline';
+                document.getElementById('targetInput').style.display = 'inline';
+                document.getElementById('saveBtn').style.display = 'inline';
+                document.getElementById('cancelBtn').style.display = 'inline';
+                document.getElementById('editBtn').style.display = 'none';
+            });
+
+
+            document.getElementById('saveBtn').addEventListener('click', () => {
+                const newName = document.getElementById('nameInput').value;
+                const newTarget = parseInt(document.getElementById('targetInput').value);
+
+
+                localStorage.setItem('savedName', newName);
+                localStorage.setItem('savedTarget', newTarget);
+
+                document.getElementById('nameDisplay').textContent = newName;
+                document.getElementById('targetDisplay').textContent = newTarget;
+
+                document.getElementById('nameDisplay').style.display = 'inline';
+                document.getElementById('targetDisplay').style.display = 'inline';
+                document.getElementById('nameInput').style.display = 'none';
+                document.getElementById('targetInput').style.display = 'none';
+                document.getElementById('saveBtn').style.display = 'none';
+                document.getElementById('cancelBtn').style.display = 'none';
+                document.getElementById('editBtn').style.display = 'inline';
+            });
+
+
+            document.getElementById('cancelBtn').addEventListener('click', () => {
+                document.getElementById('nameInput').value = document.getElementById('nameDisplay').textContent;
+                document.getElementById('targetInput').value = document.getElementById('targetDisplay').textContent;
+
+                document.getElementById('nameDisplay').style.display = 'inline';
+                document.getElementById('targetDisplay').style.display = 'inline';
+                document.getElementById('nameInput').style.display = 'none';
+                document.getElementById('targetInput').style.display = 'none';
+                document.getElementById('saveBtn').style.display = 'none';
+                document.getElementById('cancelBtn').style.display = 'none';
+                document.getElementById('editBtn').style.display = 'inline';
+            });
+        });
+
+
+
+        let totalOrders = parseInt(localStorage.getItem('totalOrders')) || 0;
+        let totalAmount = parseInt(localStorage.getItem('totalAmount')) || 0;
+        let aiTotalOrders = parseInt(localStorage.getItem('aiTotalOrders')) || 0;
+        let lastCalculation = JSON.parse(localStorage.getItem('lastCalculation')) || {};
+        let prevState = {};  
+    
+        function calculate() {
+            const name = document.getElementById('nameDisplay').textContent;
+            const target = parseInt(document.getElementById('targetDisplay').textContent);
+    
+            const aiCredit = parseInt(document.getElementById('aiCredit').value);
+            const aiBank1 = parseInt(document.getElementById('aiBank1').value);
+            const aiBank2 = parseInt(document.getElementById('aiBank2').value);
+            const aiTax = parseInt(document.getElementById('aiTax').value);
+            const aiWechat = parseInt(document.getElementById('aiWechat').value);
+            const aiHouse1 = parseInt(document.getElementById('aiHouse1').value);
+            const aiHouse2 = parseInt(document.getElementById('aiHouse2').value);
+            
+            const offlineCredit = parseInt(document.getElementById('offlineCredit').value);
+            const offlineBank1 = parseInt(document.getElementById('offlineBank1').value);
+            const offlineBank2 = parseInt(document.getElementById('offlineBank2').value);
+            const offlineTax = parseInt(document.getElementById('offlineTax').value);
+            const offlineWechat = parseInt(document.getElementById('offlineWechat').value);
+            const offlineHouse1 = parseInt(document.getElementById('offlineHouse1').value);
+            const offlineHouse2 = parseInt(document.getElementById('offlineHouse2').value);
+            
+            // 计算当次完成订单总金额
+            const totalCurrent = (aiCredit * 25) + (aiBank1 * 45) + (aiBank2 * 80) + (aiTax * 80) + (aiWechat * 35) + (aiHouse1 * 45) + (aiHouse2 * 80)
+                                + (offlineCredit * 30) + (offlineBank1 * 60) + (offlineBank2 * 100) + (offlineTax * 80) + (offlineWechat * 40) + (offlineHouse1 * 60) + (offlineHouse2 * 100);
+            
+            // 更新总单数
+            const totalCurrentOrders = aiCredit + aiBank1 + aiBank2 + aiTax + aiWechat + aiHouse1 + aiHouse2 
+                                        + offlineCredit + offlineBank1 + offlineBank2 + offlineTax + offlineWechat + offlineHouse1 + offlineHouse2;
+            
+            // 保存当前状态到 prevState
+            prevState = {
+                totalOrders, 
+                totalAmount, 
+                aiTotalOrders, 
+                resultText: document.getElementById('result').textContent 
+            };
+            
+            totalOrders += totalCurrentOrders;
+            totalAmount += totalCurrent;
+            aiTotalOrders += (aiCredit + aiBank1 + aiBank2 + aiTax + aiWechat + aiHouse1 + aiHouse2);
+            
+            const diff = target - totalAmount;
+            const diffText = diff >= 0 ? `差额 ${diff} 元` : `超额 ${Math.abs(diff)} 元`;
+            
+            const resultText = `日目标 ${target} 元，${name}本次新增完成 ${totalCurrent} 元，总单 ${totalOrders} 单（AI ${aiTotalOrders} 单），当日累计完成 ${totalAmount} 元，${diffText}，其他伙伴加油[加油]`;
+            document.getElementById('result').textContent = resultText;
+
+
+            // 保存计算结果
+            const result = {
+            dayGoal: target,
+            totalCompletedOrders: totalCurrent,
+            aiCompletedOrders: aiTotalOrders,
+            difference: diff,
+            resultText: resultText
+            };
+            localStorage.setItem('calculationResult', JSON.stringify(result));
+
+            // 保存最近一次的计算结果以便撤销
+            lastCalculation = {
+                aiCredit,
+                aiBank1,
+                aiBank2,
+                aiTax,
+                aiWechat,
+                aiHouse1,
+                aiHouse2,
+                offlineCredit,
+                offlineBank1,
+                offlineBank2,
+                offlineTax,
+                offlineWechat,
+                offlineHouse1,
+                offlineHouse2,
+                resultText
+            };
+            localStorage.setItem('lastCalculation', JSON.stringify(lastCalculation));
+            
+            // 保存当前总单数和金额
+            localStorage.setItem('totalOrders', totalOrders);
+            localStorage.setItem('totalAmount', totalAmount);
+            localStorage.setItem('aiTotalOrders', aiTotalOrders);
+            
+            // 清空所有输入框的值
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                input.value = 0;
+            });
+            
+            // 重新应用高亮
+            applyHighlight();
+        }
+    
+        function undo() {
+            if (Object.keys(prevState).length > 0) { // 判断是否有保存的状态
+                const { aiCredit, aiBank1, aiBank2, aiTax, aiWechat, aiHouse1, aiHouse2, 
+                        offlineCredit, offlineBank1, offlineBank2, offlineTax, offlineWechat, 
+                        offlineHouse1, offlineHouse2, resultText, totalOrders: prevTotalOrders, 
+                        totalAmount: prevTotalAmount, aiTotalOrders: prevAiTotalOrders } = prevState; // 使用 prevState 代替 lastCalculation
+    
+                document.getElementById('aiCredit').value = aiCredit || 0;
+                document.getElementById('aiBank1').value = aiBank1 || 0;
+                document.getElementById('aiBank2').value = aiBank2 || 0;
+                document.getElementById('aiTax').value = aiTax || 0;
+                document.getElementById('aiWechat').value = aiWechat || 0;
+                document.getElementById('aiHouse1').value = aiHouse1 || 0;
+                document.getElementById('aiHouse2').value = aiHouse2 || 0;
+                document.getElementById('offlineCredit').value = offlineCredit || 0;
+                document.getElementById('offlineBank1').value = offlineBank1 || 0;
+                document.getElementById('offlineBank2').value = offlineBank2 || 0;
+                document.getElementById('offlineTax').value = offlineTax || 0;
+                document.getElementById('offlineWechat').value = offlineWechat || 0;
+                document.getElementById('offlineHouse1').value = offlineHouse1 || 0;
+                document.getElementById('offlineHouse2').value = offlineHouse2 || 0;
+            
+                // 恢复保存的订单总数和AI订单总数
+                totalOrders = prevTotalOrders;
+                totalAmount = prevTotalAmount;
+                aiTotalOrders = prevAiTotalOrders;
+            
+                // 更新本地存储
+                localStorage.setItem('totalOrders', totalOrders);
+                localStorage.setItem('totalAmount', totalAmount);
+                localStorage.setItem('aiTotalOrders', aiTotalOrders);
+            
+                // 显示最近一次的计算结果
+                document.getElementById('result').textContent = resultText;
+                
+                // save the latest result of function undo()
+                const result = {
+                dayGoal: parseInt(document.getElementById('targetDisplay').textContent),
+                totalCompletedOrders: totalAmount,
+                aiCompletedOrders: aiTotalOrders,
+                difference: parseInt(document.getElementById('targetDisplay').textContent) - totalAmount,
+                resultText: resultText
+                };
+                localStorage.setItem('calculationResult', JSON.stringify(result));
+
+            
+                // 清空 prevState，防止多次撤销
+                prevState = {};
+            }
+            
+            // 重新应用高亮效果
+            applyHighlight();
+        }
+    
+        // 添加事件监听
+        document.querySelector('.green').addEventListener('click', calculate);
+        document.querySelector('.yellow').addEventListener('click', undo);
+        document.querySelector('.red').addEventListener('click', confirmReset);
+        document.querySelector('.copy-button').addEventListener('click', copyResult);
+
+        function confirmReset() {
+            if (confirm('确定真的强制归零？')) {
+                // 强制将所有值归零
+                document.querySelectorAll('input[type="number"]').forEach(input => {
+                    input.value = 0;
+                });
+
+                // 清除本地存储中的数据
+                localStorage.removeItem('totalOrders');
+                localStorage.removeItem('totalAmount');
+                localStorage.removeItem('aiTotalOrders');
+                localStorage.removeItem('lastCalculation');
+                localStorage.removeItem('calculationResult'); // 清除计算结果
+
+                // 清除结果栏
+                document.getElementById('result').textContent = '';
+
+                // 重置内存中的数据
+                totalOrders = 0;
+                totalAmount = 0;
+                aiTotalOrders = 0;
+                lastCalculation = {};
+
+                // 更新本地存储中的数据
+                localStorage.setItem('totalOrders', totalOrders);
+                localStorage.setItem('totalAmount', totalAmount);
+                localStorage.setItem('aiTotalOrders', aiTotalOrders);
+                localStorage.setItem('lastCalculation', JSON.stringify(lastCalculation));
+
+                // 重新应用高亮
+                applyHighlight();
+
+                resetOrderDisplay();
+            }
+        }
+
+        function resetOrderDisplay() {
+            const fields = ['aiCredit', 'aiBank1', 'aiBank2', 'aiTax', 'aiWechat', 'aiHouse1', 'aiHouse2',
+                            'offlineCredit', 'offlineBank1', 'offlineBank2', 'offlineTax', 'offlineWechat', 
+                            'offlineHouse1', 'offlineHouse2']; 
+
+            fields.forEach(field => {
+                localStorage.setItem(`${field}Total`, 0);
+                document.getElementById(`${field}Total`).innerHTML = `已有<span>${0}</span>单`; // 使用正常样式
+            });
+        }
+
+
+    
+        function copyResult() {
+            const resultText = document.getElementById('result').textContent;
+            navigator.clipboard.writeText(resultText)
+                .then(() => alert('结果已复制到剪贴板'))
+                .catch(err => alert('复制失败'));
+        }
+    
+        function applyHighlight() {
+            const isDarkMode = document.body.classList.contains('dark-mode');
+
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                const label = input.parentElement.querySelector('b');
+
+                const highlightStyles = {
+                    lightMode: {
+                        backgroundColor: 'yellow',
+                        color: 'black'
+                    },
+                    darkMode: {
+                        backgroundColor: 'indigo',
+                        color: 'yellow'
+                    }
+                };
+
+            const currentHighlightStyles = isDarkMode ? highlightStyles.darkMode : highlightStyles.lightMode;
+
+            if (input.id !== 'targetInput') {
+                if (input.value > 0) {
+                    input.classList.add('highlight');
+                    input.style.backgroundColor = currentHighlightStyles.backgroundColor;
+                    input.style.color = currentHighlightStyles.color;
+                    if (label) {
+                        label.classList.add('highlight');
+                        label.style.backgroundColor = currentHighlightStyles.backgroundColor;
+                        label.style.color = currentHighlightStyles.color;
+                    }
+                } else {
+                    input.classList.remove('highlight');
+                    input.style.backgroundColor = ''; 
+                    input.style.color = '';
+                    if (label) {
+                        label.classList.remove('highlight');
+                        label.style.backgroundColor = ''; 
+                        label.style.color = '';
+                    }
+                }
+            } else {
+                        input.classList.remove('highlight');
+                        input.style.backgroundColor = ''; 
+                        input.style.color = '';
+                        if (label) {
+                            label.classList.remove('highlight');
+                            label.style.backgroundColor = ''; 
+                            label.style.color = '';
+                        }
+                    }
+                });
+        }
+
+
+        function updateDisplay(field, total) {
+            const displayElement = document.getElementById(`${field}Total`);
+            
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            
+            const color = isDarkMode ? 'gold' : 'gold';
+            
+            const totalText = total > 0 ? `<span style="font-weight: bold; color: ${color};">${total}</span>` : '0';
+            displayElement.innerHTML = `已有${totalText}单`;
+        }
+
+
+        function updateAllDisplays() {
+            const fields = [
+                'aiCredit', 'aiBank1', 'aiBank2', 'aiTax', 'aiWechat', 'aiHouse1', 'aiHouse2',
+                'offlineCredit', 'offlineBank1', 'offlineBank2', 'offlineTax', 'offlineWechat', 
+                'offlineHouse1', 'offlineHouse2'
+            ];
+            
+            fields.forEach(field => {
+                const total = parseInt(localStorage.getItem(`${field}Total`)) || 0;
+                updateDisplay(field, total);
+            });
+        }
+
+
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            const isDarkMode = document.body.classList.toggle('dark-mode');
+            
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
+            document.getElementById('theme-toggle').classList.toggle('active');
+
+            updateAllDisplays();
+        });
+
+
+        const nightIcons = {
+            credit: "images/icons/credit-icon-32px.png",
+            bank: "images/icons/bank-icon-32px.png",
+            tax: "images/icons/tax-icon-32px.png",
+            wechat: "images/icons/wechat-icon-32px.png",
+            house: "images/icons/house-icon-32px-Xmas.png",
+        };
+
+
+        function toggleNightMode() {
+            const isNightMode = document.body.classList.toggle('night-mode'); 
+
+            const icons = document.querySelectorAll('.icon'); 
+
+            icons.forEach(icon => {
+                const iconType = icon.alt.split('图标')[0]; 
+                if (isNightMode && nightIcons[iconType]) {
+                    icon.src = nightIcons[iconType]; 
+                } else {
+                    icon.src = icon.src.replace('night/', ''); 
+                }
+            });
+        }
+
+                
+
+        document.getElementById('theme-toggle').addEventListener('click', toggleNightMode);
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('theme-toggle').classList.add('active');
+                toggleNightMode();  
+            }
+        });
+
+
+
+        // function calculateWaveAnimation() {
+
+        //     const totalAmount = parseFloat(localStorage.getItem('totalAmount')) || 0;
+        //     const target = parseFloat(document.getElementById('targetDisplay').textContent) || 1;
+
+        //     if (target === 0) {
+        //         alert("目标不能为0");
+        //         return;
+        //     }
+
+        //     const percentageOfCompletion = totalAmount / target;
+
+        //     console.log("percentageOfCompletion:", percentageOfCompletion);
+
+        //     const percentageDisplay = document.querySelector('.percentage-display');
+
+        //     percentageDisplay.textContent = `${(percentageOfCompletion * 100).toFixed(0)}%`;
+
+
+        // }
+
+
+            
+
+        // document.addEventListener('DOMContentLoaded', calculateWaveAnimation);
+        // document.querySelector('.green').addEventListener('click', calculateWaveAnimation);
+        // document.querySelector('.yellow').addEventListener('click', calculateWaveAnimation);
+        // document.querySelector('.red').addEventListener('click', calculateWaveAnimation);  
+
+        function calculateSnowAnimation() {
+    const totalAmount = parseFloat(localStorage.getItem('totalAmount')) || 0;
+    const target = parseFloat(document.getElementById('targetDisplay').textContent) || 1;
+
+    if (target === 0) {
+        alert("目标不能为0");
+        return;
+    }
+
+    const percentageOfCompletion = totalAmount / target;
+    const percentageDisplay = document.querySelector('.percentage-display');
+    percentageDisplay.textContent = `${(percentageOfCompletion * 100).toFixed(0)}%`;
+
+    // 调用 getFlakesAnimationPeriod 计算新的动画周期
+    const newFlakesAnimationPeriod = getFlakesAnimationPeriod(percentageOfCompletion);
+
+    const flakes1 = document.querySelector('.flakes1');
+    const flakes2 = document.querySelector('.flakes2');
+
+    // 移除现有动画，强制重绘
+    flakes1.style.animation = 'none';
+    flakes2.style.animation = 'none';
+
+    // 强制重绘浏览器
+    void flakes1.offsetWidth;
+    void flakes2.offsetWidth;
+
+    // 重新应用动画，确保 infinite 属性生效
+    const animationSettings1 = `sfanim linear ${newFlakesAnimationPeriod}s infinite`;
+    const animationSettings2 = `sfanim linear ${newFlakesAnimationPeriod / 2}s infinite`;
+
+    flakes1.style.webkitAnimation = animationSettings1;
+    flakes1.style.animation = animationSettings1;
+
+    flakes2.style.webkitAnimation = animationSettings2;
+    flakes2.style.animation = animationSettings2;
+}
+
+
+        function getFlakesAnimationPeriod(percentageOfCompletion) {
+            // 确保输入值不小于 0
+            if (percentageOfCompletion < 0) {
+                throw new Error("percentageOfCompletion 必须在 0 到 1 之间");
+            }
+
+            // 超出范围时返回固定值
+            if (percentageOfCompletion > 1) {
+                return 2.07;
+            }
+
+            // 根据公式计算 y 值
+            const y = 150 * Math.exp(-6 * percentageOfCompletion) + 1.7;
+
+            // 返回动画周期
+            return y;
+        }
+
+
+        // 示例调用
+        console.log(getFlakesAnimationPeriod(0));   // 输出示例
+        console.log(getFlakesAnimationPeriod(0.5)); // 输出示例
+        console.log(getFlakesAnimationPeriod(1));   // 输出示例
+
+        document.addEventListener('DOMContentLoaded', calculateSnowAnimation);
+        document.querySelector('.green').addEventListener('click', calculateSnowAnimation);
+        document.querySelector('.yellow').addEventListener('click', calculateSnowAnimation);
+        document.querySelector('.red').addEventListener('click', calculateSnowAnimation);  
+
+
+
+
+
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            let isEditing = false;  
+
+            document.getElementById('editBtn').addEventListener('click', () => {
+                isEditing = true;
+            });
+
+            document.getElementById('saveBtn').addEventListener('click', () => {
+                isEditing = false;
+            });
+            document.getElementById('cancelBtn').addEventListener('click', () => {
+                isEditing = false;
+            });
+
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                if (button.id !== 'editBtn' && button.id !== 'saveBtn' && button.id !== 'cancelBtn') {
+                    button.addEventListener('click', (event) => {
+                        if (isEditing) {
+                            alert('请先完成“姓名”或“当日目标”的编辑操作！');
+                            event.preventDefault();  
+                        }
+                    });
+                }
+            });
+        });
+
+    // 为 mailbox 元素添加左键点击EventListener
+    document.getElementById('mailbox').addEventListener('click', function(event) {
+        navigator.clipboard.writeText('ProgrammeurSauvage@hotmail.com').then(function() {
+            alert('已将邮件地址 ProgrammeurSauvage@hotmail.com 复制到剪贴板');
+        }).catch(function(err) {
+            console.error('复制到剪贴板失败：', err);
+        });
+    });
+
+    function redirectToControlPanel() {
+        window.location.href = "https://www.wsd.work.gd/starship";
+    }
+
+    </script>
+<footer>
+</footer>
+</body>
+</html>
