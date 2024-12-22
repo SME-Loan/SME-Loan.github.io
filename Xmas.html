@@ -4,350 +4,413 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>提额项目报单计数器</title>
+    <!-- Embed code in the <head> of your html Mountains of Christmas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
+
+    .mountains-of-christmas-regular {
+    font-family: "Mountains of Christmas", serif;
+    font-weight: 400;
+    font-style: normal;
+    }
+
+    .mountains-of-christmas-bold {
+    font-family: "Mountains of Christmas", serif;
+    font-weight: 700;
+    font-style: normal;
+    }
+
+    .xmasLabelSection {
+    position: absolute;
+    top: 455px;
+    right: 179px; 
+    width: 210px;
+    height: 90px;
+    border: 4px solid #c0c0c0; /* 镜框质感的边框 */
+    border-radius: 10px; /* 轻微圆角 */
+    padding: 10px;
+    color: white;
+    background: linear-gradient(to bottom, rgba(173, 216, 230, 0.6), rgba(173, 216, 230, 0.3)); /* 隐约的浅蓝色渐变 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.3); /* 镜框阴影和内阴影 */
+    backdrop-filter: blur(8px); /* 轻微模糊效果，更像冰面 */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* 字体阴影效果增强可读性 */
+    z-index: 1; /* 确保层级在其它元素之上 */
+    }
+
+    @font-face {
+    font-family: 'AaDeGuLaJian';
+    src: url('fonts/AaDeGuLaJian-2.woff2') format('woff2'),
+         url('fonts/AaDeGuLaJian-2.woff') format('woff'),
+         url('fonts/AaDeGuLaJian-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+        /* snowglobe CSS start */
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding-top: 20px;
-            padding-bottom: 0;
+                    background-color: #9b3715;
+                    color: #ECECEC;
+                    font-family: Arial, sans-serif;
+                    text-align: center;
+                    margin: 0;
+                    padding-top: 20px;
+                    padding-bottom: 0;
+                }
+        
+                body.dark-mode {
+                        background-color: black;
+                        color: white;
+                    }
+        
+                .snowglobe {
+          width: 200.0px;
+          height: 200.0px;
+          margin: auto;
+          position: relative;
+          margin-top: 15px;
         }
-
-        .snowglobe {
-  width: 200.0px;
-  height: 200.0px;
-  margin: auto;
-  position: relative;
-  margin-top: 15px;
-}
-
-.branch-top {
-  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  width: 20.0px;
-  height: 37.5px;
-  background-color: #62838C;
-  position: absolute;
-  top: 2.5px;
-  left: 15.0px;
-}
-
-.branch-top-snow {
-  background: linear-gradient(135deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(225deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(315deg, #dbe8fc 25%, transparent 25%), linear-gradient(45deg, #dbe8fc 25%, transparent 25%);
-  background-size: 16.0px 16.0px;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-
-.branch-mid {
-  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  width: 37.5px;
-  height: 57.5px;
-  background-color: #2D4959;
-  position: absolute;
-  top: 17.5px;
-  left: 6.2px;
-}
-
-.branch-mid-snow {
-  background: linear-gradient(135deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(225deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(315deg, #dbe8fc 25%, transparent 25%), linear-gradient(45deg, #dbe8fc 25%, transparent 25%);
-  background-size: 16.0px 16.0px;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-
-.branch-bot {
-  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  width: 50.0px;
-  height: 62.5px;
-  background-color: #142833;
-  position: absolute;
-  top: 40.0px;
-}
-
-.branch-bot-snow {
-  background: linear-gradient(135deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(225deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(315deg, #dbe8fc 25%, transparent 25%), linear-gradient(45deg, #dbe8fc 25%, transparent 25%);
-  background-size: 16.0px 16.0px;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-
-.branch-shadow {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background: linear-gradient(to bottom, #12434f 0%, rgba(255, 255, 255, 0) 100%);
-  mix-blend-mode: multiply;
-}
-
-.tree {
-  width: 50.0px;
-  height: 102.5px;
-  position: relative;
-  left: 100.0px;
-  top: 30.0px;
-}
-
-.sg-bg {
-  width: 200.0px;
-  height: 200.0px;
-  border-radius: 100%;
-  position: absolute;
-  top: 0.0px;
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.sg-fg {
-  width: 200.0px;
-  height: 200.0px;
-  border-radius: 100%;
-  position: absolute;
-  top: 0.0px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(246, 246, 246, 0.2) 47%, rgba(237, 237, 237, 0) 100%);
-}
-
-.grnd-snow {
-  width: 190.0px;
-  height: 190.0px;
-  border-radius: 100%;
-  position: absolute;
-  top: 5.0px;
-  left: 5.0px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 68%, #f0f0f0 68%, #ebeff5 79%, #c5d3e8 100%);
-}
-
-.snow-surface {
-  width: 178.0px;
-  height: 20.0px;
-  background: #fff;
-  position: relative;
-  top: 118.0px;
-  border-radius: 100%;
-  margin: auto;
-}
-
-.star {
-  width: 0.0px;
-  height: 0.0px;
-  border-right: 10.0px solid transparent;
-  border-bottom: 7.0px solid gold;
-  border-left: 10.0px solid transparent;
-  transform: rotate(35deg);
-  position: absolute;
-  top: 0.0px;
-  left: 15.0px;
-}
-
-.star:before {
-  border-bottom: 8.0px solid gold;
-  border-left: 3.0px solid transparent;
-  border-right: 3.0px solid transparent;
-  position: absolute;
-  height: 0;
-  width: 0;
-  top: -4.5px;
-  left: -6.5px;
-  content: "";
-  transform: rotate(-35deg);
-}
-
-.star:after {
-  position: absolute;
-  top: 0.3px;
-  left: -10.5px;
-  width: 0.0px;
-  height: 0.0px;
-  border-right: 10.0px solid transparent;
-  border-bottom: 7.0px solid gold;
-  border-left: 10.0px solid transparent;
-  transform: rotate(-70deg);
-  content: "";
-}
-
-.falling-snow-wrap {
-  overflow: hidden;
-  opacity: 0.99;
-  height: 130.0px;
-  width: 200.0px;
-  position: absolute;
-  top: 0.0px;
-}
-
-.falling-snow {
-  width: 190.0px;
-  height: 190.0px;
-  border-radius: 100%;
-  position: absolute;
-  top: 5.0px;
-  left: 5.0px;
-  overflow: hidden;
-  opacity: 0.99;
-}
-
-.flakes1 {
-  font-size: 50%; 
-  width: 200.0px;
-  height: 400.0px;
-  position: absolute;
-  top: 0.0px;
-  color: #fff;
-  opacity: 0.5;
-  -webkit-animation: sfanim linear 30s;
-          animation: sfanim linear 30s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  text-shadow: 151.5px 58.5px, 16.0px 44.5px, 161.5px 59.5px, 49.0px 91.5px, 63.0px 117.5px, 0.0px 85.5px, 190.0px 30.5px, 134.5px 8.5px, 0.0px 75.5px, 60.5px 172.0px, 114.5px 68.0px, 118.5px 140.0px, 151.5px 15.0px, 105.5px 157.0px, 189.0px 142.5px, 5.0px 143.5px, 46.5px 172.5px, 146.0px 162.0px, 111.5px 146.0px, 78.0px 80.0px, 126.5px 29.0px, 102.5px 97.5px, 72.5px 53.0px, 39.5px 156.0px, 91.0px 179.5px, 139.5px 49.5px, 174.5px 62.0px, 2.5px 16.5px, 108.0px 73.5px, 194.0px 58.5px, 35.0px 147.5px, 74.5px 159.0px, 48.0px 33.0px, 64.5px 108.5px, 69.0px 109.0px, 120.5px 155.0px, 115.5px 184.0px, 9.0px 163.5px, 86.5px 106.5px, 59.0px 5.0px, 123.0px 104.0px, 79.5px 122.0px, 134.0px 188.0px, 83.5px 131.0px, 42.5px 119.0px, 138.5px 23.5px, 193.0px 96.0px, 129.5px 182.0px, 162.5px 163.5px, 139.5px 100.5px, 151.5px 258.5px, 16.0px 244.5px, 161.5px 259.5px, 49.0px 291.5px, 63.0px 317.5px, 0.0px 285.5px, 190.0px 230.5px, 134.5px 208.5px, 0.0px 275.5px, 60.5px 372.0px, 114.5px 268.0px, 118.5px 340.0px, 151.5px 215.0px, 105.5px 357.0px, 189.0px 342.5px, 5.0px 343.5px, 46.5px 372.5px, 146.0px 362.0px, 111.5px 346.0px, 78.0px 280.0px, 126.5px 229.0px, 102.5px 297.5px, 72.5px 253.0px, 39.5px 356.0px, 91.0px 379.5px, 139.5px 249.5px, 174.5px 262.0px, 2.5px 216.5px, 108.0px 273.5px, 194.0px 258.5px, 35.0px 347.5px, 74.5px 359.0px, 48.0px 233.0px, 64.5px 308.5px, 69.0px 309.0px, 120.5px 355.0px, 115.5px 384.0px, 9.0px 363.5px, 86.5px 306.5px, 59.0px 205.0px, 123.0px 304.0px, 79.5px 322.0px, 134.0px 388.0px, 83.5px 331.0px, 42.5px 319.0px, 138.5px 223.5px, 193.0px 296.0px, 129.5px 382.0px, 162.5px 363.5px, 139.5px 300.5px;
-}
-
-.flakes2 {
-  font-size: 50%; 
-  width: 200.0px;
-  height: 400.0px;
-  position: absolute;
-  top: 0.0px;
-  color: #fff;
-  -webkit-animation: sfanim linear 15s;
-          animation: sfanim linear 15s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  text-shadow: 187.5px 242.5px, 5.5px 344.5px, 127.0px 392.0px, 2.5px 343.0px, 133.0px 352.5px, 194.0px 349.0px, 90.0px 353.5px, 18.0px 206.5px, 37.0px 347.5px, 119.0px 345.0px, 192.0px 317.5px, 0.5px 347.0px, 22.5px 269.0px, 65.5px 375.0px, 129.0px 260.0px, 78.5px 352.5px, 48.0px 374.5px, 162.5px 359.5px, 66.0px 344.0px, 83.5px 255.5px, 151.5px 204.0px, 170.0px 310.0px, 197.0px 214.0px, 93.5px 374.0px, 108.5px 312.0px, 178.0px 315.0px, 16.5px 379.0px, 119.0px 381.0px, 178.5px 293.0px, 126.5px 399.0px, 34.0px 393.0px, 82.0px 331.0px, 59.5px 299.0px, 110.5px 278.5px, 63.0px 268.5px, 141.0px 251.5px, 5.5px 227.5px, 109.5px 316.0px, 30.0px 298.5px, 20.5px 264.5px, 123.5px 225.5px, 108.5px 322.0px, 152.0px 200.0px, 107.0px 210.5px, 143.5px 378.5px, 38.0px 202.0px, 188.0px 367.5px, 84.5px 286.0px, 122.5px 395.0px, 33.0px 358.5px, 187.5px 42.5px, 5.5px 144.5px, 127.0px 192.0px, 2.5px 143.0px, 133.0px 152.5px, 194.0px 149.0px, 90.0px 153.5px, 18.0px 6.5px, 37.0px 147.5px, 119.0px 145.0px, 192.0px 117.5px, 0.5px 147.0px, 22.5px 69.0px, 65.5px 175.0px, 129.0px 60.0px, 78.5px 152.5px, 48.0px 174.5px, 162.5px 159.5px, 66.0px 144.0px, 83.5px 55.5px, 151.5px 4.0px, 170.0px 110.0px, 197.0px 14.0px, 93.5px 174.0px, 108.5px 112.0px, 178.0px 115.0px, 16.5px 179.0px, 119.0px 181.0px, 178.5px 93.0px, 126.5px 199.0px, 34.0px 193.0px, 82.0px 131.0px, 59.5px 99.0px, 110.5px 78.5px, 63.0px 68.5px, 141.0px 51.5px, 5.5px 27.5px, 109.5px 116.0px, 30.0px 98.5px, 20.5px 64.5px, 123.5px 25.5px, 108.5px 122.0px, 152.0px 0.0px, 107.0px 10.5px, 143.5px 178.5px, 38.0px 2.0px, 188.0px 167.5px, 84.5px 86.0px, 122.5px 195.0px, 33.0px 158.5px;
-}
-
-@-webkit-keyframes sfanim {
-  0% {
-    transform: translate(0.0px, -200.0px);
-  }
-  100% {
-    transform: translate(0.0px, 0.0px);
-  }
-}
-
-@keyframes sfanim {
-  0% {
-    transform: translate(0.0px, -200.0px);
-  }
-  100% {
-    transform: translate(0.0px, 0.0px);
-  }
-}
-.baubles {
-  width: 8.0px;
-  height: 8.0px;
-  background-color: #bf1131;
-  border-radius: 100%;
-  position: absolute;
-  top: 20.0px;
-  left: 20.0px;
-  box-shadow: 4.0px 22.0px 0.0px 0.0px #960028, -4.0px 40.0px 0.0px 0.0px #ce0037, 10.0px 50.0px 0.0px 0.0px #ce0025, -12.0px 66.0px 0.0px 0.0px #bf1131, 16.0px 70.0px 0.0px 0.0px #bf1131;
-}
-
-.tree-shadow {
-  width: 100.0px;
-  height: 10.0px;
-  background: radial-gradient(ellipse at center, #0d5466 0%, rgba(138, 174, 188, 0) 65%, rgba(206, 223, 235, 0) 100%);
-  position: absolute;
-  bottom: -5.0px;
-  left: -17.5px;
-}
-
-.stand-curved {
-  height: 90.0px;
-  width: 250.0px;
-  border-radius: 50%;
-  border: 50.0px solid maroon;
-  position: absolute;
-  bottom: 0.0px;
-  left: -35.0px;
-}
-
-.stand-curved-wrap {
-  width: 280.0px;
-  height: 66.7px;
-  position: absolute;
-  bottom: -68.0px;
-  margin-left: -40.0px;
-  position: relative;
-  -webkit-clip-path: polygon(30% 10%, 70% 10%, 80% 100%, 20% 100%);
-}
-
-.ground {
-  width: 100%;
-  height: 75.0px;
-  position: absolute;
-  top: 200.0px;
-  background: radial-gradient(ellipse at center, #010101 0%, rgba(1, 1, 1, 0.7) 4%, rgba(1, 1, 1, 0) 8%), linear-gradient(to bottom, #250506 0%, #631307 40%, #a44121 100%);
-}
-
-.sm-shadow {
-  width: 50.0px;
-  height: 10.0px;
-  background: radial-gradient(ellipse at center, rgba(13, 84, 102, 0.4) 0%, rgba(138, 174, 188, 0) 65%, rgba(206, 223, 235, 0) 100%);
-  position: absolute;
-  bottom: 62.5px;
-  left: 45.0px;
-}
-
-.snowman-bot {
-  background: linear-gradient(to bottom, white 0%, #dbe8fc 100%);
-  width: 30.0px;
-  height: 30.0px;
-  border-radius: 50%;
-  position: absolute;
-  bottom: 66.0px;
-  left: 50.0px;
-}
-
-.snowman-top {
-  background: linear-gradient(to bottom, white 0%, #dbe8fc 100%);
-  width: 20.0px;
-  height: 20.0px;
-  border-radius: 50%;
-  position: absolute;
-  bottom: 92.0px;
-  left: 54.0px;
-}
-
-.coal {
-  width: 2.5px;
-  height: 2.5px;
-  border-radius: 50%;
-  position: absolute;
-  box-shadow: 60.0px -5.0px 0.0px 0.0px black, 68.5px -6.0px 0.0px 0.0px black, 59.5px 0.0px 0.0px 0.0px black, 62.5px 1.0px 0.0px 0.0px black, 66.0px 1.0px 0.0px 0.0px black, 69.0px -1.0px 0.0px 0.0px black, 65.0px 7.5px 0.0px 0.0px black, 66.0px 13.5px 0.0px 0.0px black, 66.0px 19.5px 0.0px 0.0px black;
-}
-
-.carrot {
-  width: 0.0px;
-  height: 0.0px;
-  border-left: 10.0px solid #f98e13;
-  border-top: 1.5px solid transparent;
-  border-bottom: 1.5px solid transparent;
-  position: absolute;
-  left: 65.0px;
-  top: 99.0px;
-}
-
-        .container {
-            position: relative;
-            display: inline-block;
-            text-align: left;
-            max-width: 450px;
-            margin: auto;
-            padding-bottom: 50px; 
-            box-sizing: border-box;
+        
+        .branch-top {
+          -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          width: 20.0px;
+          height: 37.5px;
+          background-color: #62838C;
+          position: absolute;
+          top: 2.5px;
+          left: 15.0px;
         }
-    
-        .section {
-            border: 1px solid lightgray;
-            padding: 5px;
-            margin-bottom: 20px;
-            max-width: 450px;
+        
+        .branch-top-snow {
+          background: linear-gradient(135deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(225deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(315deg, #dbe8fc 25%, transparent 25%), linear-gradient(45deg, #dbe8fc 25%, transparent 25%);
+          background-size: 16.0px 16.0px;
+          width: 100%;
+          height: 100%;
+          position: absolute;
         }
+        
+        .branch-mid {
+          -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          width: 37.5px;
+          height: 57.5px;
+          background-color: #2D4959;
+          position: absolute;
+          top: 17.5px;
+          left: 6.2px;
+        }
+        
+        .branch-mid-snow {
+          background: linear-gradient(135deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(225deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(315deg, #dbe8fc 25%, transparent 25%), linear-gradient(45deg, #dbe8fc 25%, transparent 25%);
+          background-size: 16.0px 16.0px;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+        }
+        
+        .branch-bot {
+          -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          width: 50.0px;
+          height: 62.5px;
+          background-color: #142833;
+          position: absolute;
+          top: 40.0px;
+        }
+        
+        .branch-bot-snow {
+          background: linear-gradient(135deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(225deg, #dbe8fc 25%, transparent 25%) -8.0px 0, linear-gradient(315deg, #dbe8fc 25%, transparent 25%), linear-gradient(45deg, #dbe8fc 25%, transparent 25%);
+          background-size: 16.0px 16.0px;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+        }
+        
+        .branch-shadow {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          background: linear-gradient(to bottom, #12434f 0%, rgba(255, 255, 255, 0) 100%);
+          mix-blend-mode: multiply;
+        }
+        
+        .tree {
+          width: 50.0px;
+          height: 102.5px;
+          position: relative;
+          left: 100.0px;
+          top: 30.0px;
+        }
+        
+        .sg-bg {
+          width: 200.0px;
+          height: 200.0px;
+          border-radius: 100%;
+          position: absolute;
+          top: 0.0px;
+          background: rgba(255, 255, 255, 0.5);
+        }
+        
+        .sg-fg {
+          width: 200.0px;
+          height: 200.0px;
+          border-radius: 100%;
+          position: absolute;
+          top: 0.0px;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(246, 246, 246, 0.2) 47%, rgba(237, 237, 237, 0) 100%);
+        }
+        
+        .grnd-snow {
+          width: 190.0px;
+          height: 190.0px;
+          border-radius: 100%;
+          position: absolute;
+          top: 5.0px;
+          left: 5.0px;
+          background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 68%, #f0f0f0 68%, #ebeff5 79%, #c5d3e8 100%);
+        }
+        
+        .snow-surface {
+          width: 178.0px;
+          height: 20.0px;
+          background: #fff;
+          position: relative;
+          top: 118.0px;
+          border-radius: 100%;
+          margin: auto;
+        }
+        
+        .star {
+          width: 0.0px;
+          height: 0.0px;
+          border-right: 10.0px solid transparent;
+          border-bottom: 7.0px solid gold;
+          border-left: 10.0px solid transparent;
+          transform: rotate(35deg);
+          position: absolute;
+          top: 0.0px;
+          left: 15.0px;
+        }
+        
+        .star:before {
+          border-bottom: 8.0px solid gold;
+          border-left: 3.0px solid transparent;
+          border-right: 3.0px solid transparent;
+          position: absolute;
+          height: 0;
+          width: 0;
+          top: -4.5px;
+          left: -6.5px;
+          content: "";
+          transform: rotate(-35deg);
+        }
+        
+        .star:after {
+          position: absolute;
+          top: 0.3px;
+          left: -10.5px;
+          width: 0.0px;
+          height: 0.0px;
+          border-right: 10.0px solid transparent;
+          border-bottom: 7.0px solid gold;
+          border-left: 10.0px solid transparent;
+          transform: rotate(-70deg);
+          content: "";
+        }
+        
+        .falling-snow-wrap {
+          overflow: hidden;
+          opacity: 0.99;
+          height: 130.0px;
+          width: 200.0px;
+          position: absolute;
+          top: 0.0px;
+        }
+        
+        .falling-snow {
+          width: 190.0px;
+          height: 190.0px;
+          border-radius: 100%;
+          position: absolute;
+          top: 5.0px;
+          left: 5.0px;
+          overflow: hidden;
+          opacity: 0.99;
+        }
+        
+        .flakes1 {
+          font-size: 50%; 
+          width: 200.0px;
+          height: 400.0px;
+          position: absolute;
+          top: 0.0px;
+          color: #fff;
+          opacity: 0.5;
+          -webkit-animation: sfanim linear 151.7s;
+                  animation: sfanim linear 151.7s;
+          -webkit-animation-iteration-count: infinite;
+                  animation-iteration-count: infinite;
+          text-shadow: 151.5px 58.5px, 16.0px 44.5px, 161.5px 59.5px, 49.0px 91.5px, 63.0px 117.5px, 0.0px 85.5px, 190.0px 30.5px, 134.5px 8.5px, 0.0px 75.5px, 60.5px 172.0px, 114.5px 68.0px, 118.5px 140.0px, 151.5px 15.0px, 105.5px 157.0px, 189.0px 142.5px, 5.0px 143.5px, 46.5px 172.5px, 146.0px 162.0px, 111.5px 146.0px, 78.0px 80.0px, 126.5px 29.0px, 102.5px 97.5px, 72.5px 53.0px, 39.5px 156.0px, 91.0px 179.5px, 139.5px 49.5px, 174.5px 62.0px, 2.5px 16.5px, 108.0px 73.5px, 194.0px 58.5px, 35.0px 147.5px, 74.5px 159.0px, 48.0px 33.0px, 64.5px 108.5px, 69.0px 109.0px, 120.5px 155.0px, 115.5px 184.0px, 9.0px 163.5px, 86.5px 106.5px, 59.0px 5.0px, 123.0px 104.0px, 79.5px 122.0px, 134.0px 188.0px, 83.5px 131.0px, 42.5px 119.0px, 138.5px 23.5px, 193.0px 96.0px, 129.5px 182.0px, 162.5px 163.5px, 139.5px 100.5px, 151.5px 258.5px, 16.0px 244.5px, 161.5px 259.5px, 49.0px 291.5px, 63.0px 317.5px, 0.0px 285.5px, 190.0px 230.5px, 134.5px 208.5px, 0.0px 275.5px, 60.5px 372.0px, 114.5px 268.0px, 118.5px 340.0px, 151.5px 215.0px, 105.5px 357.0px, 189.0px 342.5px, 5.0px 343.5px, 46.5px 372.5px, 146.0px 362.0px, 111.5px 346.0px, 78.0px 280.0px, 126.5px 229.0px, 102.5px 297.5px, 72.5px 253.0px, 39.5px 356.0px, 91.0px 379.5px, 139.5px 249.5px, 174.5px 262.0px, 2.5px 216.5px, 108.0px 273.5px, 194.0px 258.5px, 35.0px 347.5px, 74.5px 359.0px, 48.0px 233.0px, 64.5px 308.5px, 69.0px 309.0px, 120.5px 355.0px, 115.5px 384.0px, 9.0px 363.5px, 86.5px 306.5px, 59.0px 205.0px, 123.0px 304.0px, 79.5px 322.0px, 134.0px 388.0px, 83.5px 331.0px, 42.5px 319.0px, 138.5px 223.5px, 193.0px 296.0px, 129.5px 382.0px, 162.5px 363.5px, 139.5px 300.5px;
+        }
+        
+        .flakes2 {
+          font-size: 50%; 
+          width: 200.0px;
+          height: 400.0px;
+          position: absolute;
+          top: 0.0px;
+          color: #fff;
+          -webkit-animation: sfanim linear 75.85s;
+                  animation: sfanim linear 75.85s;
+          -webkit-animation-iteration-count: infinite;
+                  animation-iteration-count: infinite;
+          text-shadow: 187.5px 242.5px, 5.5px 344.5px, 127.0px 392.0px, 2.5px 343.0px, 133.0px 352.5px, 194.0px 349.0px, 90.0px 353.5px, 18.0px 206.5px, 37.0px 347.5px, 119.0px 345.0px, 192.0px 317.5px, 0.5px 347.0px, 22.5px 269.0px, 65.5px 375.0px, 129.0px 260.0px, 78.5px 352.5px, 48.0px 374.5px, 162.5px 359.5px, 66.0px 344.0px, 83.5px 255.5px, 151.5px 204.0px, 170.0px 310.0px, 197.0px 214.0px, 93.5px 374.0px, 108.5px 312.0px, 178.0px 315.0px, 16.5px 379.0px, 119.0px 381.0px, 178.5px 293.0px, 126.5px 399.0px, 34.0px 393.0px, 82.0px 331.0px, 59.5px 299.0px, 110.5px 278.5px, 63.0px 268.5px, 141.0px 251.5px, 5.5px 227.5px, 109.5px 316.0px, 30.0px 298.5px, 20.5px 264.5px, 123.5px 225.5px, 108.5px 322.0px, 152.0px 200.0px, 107.0px 210.5px, 143.5px 378.5px, 38.0px 202.0px, 188.0px 367.5px, 84.5px 286.0px, 122.5px 395.0px, 33.0px 358.5px, 187.5px 42.5px, 5.5px 144.5px, 127.0px 192.0px, 2.5px 143.0px, 133.0px 152.5px, 194.0px 149.0px, 90.0px 153.5px, 18.0px 6.5px, 37.0px 147.5px, 119.0px 145.0px, 192.0px 117.5px, 0.5px 147.0px, 22.5px 69.0px, 65.5px 175.0px, 129.0px 60.0px, 78.5px 152.5px, 48.0px 174.5px, 162.5px 159.5px, 66.0px 144.0px, 83.5px 55.5px, 151.5px 4.0px, 170.0px 110.0px, 197.0px 14.0px, 93.5px 174.0px, 108.5px 112.0px, 178.0px 115.0px, 16.5px 179.0px, 119.0px 181.0px, 178.5px 93.0px, 126.5px 199.0px, 34.0px 193.0px, 82.0px 131.0px, 59.5px 99.0px, 110.5px 78.5px, 63.0px 68.5px, 141.0px 51.5px, 5.5px 27.5px, 109.5px 116.0px, 30.0px 98.5px, 20.5px 64.5px, 123.5px 25.5px, 108.5px 122.0px, 152.0px 0.0px, 107.0px 10.5px, 143.5px 178.5px, 38.0px 2.0px, 188.0px 167.5px, 84.5px 86.0px, 122.5px 195.0px, 33.0px 158.5px;
+        }
+        
+        @-webkit-keyframes sfanim {
+          0% {
+            transform: translate(0.0px, -200.0px);
+          }
+          100% {
+            transform: translate(0.0px, 0.0px);
+          }
+        }
+        
+        @keyframes sfanim {
+          0% {
+            transform: translate(0.0px, -200.0px);
+          }
+          100% {
+            transform: translate(0.0px, 0.0px);
+          }
+        }
+        .baubles {
+          width: 8.0px;
+          height: 8.0px;
+          background-color: #bf1131;
+          border-radius: 100%;
+          position: absolute;
+          top: 20.0px;
+          left: 20.0px;
+          box-shadow: 4.0px 22.0px 0.0px 0.0px #960028, -4.0px 40.0px 0.0px 0.0px #ce0037, 10.0px 50.0px 0.0px 0.0px #ce0025, -12.0px 66.0px 0.0px 0.0px #bf1131, 16.0px 70.0px 0.0px 0.0px #bf1131;
+        }
+        
+        .tree-shadow {
+          width: 100.0px;
+          height: 10.0px;
+          background: radial-gradient(ellipse at center, #0d5466 0%, rgba(138, 174, 188, 0) 65%, rgba(206, 223, 235, 0) 100%);
+          position: absolute;
+          bottom: -5.0px;
+          left: -17.5px;
+        }
+        
+        .stand-curved {
+          height: 90.0px;
+          width: 250.0px;
+          border-radius: 50%;
+          border: 50.0px solid maroon;
+          position: absolute;
+          bottom: 0.0px;
+          left: -35.0px;
+        }
+        
+        .stand-curved-wrap {
+          width: 280.0px;
+          height: 66.7px;
+          position: absolute;
+          bottom: -68.0px;
+          margin-left: -40.0px;
+          position: relative;
+          -webkit-clip-path: polygon(30% 10%, 70% 10%, 80% 100%, 20% 100%);
+        }
+        
+        .ground {
+          width: 100%;
+          height: 75.0px;
+          position: absolute;
+          top: 200.0px;
+          background: radial-gradient(ellipse at center, #010101 0%, rgba(1, 1, 1, 0.7) 4%, rgba(1, 1, 1, 0) 8%), linear-gradient(to bottom, #250506 0%, #631307 40%, #a44121 100%);
+        }
+        
+        .sm-shadow {
+          width: 50.0px;
+          height: 10.0px;
+          background: radial-gradient(ellipse at center, rgba(13, 84, 102, 0.4) 0%, rgba(138, 174, 188, 0) 65%, rgba(206, 223, 235, 0) 100%);
+          position: absolute;
+          bottom: 62.5px;
+          left: 45.0px;
+        }
+        
+        .snowman-bot {
+          background: linear-gradient(to bottom, white 0%, #dbe8fc 100%);
+          width: 30.0px;
+          height: 30.0px;
+          border-radius: 50%;
+          position: absolute;
+          bottom: 66.0px;
+          left: 50.0px;
+        }
+        
+        .snowman-top {
+          background: linear-gradient(to bottom, white 0%, #dbe8fc 100%);
+          width: 20.0px;
+          height: 20.0px;
+          border-radius: 50%;
+          position: absolute;
+          bottom: 92.0px;
+          left: 54.0px;
+        }
+        
+        .coal {
+          width: 2.5px;
+          height: 2.5px;
+          border-radius: 50%;
+          position: absolute;
+          box-shadow: 60.0px -5.0px 0.0px 0.0px black, 68.5px -6.0px 0.0px 0.0px black, 59.5px 0.0px 0.0px 0.0px black, 62.5px 1.0px 0.0px 0.0px black, 66.0px 1.0px 0.0px 0.0px black, 69.0px -1.0px 0.0px 0.0px black, 65.0px 7.5px 0.0px 0.0px black, 66.0px 13.5px 0.0px 0.0px black, 66.0px 19.5px 0.0px 0.0px black;
+        }
+        
+        .carrot {
+          width: 0.0px;
+          height: 0.0px;
+          border-left: 10.0px solid #f98e13;
+          border-top: 1.5px solid transparent;
+          border-bottom: 1.5px solid transparent;
+          position: absolute;
+          left: 65.0px;
+          top: 99.0px;
+        }
+        
+                .container {
+                    position: relative;
+                    display: inline-block;
+                    text-align: left;
+                    max-width: 450px;
+                    margin: auto;
+                    padding-bottom: 50px; 
+                    box-sizing: border-box;
+                }
+            
+                .section {
+                    background-color: #C3A784;
+                    color: black;
+                    border: 2px solid white;
+                    border-radius: 10px;
+                    padding: 5px;
+                    margin-bottom: 20px;
+                    max-width: 450px;
+                }
+                /* snowglobe CSS end */
+
+                .section > * {
+                    margin: 10px 0; /* 设置上下间距为 10px */
+                }
+
+                .section > *:first-child {
+                    margin: 20px 0;
+                }
     
         .title {
             text-align: center;
@@ -633,165 +696,138 @@
             visibility: visible;
         }
 
-        #theme-selector {
-            position: absolute;
-            bottom: -40px; 
-            right: 10px;   
-            padding: 5px;
-            font-size: 14px;
-            cursor: pointer;
-            z-index: 10;
-            }
-
-        #result.default {
-            word-wrap: break-word; 
-            overflow-wrap: break-word; 
-            white-space: normal; 
-            width: 450px; 
-            box-sizing: border-box; 
-            padding: 10px; 
-            margin-top: 20px; 
-            border: 1px solid lightgray; 
-            background-color: #f9f9f9; 
-        }
-
-            body.dark-mode #result.default {
-                background-color: #333; 
-                color: #f1f1f1; 
-                border: 1px solid #555; 
-            }
-
-                  
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-            
-        #result.led {
-            word-wrap: break-word; 
-            overflow-wrap: break-word; 
-            white-space: normal; 
-            width: 450px; 
-            box-sizing: border-box; 
-            padding: 20px; 
-            margin-top: 20px; 
-            border: 2px solid rgba(0, 0, 255, 0.5); 
-            background-color: #000; 
-            font-family: 'Press Start 2P', cursive;
-            color: #00bfff; 
-            text-shadow: 
-                0 0 5px rgba(0, 191, 255, 0.8), 
-                0 0 10px rgba(0, 191, 255, 0.6), 
-                0 0 15px rgba(0, 191, 255, 0.4); 
-            border-radius: 10px; 
-            box-shadow: 0 4px 10px rgba(0, 191, 255, 0.3);
-        }
 
 
-            body.dark-mode #result.led {
-                background-color: #000; 
-                color: #00bfff; 
-                border: 2px solid rgba(0, 0, 255, 0.5);
-                text-shadow: 
-                    0 0 5px rgba(0, 191, 255, 0.8), 
-                    0 0 10px rgba(0, 191, 255, 0.6), 
-                    0 0 15px rgba(0, 191, 255, 0.4);
-            }
-
-
-                   
-        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
-
-                  
-        #result.blackboard {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    width: 450px;
-    box-sizing: border-box;
-    padding: 20px;
-    margin-top: 20px;
-    background-color: #005f2f;
-    font-family: 'Permanent Marker', cursive;
-    color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-
-    /* 修改为不锈钢效果边框 */
-    border: 5px solid transparent;
-    background-clip: padding-box;
-    position: relative;
-}
-#result.blackboard::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    z-index: -1;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #e6e6e6, #c0c0c0, #a8a8a8, #e6e6e6);
-}
-
-
-            body.dark-mode #result.blackboard {
-                background-color: #003d1f; 
-                color: #ffffff; 
-            }
-
-                   
-        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
-
-                  
-        #result.typewriter {
-            word-wrap: break-word; 
-            overflow-wrap: break-word; 
-            white-space: normal; 
-            width: 450px; 
-            box-sizing: border-box; 
-            padding: 20px; 
-            margin-top: 20px; 
-            border: 1px solid #000; 
-            background-color: #f8f8f8; 
-            font-family: 'Courier Prime', monospace; 
-            color: #333;
-            border-radius: 5px; 
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
+            #theme-selector {
+                    position: absolute;
+                    bottom: -40px; 
+                    right: 10px;   
+                    padding: 5px;
+                    font-size: 14px;
+                    cursor: pointer;
+                    z-index: 10;
+                    }
         
-            body.dark-mode #result.typewriter {
-                background-color: #333;
-                color: #f8f8f8; 
-                border: 1px solid #fff; 
-            }
-
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 3px;
-            }
-            .title {
-                font-size: 20px;
-            }
-            button {
-                font-size: 14px;
-                padding: 0px 10px;
-            }
-            #result {
-                font-size: 14px;
-                width: 440px;
-                max-width: 100%;
-            }
-        }
-
-        body {
-            background-color: #9b3715;
-            color: #ECECEC;
-        }
-
-            body.dark-mode {
-                background-color: black;
-                color: white;
-            }
+                /* #result.default {
+                    word-wrap: break-word; 
+                    overflow-wrap: break-word; 
+                    white-space: normal; 
+                    width: 450px; 
+                    box-sizing: border-box; 
+                    padding: 10px; 
+                    margin-top: 20px; 
+                    border: 1px solid lightgray; 
+                    background-color: #f9f9f9; 
+                }
+        
+                    body.dark-mode #result.default {
+                        background-color: #333; 
+                        color: #f1f1f1; 
+                        border: 1px solid #555; 
+                    } */
+        
+                          
+                /* @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+                    
+                #result.led {
+                    word-wrap: break-word; 
+                    overflow-wrap: break-word; 
+                    white-space: normal; 
+                    width: 450px; 
+                    box-sizing: border-box; 
+                    padding: 20px; 
+                    margin-top: 20px; 
+                    border: 2px solid rgba(0, 0, 255, 0.5); 
+                    background-color: #000; 
+                    font-family: 'Press Start 2P', cursive;
+                    color: #00bfff; 
+                    text-shadow: 
+                        0 0 5px rgba(0, 191, 255, 0.8), 
+                        0 0 10px rgba(0, 191, 255, 0.6), 
+                        0 0 15px rgba(0, 191, 255, 0.4); 
+                    border-radius: 10px; 
+                    box-shadow: 0 4px 10px rgba(0, 191, 255, 0.3);
+                }
+        
+        
+                    body.dark-mode #result.led {
+                        background-color: #000; 
+                        color: #00bfff; 
+                        border: 2px solid rgba(0, 0, 255, 0.5);
+                        text-shadow: 
+                            0 0 5px rgba(0, 191, 255, 0.8), 
+                            0 0 10px rgba(0, 191, 255, 0.6), 
+                            0 0 15px rgba(0, 191, 255, 0.4);
+                    } */
+        
+        
+                           
+                @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+                          
+                #result.blackboard {
+                    word-wrap: break-word;
+                    overflow-wrap: break-word;
+                    white-space: normal;
+                    width: 450px;
+                    box-sizing: border-box;
+                    padding: 20px;
+                    margin-top: 20px;
+                    background-color: #005f2f;
+                    font-family: 'Permanent Marker', cursive;
+                    color: #ffffff;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        
+                    /* 修改为不锈钢效果边框 */
+                    border: 5px solid transparent;
+                    background-clip: padding-box;
+                    position: relative;
+                }
+        
+                #result.blackboard::before {
+                    content: '';
+                    position: absolute;
+                    top: -5px;
+                    left: -5px;
+                    right: -5px;
+                    bottom: -5px;
+                    z-index: -1;
+                    border-radius: 10px;
+                    background: linear-gradient(135deg, #e6e6e6, #c0c0c0, #a8a8a8, #e6e6e6);
+                }
+        
+        
+                body.dark-mode #result.blackboard {
+                    background-color: #003d1f; 
+                    color: #ffffff; 
+                }
+        
+                           
+                /* @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+        
+                          
+                #result.typewriter {
+                    word-wrap: break-word; 
+                    overflow-wrap: break-word; 
+                    white-space: normal; 
+                    width: 450px; 
+                    box-sizing: border-box; 
+                    padding: 20px; 
+                    margin-top: 20px; 
+                    border: 1px solid #000; 
+                    background-color: #f8f8f8; 
+                    font-family: 'Courier Prime', monospace; 
+                    color: #333;
+                    border-radius: 5px; 
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                }
+        
+                
+                    body.dark-mode #result.typewriter {
+                        background-color: #333;
+                        color: #f8f8f8; 
+                        border: 1px solid #fff; 
+                    } */
 
         .theme-switcher {
             position: absolute;
@@ -903,134 +939,7 @@
                     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
                 }
 
-        /* Styles from Pure Css Wave Progress bar Animation */
-        .wave-container {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            margin: 20px auto;
-            border-radius: 50%;
-            overflow: hidden;
-            background: radial-gradient(circle at 70% 30%, rgba(150, 180, 255, 0.5), rgba(60, 100, 150, 0.2) 70%, rgba(0, 50, 80, 0.5) 100%);
-            border: 5px solid rgba(100, 180, 255, 0.4);
-            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.1),
-                        0 0 30px rgba(100, 180, 255, 0.3);
-        }
-
-        /* 调整光斑效果 */
-        .wave-container::before {
-            content: '';
-            position: absolute;
-            top: 15px;  
-            left: 110px;  
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); 
-            opacity: 0.4;  
-            pointer-events: none;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);  
-            z-index: 4;
-        }
-
-        /* 调整辅助反光区域 */
-        .wave-container::after {
-            content: '';
-            position: absolute;
-            top: 50px;
-            left: 50px;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(150, 180, 255, 0.3), transparent 70%);
-            opacity: 0.4; 
-            pointer-events: none;
-            z-index: 3;
-        }
-
-
-        .wave-change {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            left: 0;
-            top: 0;
-            animation: change 12s linear forwards;
-            z-index: 2;
-        }
-
-        .wave-change::before,
-        .wave-change::after {
-            content: "";
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            top: 0;
-            left: 50%;
-            background-color: rgba(150, 180, 255, 0.2); 
-            border-radius: 45% 47% 43% 46%;
-            transform: translate(-50%, -70%) rotate(0);
-            animation: rotate 7s linear infinite;
-            z-index: 1;
-        }
-
-        .wave-change::after {
-            border-radius: 47% 42% 46% 44%;
-            background-color: rgba(150, 180, 255, 0.3);
-            animation: rotate 9s linear -4s infinite;
-            z-index: 1;
-        }
-
-
-        body.dark-mode .wave-container {
-            background: radial-gradient(circle at 70% 30%, rgba(60, 100, 150, 0.4), rgba(30, 60, 100, 0.2) 70%, rgba(10, 30, 50, 0.6) 100%);
-            border: 5px solid rgba(60, 100, 150, 0.6);
-            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05),
-                        0 0 20px rgba(60, 100, 150, 0.5);
-        }
-
-        body.dark-mode .wave-container::before {
-            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0)); 
-            opacity: 0.3; 
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
-        }
-
-        body.dark-mode .wave-change::before,
-        body.dark-mode .wave-change::after {
-            background-color: rgba(30, 60, 100, 0.2); 
-        }
-
-        body.dark-mode .wave-change::after {
-            background-color: rgba(30, 60, 100, 0.3); 
-        }
-
-
-        .wave {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            background-color: rgb(118, 218, 255);
-            border-radius: 50%;
-        }
-
-        @keyframes rotate {
-            50% {
-                transform: translate(-50%, -73%) rotate(180deg);
-            }
-            100% {
-                transform: translate(-50%, -70%) rotate(360deg);
-            }
-        }
-
-        @keyframes change {
-            from {
-                top: 90px;
-            }
-            to {
-                top: -120px;
-            }
-        }
-
+ 
 
         .percentage-display {
             text-align: center; 
@@ -1087,12 +996,219 @@
             transform: translateY(-50%); 
         }
 
+        #recordContainer {
+    position: absolute;
+    top: 100px;
+    right: 5px;
+    width: 400px;
+    height: 300px; 
+    background-color: #C3A784;
+    color: black;
+    overflow-y: auto;
+    padding: 5px;
+    text-align: left;
+    border: 1px solid lightgray; /* 添加1像素的黑色实线边框 */
+    border-radius: 3px; /* 可选：让边框有圆角 */
+}
+
+body.dark-mode #recordContainer {
+    background-color: #333; /* 暗背景 */
+    color: white; /* 文字颜色 */
+    border: 1px solid #555; /* 更暗的边框 */
+}
+
+
+#archiveButton {
+    position: absolute; 
+    top: 420px;
+    right: 225px; 
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#paperShredderButton {
+    position: absolute; 
+    top: 420px;
+    right: 10px; 
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#compareBtn {
+    position: absolute; 
+    top: 610px;
+    left: 10px; 
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#clearPasteAreaBtn {
+    position: absolute; 
+    top: 610px;
+    left: 290px; 
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+
+.aiCredit, .aiBank1, .aiBank2, .aiTax, .aiWechat, .aiHouse1, .aiHouse2{
+    color: #001B25;
+    font-weight: bold;
+}
+
+.offlineCredit, .offlineBank1, .offlineBank2, .offlineTax, .offlineWechat, .offlineHouse1, .offlineHouse2{
+    color: #470000;
+    font-weight: bold;
+}
+
+#recordLastDayContainer {
+    position: absolute;
+    top: 100px;
+    left: 5px;
+    width: 400px;
+    height: 300px; 
+    background-color: #C3A784;
+    color: black;
+    overflow-y: auto;
+    padding: 5px;
+    text-align: left;
+    border: 1px solid lightgray; /* 添加1像素的黑色实线边框 */
+    border-radius: 3px; /* 可选：让边框有圆角 */
+}
+
+body.dark-mode #recordLastDayContainer {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+.last-day-record {
+  position: absolute;
+  top: 70px;
+  left: 5px;
+  font-size: 14px;
+  padding: 3px 8px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+.this-day-record {
+  position: absolute;
+  top: 70px;
+  right: 317px;
+  font-size: 14px;
+  padding: 3px 8px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+#difference {
+    position: absolute;
+    top: 680px;
+    left: 5px;
+    width: 400px;
+    height: 200px;
+    overflow-y: auto; /* 添加滚动条以防内容超出 */
+    border: 1px solid #ccc; /* 边框样式，可选 */
+    background-color: #C3A784; /* 背景颜色，可选 */
+    padding: 10px; /* 内边距 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+    border-radius: 5px; /* 圆角，可选 */
+    text-align: left;
+    padding: 5px;
+}
+
+body.dark-mode #difference {
+    background-color: #222; /* 更暗的背景 */
+    color: white;
+    border: 1px solid #444; /* 更暗的边框 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 加强阴影效果 */
+}
+
+#data-comparison-result-title {
+  position: absolute;
+  top: 650px;
+  left: 103px;
+  font-size: 14px; /* 增加字体大小 */
+  padding: 2px 1px; /* 增加内边距 */
+  background: linear-gradient(45deg, #1a1a1a, #333333); /* 线性渐变背景 */
+  color: #00e0ff; /* 字体颜色 */
+  border-radius: 5px;
+  box-shadow: 0 4px 15px rgba(0, 224, 255, 0.3); /* 投影效果 */
+  border: 1px solid transparent;
+  z-index: 9999;
+  text-align: center;
+  width: 200px;
+  display: inline-block; /* 保持块级元素 */
+  overflow: hidden; /* 防止内容溢出 */
+  transition: color 0.3s, background 0.3s, box-shadow 0.3s; /* 过渡效果 */
+}
+
+#data-comparison-result-title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(0, 224, 255, 0.2), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+
+#data-comparison-result-title h3 {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* 默认模式样式 */
+#excelData {
+    position: absolute;
+    top: 440px;
+    left: 5px;
+    height: 150px;
+    width: 400px;
+    background-color: #C3A784; /* 背景颜色 */
+    color: black; /* 文字颜色 */
+    border: 1px solid #ccc; /* 边框颜色 */
+    font-family: Arial, sans-serif; /* 字体 */
+    font-size: 14px; /* 字号 */
+    padding: 5px;
+    cursor: text; /* 鼠标悬停时显示文本光标 */
+}
+
+
+/* 暗黑模式样式 */
+body.dark-mode #excelData {
+    background-color: #333; /* 暗背景 */
+    color: white; /* 文字颜色 */
+    border: 1px solid #555; /* 暗色边框 */
+    padding: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    cursor: text; /* 鼠标悬停时显示文本光标 */
+}
+
+
+
+
+
+
+
 
     </style>
 
     <script>
         window.addEventListener('load', function () {
-            const currentVersion = '1.5.2';  
+            const currentVersion = '1.6.0';  
 
             const storedVersion = localStorage.getItem('version');
 
@@ -1117,46 +1233,75 @@
           gtag('config', 'G-2GKERV0V0Y');
         </script>
 
-<!-- Matomo -->
-<script>
-  var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="https://wsdworkgd02.matomo.cloud/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '1']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src='https://cdn.matomo.cloud/wsdworkgd02.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Matomo Code -->
+
+    <!-- Matomo -->
+    <script>
+      var _paq = window._paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="https://wsdworkgd03.matomo.cloud/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src='https://cdn.matomo.cloud/wsdworkgd03.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
+
 
 
 
 
 </head>
 <body>
-        <div class="theme-switcher">
-            <span class="mode-label">夜间模式</span> 
-            <button id="theme-toggle" class="power-switch"></button>
-        </div>
+        <div class="theme-switcher"><span class="mode-label">夜间模式</span><button id="theme-toggle" class="power-switch"></button></div>
+
+        <a href="v-1-5-2.html"  target="_blank"  style="position: absolute; top: 10px; right: 200px; font-size: 14px; text-decoration: none; color: #FFFFFF;">返回之前版本v.1.5.2</a>
+
+        <div id="recordLastDayContainer"></div>
+
+        <div class="last-day-record">上一日成交记录</div>
+
+        <div class="this-day-record">当日成交记录</div>
+
+        <link rel="stylesheet" href="styles.css">
+
+        <textarea id="excelData" placeholder="将Excel数据粘贴到这里
+(避免粘贴好之后再手动编辑该区域内的数据，防止破坏分割数据所需的制表符 \t 和换行符 \n)"></textarea>
+        
+   
+        <button id="compareBtn" class="simple-btn">一键比对数据</button>
+
+        <a href="how-to-paste-and-compare.pdf" target="_blank" style="position: absolute; top: 615px; left: 140px; font-size: 14px; text-decoration: none; color: #FFFFFF;">如何粘贴数据？</a>
+
+        <button id="clearPasteAreaBtn" class="simple-btn">清空粘贴区域</button>
+
+        <div id="data-comparison-result-title"><h3 style="font-weight: bold;">数据比对结果显示区域</h3></div>  
+
+        <div id="difference"></div>
+
+        <div id="recordContainer"></div>
+
+        <button id="archiveButton" class="simple-btn">存档为上一日成交记录</button>
+
+        <button id="paperShredderButton" class="simple-btn">清空全部当日成交记录</button>
         
         <div class="container">
             <div class="title"><span class="metal-plate">提额项目报单计数器
                 <span class="corner left"></span>
                 <span class="corner right"></span>
-            </span> 1.5.2
-                <span class="tooltip" data-tooltip="使用说明：&#10;1. 将新增单数填入对应种类端口之后的输入框中；&#10;2. 全部填好之后点击【立即计算】按钮，即可自动生成报单文本；&#10;3. 再点击【一键复制】按钮。&#10;注：本计数器具有自动累计功能，页面刷新或浏览器重启都不会丢失数据。&#10; &#10;更新记录 v1.5.0.20241026：&#10;i. 新增了一种“星舰控制台”的页面风格。&#10;注：切换页面风格的按钮是位于页面最下方左侧的一个星际飞船或者传送门的标志。&#10; &#10;更新记录 v1.5.1.20241102：&#10;i. 修复了之前当完成率发生变化时无法正常触发液面高度变动动画的bug。&#10; &#10;更新记录 v1.5.2.20241107：&#10;i. 修复了之前当单数输入框未清零时点击【撤销本次计算】或【强制归零】按钮会导致“已有单数”错误显示的bug。&#10; &#10;感谢友友们的使用 &#10;祝捷报频传 &#x2764;">?</span>
+            </span> 1.6.0
+                <span class="tooltip" data-tooltip="使用说明：&#10;1. 出单之后，勾选对应种类端口后面的复选框；&#10;2. 全部选好之后点击【立即计算】按钮，再输入对应的例子编号，即可自动生成报单文本；&#10;3. 再点击【一键复制】按钮。&#10;注：本计数器具有自动累计功能，页面刷新或浏览器重启都不会丢失数据。&#10; &#10;更新记录 v1.6.0.20241124：&#10;i. 新增了比对线上成交记录和Excel报表对应数据的功能。&#10; &#10;感谢友友们的使用 &#10;祝捷报频传 &#x2764;">?</span>
             </div>
         
         <div class="input-row">
-            姓名：<span id="nameDisplay" style="font-family: 'Garamond', 'FangSong', serif; font-weight: bold;">鲍得快</span>
+            姓名：<span id="nameDisplay" style="font-family: 'FangSong', serif; font-weight: bold;">鲍得快</span>
             <input type="text" id="nameInput" style="display: none;" value="鲍得快">
-            当日目标：<span id="targetDisplay" style="font-family: 'Garamond', 'FangSong', serif; font-weight: bold;">500</span>
+            当日目标：<span id="targetDisplay" style="font-family: 'FangSong', serif; font-weight: bold;">500</span>
             <input type="number" id="targetInput" style="display: none;" value="500">
-            <span style="font-family: 'Garamond', 'FangSong', serif; font-weight: bold;">元</span>
+            <span style="font-family: 'FangSong', serif; font-weight: bold;">元</span>
             <button id="editBtn" class="simple-btn">编辑</button>
             <button id="saveBtn" class="simple-btn" style="display: none;">保存</button>
             <button id="cancelBtn" class="simple-btn" style="display: none;">取消</button>            
@@ -1166,37 +1311,44 @@
             <h3>AI端口</h3>
             <div class="input-row">
                 <img src="images/icons/credit-icon-32px.png" alt="credit图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">授权<b>征信记录</b></span>(<b style="color: #00F6A8;">25</b>元/单)：<input type="number" id="aiCredit" min="0" value="0">
+                <span style="font-family: 'Fangsong';">授权<b>征信记录</b></span>(<b style="color: #62272A;">25</b>元/单)：
+                <input type="checkbox" id="aiCredit">
                 <span id="aiCreditTotal" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">发送<b>银行流水-超网</b></span>(<b style="color: #00F6A8;">45</b>元/单)：<input type="number" id="aiBank1" min="0" value="0">
+                <span style="font-family: 'Fangsong';">发送<b>银行流水-超网</b></span>(<b style="color: #62272A;">45</b>元/单)：
+                <input type="checkbox" id="aiBank1">
                 <span id="aiBank1Total" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">发送<b>银行流水-邮箱</b></span>(<b style="color: #00F6A8;">80</b>元/单)：<input type="number" id="aiBank2" min="0" value="0">
+                <span style="font-family: 'Fangsong';">发送<b>银行流水-邮箱</b></span>(<b style="color: #62272A;">80</b>元/单)：
+                <input type="checkbox" id="aiBank2">
                 <span id="aiBank2Total" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/tax-icon-32px.png" alt="tax图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">授权<b>发票明细-RPA</b></span>(<b style="color: #00F6A8;">80</b>元/单)：<input type="number" id="aiTax" min="0" value="0">
+                <span style="font-family: 'Fangsong';">授权<b>发票明细-RPA</b></span>(<b style="color: #62272A;">80</b>元/单)：
+                <input type="checkbox" id="aiTax">
                 <span id="aiTaxTotal" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/wechat-icon-32px.png" alt="wechat图标" class="icon">
-                <span style="font-family: 'Garamond', 'Fangsong';">发送<b>微信账单</b></span>(<b style="color: #00F6A8;">35</b>元/单)：<input type="number" id="aiWechat" min="0" value="0">
+                <span style="font-family: 'Fangsong';">发送<b>微信账单</b></span>(<b style="color: #62272A;">35</b>元/单)： 
+                <input type="checkbox" id="aiWechat">
                 <span id="aiWechatTotal" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
-                <img src="images/icons/house-icon-32px.png" alt="house图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">提交<b>房产信息-直连</b></span>(<b style="color: #00F6A8;">45</b>元/单)：<input type="number" id="aiHouse1" min="0" value="0">
+                <img src="images/icons/house-icon-32px-Xmas.png" alt="house图标" class="icon"> 
+                <span style="font-family: 'Fangsong';">提交<b>房产信息-直连</b></span>(<b style="color: #62272A;">45</b>元/单)： 
+                <input type="checkbox" id="aiHouse1">
                 <span id="aiHouse1Total" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
-                <img src="images/icons/house-icon-32px.png" alt="house图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">提交<b>房产信息-复杂</b></span>(<b style="color: #00F6A8;">80</b>元/单)：<input type="number" id="aiHouse2" min="0" value="0">
+                <img src="images/icons/house-icon-32px-Xmas.png" alt="house图标" class="icon"> 
+                <span style="font-family: 'Fangsong';">提交<b>房产信息-复杂</b></span>(<b style="color: #62272A;">80</b>元/单)： 
+                <input type="checkbox" id="aiHouse2">
                 <span id="aiHouse2Total" style="display: inline;">已有0单</span>
             </div>
         </div>
@@ -1205,40 +1357,48 @@
             <h3>离线端口</h3>
             <div class="input-row">
                 <img src="images/icons/credit-icon-32px.png" alt="credit图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">授权<b>征信记录</b></span>(<b style="color: #00F6A8;">30</b>元/单)：<input type="number" id="offlineCredit" min="0" value="0">
+                <span style="font-family: 'Fangsong';">授权<b>征信记录</b></span>(<b style="color: #62272A;">30</b>元/单)： 
+                <input type="checkbox" id="offlineCredit">
                 <span id="offlineCreditTotal" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">发送<b>银行流水-超网</b></span>(<b style="color: #00F6A8;">60</b>元/单)：<input type="number" id="offlineBank1" min="0" value="0">
+                <span style="font-family: 'Fangsong';">发送<b>银行流水-超网</b></span>(<b style="color: #62272A;">60</b>元/单)： 
+                <input type="checkbox" id="offlineBank1">
                 <span id="offlineBank1Total" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/bank-icon-32px.png" alt="bank图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">发送<b>银行流水-邮箱</b></span>(<b style="color: #00F6A8;">100</b>元/单)：<input type="number" id="offlineBank2" min="0" value="0">
+                <span style="font-family: 'Fangsong';">发送<b>银行流水-邮箱</b></span>(<b style="color: #62272A;">100</b>元/单)： 
+                <input type="checkbox" id="offlineBank2">
                 <span id="offlineBank2Total" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/tax-icon-32px.png" alt="tax图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">授权<b>发票明细-RPA</b></span>(<b style="color: #00F6A8;">80</b>元/单)：<input type="number" id="offlineTax" min="0" value="0">
+                <span style="font-family: 'Fangsong';">授权<b>发票明细-RPA</b></span>(<b style="color: #62272A;">80</b>元/单)： 
+                <input type="checkbox" id="offlineTax">
                 <span id="offlineTaxTotal" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
                 <img src="images/icons/wechat-icon-32px.png" alt="wechat图标" class="icon">
-                <span style="font-family: 'Garamond', 'Fangsong';">发送<b>微信账单</b></span>(<b style="color: #00F6A8;">40</b>元/单)：<input type="number" id="offlineWechat" min="0" value="0">
+                <span style="font-family: 'Fangsong';">发送<b>微信账单</b></span>(<b style="color: #62272A;">40</b>元/单)： 
+                <input type="checkbox" id="offlineWechat">
                 <span id="offlineWechatTotal" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
-                <img src="images/icons/house-icon-32px.png" alt="house图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">提交<b>房产信息-直连</b></span>(<b style="color: #00F6A8;">60</b>元/单)：<input type="number" id="offlineHouse1" min="0" value="0">
+                <img src="images/icons/house-icon-32px-Xmas.png" alt="house图标" class="icon"> 
+                <span style="font-family: 'Fangsong';">提交<b>房产信息-直连</b></span>(<b style="color: #62272A;">60</b>元/单)： 
+                <input type="checkbox" id="offlineHouse1">
                 <span id="offlineHouse1Total" style="display: inline;">已有0单</span>
             </div>
             <div class="input-row">
-                <img src="images/icons/house-icon-32px.png" alt="house图标" class="icon"> 
-                <span style="font-family: 'Garamond', 'Fangsong';">提交<b>房产信息-复杂</b></span>(<b style="color: #00F6A8;">100</b>元/单)：<input type="number" id="offlineHouse2" min="0" value="0">
+                <img src="images/icons/house-icon-32px-Xmas.png" alt="house图标" class="icon"> 
+                <span style="font-family: 'Fangsong';">提交<b>房产信息-复杂</b></span>(<b style="color: #62272A;">100</b>元/单)： 
+                <input type="checkbox" id="offlineHouse2">
                 <span id="offlineHouse2Total" style="display: inline;">已有0单</span>
             </div>
         </div>
+        
         
     
         <div class="buttons">
@@ -1248,59 +1408,59 @@
             <button class="copy-button">一键复制</button>
         </div>        
     
-        <div id="result"></div>
+        <div id="result" class="blackboard"></div>
 
-<!-- partial:index.partial.html -->
-
-<div class="snowglobe">
-  <div class="sg-bg"></div>
-  <div class="grnd-snow">
-    <div class="snow-surface"></div>
-  </div>
-  <div class="tree">
-    <div class="tree-shadow"></div>
-    <div class="branch-bot">
-      <div class="branch-bot-snow"></div>
-      <div class="branch-shadow"> </div>
-    </div>
-    <div class="branch-mid">
-      <div class="branch-mid-snow"></div>
-      <div class="branch-shadow"> </div>
-    </div>
-    <div class="branch-top">
-      <div class="branch-top-snow"></div>
-    </div>
-    <div class="star"></div>
-    <div class="baubles"></div>
-  </div>
-  <div class="sm-shadow"></div>
-  <div class="snowman">
-    <div class="snowman-bot"></div>
-    <div class="snowman-top"></div>
-    <div class="coal"></div>
-    <div class="carrot"></div>
-  </div>
-  <div class="falling-snow-wrap">
-    <div class="falling-snow">
-      <div class="flakes1">
-        <p>*</p>
-      </div>
-      <div class="flakes2">
-        <p>*</p>
-      </div>
-    </div>
-  </div>
-  <div class="sg-fg"></div>
-  <div class="stand-curved-wrap">
-    <div class="stand-curved"></div>
-    <div class="ground"></div>
-  </div>
-</div>
-<!-- partial -->
-
-        <div class="percentage-display">
-            0%
+        <!-- partial:index.partial.html -->
+        
+        <div class="snowglobe">
+        <div class="sg-bg"></div>
+        <div class="grnd-snow">
+          <div class="snow-surface"></div>
         </div>
+        <div class="tree">
+          <div class="tree-shadow"></div>
+          <div class="branch-bot">
+            <div class="branch-bot-snow"></div>
+            <div class="branch-shadow"> </div>
+          </div>
+          <div class="branch-mid">
+            <div class="branch-mid-snow"></div>
+            <div class="branch-shadow"> </div>
+          </div>
+          <div class="branch-top">
+            <div class="branch-top-snow"></div>
+          </div>
+          <div class="star"></div>
+          <div class="baubles"></div>
+        </div>
+        <div class="sm-shadow"></div>
+        <div class="snowman">
+          <div class="snowman-bot"></div>
+          <div class="snowman-top"></div>
+          <div class="coal"></div>
+          <div class="carrot"></div>
+        </div>
+        <div class="falling-snow-wrap">
+          <div class="falling-snow">
+            <div class="flakes1">
+              <p>*</p>
+            </div>
+            <div class="flakes2">
+              <p>*</p>
+            </div>
+          </div>
+        </div>
+        <div class="sg-fg"></div>
+        <div class="stand-curved-wrap">
+          <div class="stand-curved"></div>
+        </div>
+        </div>
+        
+        <div class="percentage-display">
+        0%
+        </div>
+        
+        <!-- partial -->
 
         <div id="mailbox-container">
             <img id="mailbox" src="images/mailbox_32px.png" alt="mailbox图标">
@@ -1319,13 +1479,12 @@
             <div id="starship-tooltip">点击鼠标左键切换为“星舰控制台风格”</div>
         </div>
         
+    </div>
 
-        <select id="theme-selector">
-            <option value="default">旧版风格</option>
-            <option value="led">蓝屏LED风格</option>
-            <option value="blackboard">板书风格</option>
-            <option value="typewriter">打字机风格</option>
-        </select>
+    <div class="xmasLabelSection" style="align-items: center; font-size: 24px;">
+        <span style="font-family: AaDeGuLaJian; color: gold;">圣诞限定皮肤</span><br>
+        <span class="mountains-of-christmas-bold" style="color: gold;">Merry Christmas!</span><br>
+        <span class="mountains-of-christmas-regular">(2024.12.24 &mdash; 2024.12.25)</span>
     </div>
     
     <script>
@@ -1348,37 +1507,147 @@
             fields.forEach(field => tempValues[field] = 0);
 
 
-            document.querySelectorAll('input[type="number"]').forEach(input => {
-                input.addEventListener('input', (event) => {
+            document.querySelectorAll('input[type="checkbox"]').forEach(input => {
+                input.addEventListener('change', (event) => {
                     const id = event.target.id;
-                    const value = parseInt(event.target.value) || 0;
-                    tempValues[id] = value;  
-                    applyHighlight();         
+                    const isChecked = event.target.checked; // 检查是否选中
+                    tempValues[id] = isChecked ? 1 : 0; // 用 1 表示选中，0 表示未选中
+                    applyHighlight(); // 更新高亮样式
                 });
             });
+
 
 
             let lastCalculation = {};
 
-            document.querySelector('.green').addEventListener('click', () => {
+            let lastRecordBundle = null; // 用于存储上次操作的记录
 
-                lastCalculation = fields.reduce((acc, field) => {
-                    acc[field] = parseInt(localStorage.getItem(`${field}Total`)) || 0;
-                    return acc;
-                }, {});
+document.querySelector('.green').addEventListener('click', () => {
+    // 弹出输入框获取编号
+    const inputId = prompt("请输入例子编号 (或 任务编号/客户编号/lead编号/CLEAN)：");
+    if (!inputId) {
+        alert("编号不能为空！");
+        return;
+    }
 
-   
-                fields.forEach(field => {
-                    const previousTotal = parseInt(localStorage.getItem(`${field}Total`)) || 0;
-                    const newTotal = previousTotal + tempValues[field];
-                    localStorage.setItem(`${field}Total`, newTotal);
-                    updateDisplay(field, newTotal);
-                });
+    // 获取现有的记录列表和容器内容，保存当前状态到 lastRecordBundle
+    const recordContainer = document.getElementById('recordContainer'); // 假设有一个用于显示记录的容器
+    let displayedRecords = JSON.parse(localStorage.getItem('displayedRecords')) || [];
+    let existingRecords = JSON.parse(localStorage.getItem('records')) || []; // 读取已存在的数据
 
+    // 保存当前状态到 lastRecordBundle
+    lastRecordBundle = {
+        caseId: inputId,
+        records: [...existingRecords], // 保存撤销前的所有记录
+        displayedRecords: [...displayedRecords], // 保存撤销前的 displayedRecords
+        recordContainerHTML: recordContainer.innerHTML // 保存当前 recordContainer 的 HTML 内容
+    };
 
-                fields.forEach(field => tempValues[field] = 0);
-                document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
-            });
+    // 调用 calculate 函数
+    calculate();
+
+    // ------------------------------------------------------------------------ 这是分割线 ------------------------------------------------------------------------
+
+    // 为每个字段定义对应的标签
+    const fieldLabels = {
+        aiCredit: '征信',
+        aiBank1: '银流-超网',
+        aiBank2: '银流-邮箱',
+        aiTax: 'RPA',
+        aiWechat: '微信账单',
+        aiHouse1: '房简',
+        aiHouse2: '房复',
+        offlineCredit: '征信',
+        offlineBank1: '银流-超网',
+        offlineBank2: '银流-邮箱',
+        offlineTax: 'RPA',
+        offlineWechat: '微信账单',
+        offlineHouse1: '房简',
+        offlineHouse2: '房复'
+    };
+
+    // 获取当次计算涉及的标签
+    const involvedTags = fields.filter(field => document.getElementById(field)?.checked);
+
+    // 新增记录内容
+    const newRecord = document.createElement('div');
+    newRecord.classList.add('record');
+
+    // 确定序号
+    const recordNumber = String(recordContainer.children.length + 1).padStart(2, '0'); // 根据现有记录数量计算序号
+
+    // 生成记录内容：用标签代替字段名
+    const involvedDetails = involvedTags.map(tag => `<span class="${tag}">${fieldLabels[tag] || tag}</span>`).join(', ');
+
+    // 设置记录内容，包括序号和 inputId 的样式
+    newRecord.innerHTML = `<span style="font-size: 12px;">${recordNumber} |</span> <span style="font-size: 12px;">${inputId}</span> <span style="font-size: 12px;">|</span> <span style="font-size: 12px;">${involvedDetails}</span>`;
+
+    // 将记录添加到容器中
+    recordContainer.appendChild(newRecord);
+
+    // 更新 displayedRecords
+    displayedRecords.push({
+        inputId,
+        involvedDetails
+    });
+
+    // 保存更新后的 displayedRecords 到 localStorage
+    localStorage.setItem('displayedRecords', JSON.stringify(displayedRecords));
+
+    // 新功能：将每个标签创建为单独的对象并存储到 localStorage
+    const newRecords = involvedTags.map(tag => ({
+        caseId: inputId,
+        involvedTag: tag
+    }));
+
+    // 合并新旧数据
+    const updatedRecords = [...existingRecords, ...newRecords];
+
+    // 更新 localStorage
+    localStorage.setItem('records', JSON.stringify(updatedRecords));
+
+    // ------------------------------------------------------------------------ 这是分割线 ------------------------------------------------------------------------
+
+    // 保存当前状态到 lastRecordBundle
+    // 这一部分不再需要，已提前保存
+    // lastRecordBundle = {
+    //     caseId: inputId,
+    //     records: [...existingRecords], // 保存撤销前的所有记录
+    //     displayedRecords: [...displayedRecords], // 保存撤销前的 displayedRecords
+    //     recordContainerHTML: recordContainer.innerHTML // 保存当前 recordContainer 的 HTML 内容
+    // };
+
+    // 保存当前状态
+    lastCalculation = fields.reduce((acc, field) => {
+        acc[field] = localStorage.getItem(`${field}Total`) || 0;
+        return acc;
+    }, {});
+
+    // 更新每个字段的总数
+    fields.forEach(field => {
+        const previousTotal = parseInt(localStorage.getItem(`${field}Total`)) || 0;
+
+        // 使用复选框的选中状态来更新总数
+        const newTotal = previousTotal + (document.getElementById(field).checked ? 1 : 0);
+
+        // 保存更新后的总数
+        localStorage.setItem(`${field}Total`, newTotal);
+
+        // 更新显示
+        updateDisplay(field, newTotal);
+    });
+
+    // 清空临时存储的字段
+    fields.forEach(field => tempValues[field] = 0);
+
+    // 清空所有复选框
+    document.querySelectorAll('input[type="checkbox"]').forEach(input => input.checked = false);
+
+    // 重新应用高亮
+    applyHighlight();
+
+    calculateSnowAnimation();
+});
 
 
             document.querySelector('.yellow').addEventListener('click', () => {
@@ -1391,23 +1660,237 @@
                 }
 
                 fields.forEach(field => tempValues[field] = 0);
-                document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+                document.querySelectorAll('input[type="checkbox"]').forEach(input => input.checked = false); // 设置为未选中
+                applyHighlight();
+
+                if (!lastRecordBundle) {
+        alert("没有可撤销的记录！");
+        return;
+    }
+
+    const { caseId, records, displayedRecords, recordContainerHTML } = lastRecordBundle;
+
+    // 从 localStorage 中恢复到撤销前的状态
+    localStorage.setItem('records', JSON.stringify(records)); // 恢复 records
+    localStorage.setItem('displayedRecords', JSON.stringify(displayedRecords)); // 恢复 displayedRecords
+
+    // 恢复对应的 recordContainer 内容
+    document.getElementById('recordContainer').innerHTML = recordContainerHTML;
+
+    // 清空 lastRecordBundle 防止多次撤销
+    lastRecordBundle = null;
+
+    // 提示用户撤销成功
+    alert(`编号为 ${caseId} 的记录已被撤销！`);
 
             });
 
 
             document.querySelector('.red').addEventListener('click', () => {
-
                 fields.forEach(field => tempValues[field] = 0);
 
-                document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+                // 重置所有复选框的选中状态
+                document.querySelectorAll('input[type="checkbox"]').forEach(input => input.checked = false);
 
                 applyHighlight();
-                    
             });
 
+        // ------------------------------------------------------------------------ 这是分割线 ------------------------------------------------------------------------
+
+// 获取相关的 DOM 元素
+const archiveButton = document.getElementById('archiveButton');
+const paperShredderButton = document.getElementById('paperShredderButton'); 
+const recordContainer = document.getElementById('recordContainer');
+const recordLastDayContainer = document.getElementById('recordLastDayContainer');
+
+// 按钮点击事件
+archiveButton.addEventListener('click', () => {
+    // 弹出确认对话框
+    const userConfirmed = confirm('确定真的存档为上一日成交记录？');
+
+    // 如果用户点击“取消”，终止操作
+    if (!userConfirmed) {
+        return;
+    }
+
+    // 1. 处理 localStorage 中的 records 数据
+    const records = JSON.parse(localStorage.getItem('records')) || []; // 获取当前 records 数据
+    localStorage.setItem('recordsLastDay', JSON.stringify(records)); // 存为 recordsLastDay
+    localStorage.setItem('records', JSON.stringify([])); // 清空 records
+
+    // 2. 处理 localStorage 中的 displayedRecords 数据
+    const displayedRecords = JSON.parse(localStorage.getItem('displayedRecords')) || []; // 获取当前 displayedRecords 数据
+    localStorage.setItem('displayedRecordsLastDay', JSON.stringify(displayedRecords)); // 存为 displayedRecordsLastDay
+    localStorage.setItem('displayedRecords', JSON.stringify([])); // 清空 displayedRecords
+
+    // 3. 转移页面中的记录
+    // 先清空 recordLastDayContainer 的内容
+    while (recordLastDayContainer.firstChild) {
+        recordLastDayContainer.removeChild(recordLastDayContainer.firstChild);
+    }
+
+    // 将 recordContainer 的子节点转移到 recordLastDayContainer
+    while (recordContainer.firstChild) {
+        recordLastDayContainer.appendChild(recordContainer.firstChild);
+    }
+
+    // 确保 recordContainer 为空
+    recordContainer.innerHTML = ''; 
+});
+
+
+// 按钮点击事件 - 销毁按钮
+paperShredderButton.addEventListener('click', () => {
+    // 弹窗确认
+    if (confirm('确定真的清空当日全部成交记录？')) {
+        // 清除 localStorage 中的 records 和 displayedRecords
+        localStorage.removeItem('records');
+        localStorage.removeItem('displayedRecords');
+
+        // 清空 recordContainer 中的所有记录（不影响 recordLastDayContainer）
+        recordContainer.innerHTML = ''; // 清空内容
+
+        // 这里保留 recordLastDayContainer 中的内容，无需操作
+    }
+});
+
+    // ------------------------------------------------------------------------ 这是分割线 ------------------------------------------------------------------------
+
+        // 解析 Excel 数据
+        function parseExcelData(rawData) {
+        const rows = rawData.trim().split("\n");
+
+        // 定义后缀映射规则
+        const suffixMapping = {
+            "信提": "Credit",
+            "银流-超网": "Bank1",
+            "银流-邮箱": "Bank2",
+            "微信账单": "Wechat",
+            "房简": "House1",
+            "房复": "House2"
+        };
+
+        return rows.map(row => {
+            const values = row.split("\t");
+            const caseId = values[0] || ""; // 第一列默认字段名为 caseId
+            const originalValue = values[1] || ""; // 第二列的原始值
+
+            // 根据第一列字符串长度判断前缀
+            let prefix = "";
+            if (caseId.length === 35) {
+            prefix = "ai";
+            } else if (caseId.length === 22) {
+            prefix = "offline";
+            }
+
+            // 根据映射规则确定后缀
+            const suffix = suffixMapping[originalValue] || originalValue; // 如果没有匹配到，保留原始值
+
+            return {
+            caseId: caseId,
+            involvedTag: prefix && suffix ? `${prefix}${suffix}` : "" // 拼接前缀和后缀
+            };
+        });
+        }
+
+    // ------------------------------------------------------------------------ 这是分割线 ------------------------------------------------------------------------
+
+        // 比对逻辑
+        document.getElementById("compareBtn").addEventListener("click", () => {
+        const excelRawData = document.getElementById("excelData").value.trim();
+        const excelData = parseExcelData(excelRawData); // 解析 Excel 数据
+        const localData = JSON.parse(localStorage.getItem("recordsLastDay") || "[]"); // 获取 localStorage 数据
+
+        // 转换为 Set 格式进行高效比对
+        const localDataSet = new Set(
+            localData.map(item => `${item.caseId}_${item.involvedTag}`)
+        );
+
+        // 找出 Excel 中有而 localStorage 中没有的数据
+        const notInLocal = excelData.filter(
+            excelItem => !localDataSet.has(`${excelItem.caseId}_${excelItem.involvedTag}`)
+        );
+
+        // 转换为 Set 格式进行高效比对
+        const excelDataSet = new Set(
+            excelData.map(item => `${item.caseId}_${item.involvedTag}`)
+        );
+
+        // 找出 localStorage 中有而 Excel 中没有的数据
+        const notInExcel = localData.filter(
+            localItem => !excelDataSet.has(`${localItem.caseId}_${localItem.involvedTag}`)
+        );
+
+        // ------------------------------------------------------------------------ 这是分割线 ------------------------------------------------------------------------
+
+        // 显示比对结果
+        const differenceDiv = document.getElementById("difference");
+
+        // 辅助函数：将比对结果按 caseId 分组
+        function groupByCaseId(data) {
+        return data.reduce((result, item) => {
+            if (!result[item.caseId]) {
+            result[item.caseId] = []; // 如果 caseId 尚未存在，初始化一个数组
+            }
+            result[item.caseId].push(item.involvedTag); // 将 involvedTag 添加到对应 caseId 的数组中
+            return result;
+        }, {});
+        }
+
+        // 按 caseId 分组后的数据
+        const groupedNotInLocal = groupByCaseId(notInLocal);
+        const groupedNotInExcel = groupByCaseId(notInExcel);
+
+
+// 定义 tag 对应关系
+const tagMappings = {
+    aiCredit: "征信",
+    aiBank1: "银流-超网",
+    aiBank2: "银流-邮箱",
+    aiTax: "RPA",
+    aiWechat: "微信账单",
+    aiHouse1: "房简",
+    aiHouse2: "房复",
+    offlineCredit: "征信",
+    offlineBank1: "银流-超网",
+    offlineBank2: "银流-邮箱",
+    offlineTax: "RPA",
+    offlineWechat: "微信账单",
+    offlineHouse1: "房简",
+    offlineHouse2: "房复"
+};
+
+// 格式化输出为 HTML
+function formatGroupedData(groupedData) {
+    return Object.entries(groupedData)
+        .map(([caseId, tags]) => {
+            // 将 tags 转换为映射的中文名称
+            const tagsList = tags.map(tag => tagMappings[tag] || tag).join(", "); // 使用映射关系转换，未匹配的直接显示原值
+            return `
+                <p style="font-size: 12px;">
+                    <span style="font-weight: bold;">${caseId}</span> | ${tagsList}
+                </p>`;
+        })
+        .join("");
+}
+
+
+        // 显示比对结果
+        differenceDiv.innerHTML = `
+        <p>&#x270C;<strong style="font-family: 'FangSong', serif;"> Excel中有而线上成交记录中没有的数据：</strong></p>
+        ${formatGroupedData(groupedNotInLocal)}
+        <p>&#x270D;<strong style="font-family: 'FangSong', serif;"> 线上成交记录中有而Excel中没有的数据：</strong></p>
+        ${formatGroupedData(groupedNotInExcel)}
+        `;
 
         });
+
+        document.getElementById("clearPasteAreaBtn").addEventListener("click", function() {
+    document.getElementById("excelData").value = ""; // 清空textarea的内容
+});
+
+
+    });
 
         document.addEventListener('DOMContentLoaded', () => { // DOM 2
             const savedName = localStorage.getItem('savedName');
@@ -1510,95 +1993,89 @@
         let prevState = {};  
     
         function calculate() {
-            const name = document.getElementById('nameDisplay').textContent;
-            const target = parseInt(document.getElementById('targetDisplay').textContent);
-    
-            const aiCredit = parseInt(document.getElementById('aiCredit').value);
-            const aiBank1 = parseInt(document.getElementById('aiBank1').value);
-            const aiBank2 = parseInt(document.getElementById('aiBank2').value);
-            const aiTax = parseInt(document.getElementById('aiTax').value);
-            const aiWechat = parseInt(document.getElementById('aiWechat').value);
-            const aiHouse1 = parseInt(document.getElementById('aiHouse1').value);
-            const aiHouse2 = parseInt(document.getElementById('aiHouse2').value);
-            
-            const offlineCredit = parseInt(document.getElementById('offlineCredit').value);
-            const offlineBank1 = parseInt(document.getElementById('offlineBank1').value);
-            const offlineBank2 = parseInt(document.getElementById('offlineBank2').value);
-            const offlineTax = parseInt(document.getElementById('offlineTax').value);
-            const offlineWechat = parseInt(document.getElementById('offlineWechat').value);
-            const offlineHouse1 = parseInt(document.getElementById('offlineHouse1').value);
-            const offlineHouse2 = parseInt(document.getElementById('offlineHouse2').value);
-            
-            // 计算当次完成订单总金额
-            const totalCurrent = (aiCredit * 25) + (aiBank1 * 45) + (aiBank2 * 80) + (aiTax * 80) + (aiWechat * 35) + (aiHouse1 * 45) + (aiHouse2 * 80)
-                                + (offlineCredit * 30) + (offlineBank1 * 60) + (offlineBank2 * 100) + (offlineTax * 80) + (offlineWechat * 40) + (offlineHouse1 * 60) + (offlineHouse2 * 100);
-            
-            // 更新总单数
-            const totalCurrentOrders = aiCredit + aiBank1 + aiBank2 + aiTax + aiWechat + aiHouse1 + aiHouse2 
-                                        + offlineCredit + offlineBank1 + offlineBank2 + offlineTax + offlineWechat + offlineHouse1 + offlineHouse2;
-            
-            // 保存当前状态到 prevState
-            prevState = {
-                totalOrders, 
-                totalAmount, 
-                aiTotalOrders, 
-                resultText: document.getElementById('result').textContent 
-            };
-            
-            totalOrders += totalCurrentOrders;
-            totalAmount += totalCurrent;
-            aiTotalOrders += (aiCredit + aiBank1 + aiBank2 + aiTax + aiWechat + aiHouse1 + aiHouse2);
-            
-            const diff = target - totalAmount;
-            const diffText = diff >= 0 ? `差额 ${diff} 元` : `超额 ${Math.abs(diff)} 元`;
-            
-            const resultText = `日目标 ${target} 元，${name}本次新增完成 ${totalCurrent} 元，总单 ${totalOrders} 单（AI ${aiTotalOrders} 单），当日累计完成 ${totalAmount} 元，${diffText}，其他伙伴加油[加油]`;
-            document.getElementById('result').textContent = resultText;
+                const name = document.getElementById('nameDisplay').textContent;
+                const target = parseInt(document.getElementById('targetDisplay').textContent);
 
+                // 获取复选框的选中状态（选中为1，未选中为0）
+                const aiCredit = document.getElementById('aiCredit').checked ? 1 : 0;
+                const aiBank1 = document.getElementById('aiBank1').checked ? 1 : 0;
+                const aiBank2 = document.getElementById('aiBank2').checked ? 1 : 0;
+                const aiTax = document.getElementById('aiTax').checked ? 1 : 0;
+                const aiWechat = document.getElementById('aiWechat').checked ? 1 : 0;
+                const aiHouse1 = document.getElementById('aiHouse1').checked ? 1 : 0;
+                const aiHouse2 = document.getElementById('aiHouse2').checked ? 1 : 0;
 
-            // 保存计算结果
-            const result = {
-            dayGoal: target,
-            totalCompletedOrders: totalCurrent,
-            aiCompletedOrders: aiTotalOrders,
-            difference: diff,
-            resultText: resultText
-            };
-            localStorage.setItem('calculationResult', JSON.stringify(result));
+                const offlineCredit = document.getElementById('offlineCredit').checked ? 1 : 0;
+                const offlineBank1 = document.getElementById('offlineBank1').checked ? 1 : 0;
+                const offlineBank2 = document.getElementById('offlineBank2').checked ? 1 : 0;
+                const offlineTax = document.getElementById('offlineTax').checked ? 1 : 0;
+                const offlineWechat = document.getElementById('offlineWechat').checked ? 1 : 0;
+                const offlineHouse1 = document.getElementById('offlineHouse1').checked ? 1 : 0;
+                const offlineHouse2 = document.getElementById('offlineHouse2').checked ? 1 : 0;
+                
+                // 计算当次完成订单总金额
+                const totalCurrent = (aiCredit * 25) + (aiBank1 * 45) + (aiBank2 * 80) + (aiTax * 80) + (aiWechat * 35) + (aiHouse1 * 45) + (aiHouse2 * 80)
+                                    + (offlineCredit * 30) + (offlineBank1 * 60) + (offlineBank2 * 100) + (offlineTax * 80) + (offlineWechat * 40) + (offlineHouse1 * 60) + (offlineHouse2 * 100);
+                
+                // 更新总单数
+                const totalCurrentOrders = aiCredit + aiBank1 + aiBank2 + aiTax + aiWechat + aiHouse1 + aiHouse2 
+                                            + offlineCredit + offlineBank1 + offlineBank2 + offlineTax + offlineWechat + offlineHouse1 + offlineHouse2;
+                
+                // 保存当前状态到 prevState
+                prevState = {
+                    totalOrders, 
+                    totalAmount, 
+                    aiTotalOrders, 
+                    resultText: document.getElementById('result').textContent 
+                };
+                
+                totalOrders += totalCurrentOrders;
+                totalAmount += totalCurrent;
+                aiTotalOrders += (aiCredit + aiBank1 + aiBank2 + aiTax + aiWechat + aiHouse1 + aiHouse2);
+                
+                const diff = target - totalAmount;
+                const diffText = diff >= 0 ? `差额 ${diff} 元` : `超额 ${Math.abs(diff)} 元`;
+                
+                const resultText = `日目标 ${target} 元，${name}本次新增完成 ${totalCurrent} 元，总单 ${totalOrders} 单（AI ${aiTotalOrders} 单），当日累计完成 ${totalAmount} 元，${diffText}，其他伙伴加油[加油]`;
+                document.getElementById('result').textContent = resultText;
 
-            // 保存最近一次的计算结果以便撤销
-            lastCalculation = {
-                aiCredit,
-                aiBank1,
-                aiBank2,
-                aiTax,
-                aiWechat,
-                aiHouse1,
-                aiHouse2,
-                offlineCredit,
-                offlineBank1,
-                offlineBank2,
-                offlineTax,
-                offlineWechat,
-                offlineHouse1,
-                offlineHouse2,
-                resultText
-            };
-            localStorage.setItem('lastCalculation', JSON.stringify(lastCalculation));
+                // 保存计算结果
+                const result = {
+                    dayGoal: target,
+                    totalCompletedOrders: totalCurrent,
+                    aiCompletedOrders: aiTotalOrders,
+                    difference: diff,
+                    resultText: resultText
+                };
+                localStorage.setItem('calculationResult', JSON.stringify(result));
+
+                // 保存最近一次的计算结果以便撤销
+                lastCalculation = {
+                    aiCredit,
+                    aiBank1,
+                    aiBank2,
+                    aiTax,
+                    aiWechat,
+                    aiHouse1,
+                    aiHouse2,
+                    offlineCredit,
+                    offlineBank1,
+                    offlineBank2,
+                    offlineTax,
+                    offlineWechat,
+                    offlineHouse1,
+                    offlineHouse2,
+                    resultText
+                };
+                localStorage.setItem('lastCalculation', JSON.stringify(lastCalculation));
+                
+                // 保存当前总单数和金额
+                localStorage.setItem('totalOrders', totalOrders);
+                localStorage.setItem('totalAmount', totalAmount);
+                localStorage.setItem('aiTotalOrders', aiTotalOrders);
             
-            // 保存当前总单数和金额
-            localStorage.setItem('totalOrders', totalOrders);
-            localStorage.setItem('totalAmount', totalAmount);
-            localStorage.setItem('aiTotalOrders', aiTotalOrders);
-            
-            // 清空所有输入框的值
-            document.querySelectorAll('input[type="number"]').forEach(input => {
-                input.value = 0;
-            });
-            
-            // 重新应用高亮
-            applyHighlight();
-        }
+            }
+
     
         function undo() {
             if (Object.keys(prevState).length > 0) { // 判断是否有保存的状态
@@ -1655,17 +2132,13 @@
         }
     
         // 添加事件监听
-        document.querySelector('.green').addEventListener('click', calculate);
+
         document.querySelector('.yellow').addEventListener('click', undo);
         document.querySelector('.red').addEventListener('click', confirmReset);
         document.querySelector('.copy-button').addEventListener('click', copyResult);
 
         function confirmReset() {
             if (confirm('确定真的强制归零？')) {
-                // 强制将所有值归零
-                document.querySelectorAll('input[type="number"]').forEach(input => {
-                    input.value = 0;
-                });
 
                 // 清除本地存储中的数据
                 localStorage.removeItem('totalOrders');
@@ -1693,6 +2166,9 @@
                 applyHighlight();
 
                 resetOrderDisplay();
+
+                // 弹窗提示
+        alert('请手动选择【存档为上一日成交记录】或【清空全部当日成交记录】');
             }
         }
 
@@ -1719,24 +2195,24 @@
         function applyHighlight() {
             const isDarkMode = document.body.classList.contains('dark-mode');
 
-            document.querySelectorAll('input[type="number"]').forEach(input => {
-                const label = input.parentElement.querySelector('b');
+            document.querySelectorAll('input[type="checkbox"]').forEach(input => {
+            const label = input.parentElement.querySelector('b');
 
-                const highlightStyles = {
-                    lightMode: {
-                        backgroundColor: 'yellow',
-                        color: 'black'
-                    },
-                    darkMode: {
-                        backgroundColor: 'indigo',
-                        color: 'yellow'
-                    }
-                };
+            const highlightStyles = {
+                lightMode: {
+                    backgroundColor: 'yellow',
+                    color: 'black'
+                },
+                darkMode: {
+                    backgroundColor: 'indigo',
+                    color: 'yellow'
+                }
+        };
 
             const currentHighlightStyles = isDarkMode ? highlightStyles.darkMode : highlightStyles.lightMode;
 
             if (input.id !== 'targetInput') {
-                if (input.value > 0) {
+                if (input.checked) {
                     input.classList.add('highlight');
                     input.style.backgroundColor = currentHighlightStyles.backgroundColor;
                     input.style.color = currentHighlightStyles.color;
@@ -1756,17 +2232,17 @@
                     }
                 }
             } else {
-                        input.classList.remove('highlight');
-                        input.style.backgroundColor = ''; 
-                        input.style.color = '';
-                        if (label) {
-                            label.classList.remove('highlight');
-                            label.style.backgroundColor = ''; 
-                            label.style.color = '';
-                        }
-                    }
-                });
-        }
+                input.classList.remove('highlight');
+                input.style.backgroundColor = ''; 
+                input.style.color = '';
+                if (label) {
+                    label.classList.remove('highlight');
+                    label.style.backgroundColor = ''; 
+                    label.style.color = '';
+                }
+            }
+        });
+        }   
 
 
         function updateDisplay(field, total) {
@@ -1808,45 +2284,40 @@
 
 
 
+// 页面加载时从 localStorage 加载记录并显示
+const savedRecords = JSON.parse(localStorage.getItem('displayedRecords')) || [];
+const savedRecordsLastDay = JSON.parse(localStorage.getItem('displayedRecordsLastDay')) || [];
 
-        window.addEventListener('DOMContentLoaded', () => {
+// 显示当天记录
+savedRecords.forEach((record, index) => {
+    const recordElement = document.createElement('div');
+    recordElement.classList.add('record');
+    const recordNumber = String(index + 1).padStart(2, '0'); // 序号格式化为两位数字
+    recordElement.innerHTML = `<span style="font-size: 12px;">${recordNumber} |</span> <span style="font-size: 12px;">${record.inputId}</span> <span style="font-size: 12px;">|</span> <span style="font-size: 12px;">${record.involvedDetails}</span>`;
+    recordContainer.appendChild(recordElement);
+});
 
-            const savedTheme = localStorage.getItem('theme');
-            const resultElement = document.getElementById('result');
-            const themeSelector = document.getElementById('theme-selector');
-            
-            if (savedTheme) {
+// 显示上一天记录
+savedRecordsLastDay.forEach((record, index) => {
+    const recordElement = document.createElement('div');
+    recordElement.classList.add('record');
+    const recordNumber = String(index + 1).padStart(2, '0'); // 序号格式化为两位数字
+    recordElement.innerHTML = `<span style="font-size: 12px;">${recordNumber} |</span> <span style="font-size: 12px;">${record.inputId}</span> <span style="font-size: 12px;">|</span> <span style="font-size: 12px;">${record.involvedDetails}</span>`;
+    recordLastDayContainer.appendChild(recordElement);
+});
 
-                document.body.classList.toggle('dark-mode', savedTheme === 'dark');
-                
-                const selectedTheme = localStorage.getItem('selectedTheme') || 'led';
-                resultElement.className = selectedTheme;
-                themeSelector.value = selectedTheme;
-            } else {
 
-                resultElement.classList.add('led');
-                themeSelector.value = 'led';
-            }
-        });
 
-        document.getElementById('theme-selector').addEventListener('change', function() {
-            const selectedTheme = this.value;
-            const resultElement = document.getElementById('result');
 
-            resultElement.className = '';
 
-            resultElement.classList.add(selectedTheme);
-
-            localStorage.setItem('selectedTheme', selectedTheme);
-        });
 
 
         const nightIcons = {
-            credit: "images/icons/night/credit-icon-32px.png",
-            bank: "images/icons/night/bank-icon-32px.png",
-            tax: "images/icons/night/tax-icon-32px.png",
-            wechat: "images/icons/night/wechat-icon-32px.png",
-            house: "images/icons/night/house-icon-32px.png",
+            credit: "images/icons/credit-icon-32px.png",
+            bank: "images/icons/bank-icon-32px.png",
+            tax: "images/icons/tax-icon-32px.png",
+            wechat: "images/icons/wechat-icon-32px.png",
+            house: "images/icons/house-icon-32px-Xmas.png",
         };
 
 
@@ -1879,91 +2350,73 @@
         });
 
 
-        let previousLiquidHeightRatio = 0; 
-            const radius = 100; 
+        function calculateSnowAnimation() {
+    const totalAmount = parseFloat(localStorage.getItem('totalAmount')) || 0;
+    const target = parseFloat(document.getElementById('targetDisplay').textContent) || 1;
 
-        function calculateWaveAnimation() {
+    if (target === 0) {
+        alert("目标不能为0");
+        return;
+    }
 
-            const totalAmount = parseFloat(localStorage.getItem('totalAmount')) || 0;
-            const target = parseFloat(document.getElementById('targetDisplay').textContent) || 1;
+    const percentageOfCompletion = totalAmount / target;
+    const percentageDisplay = document.querySelector('.percentage-display');
+    percentageDisplay.textContent = `${(percentageOfCompletion * 100).toFixed(0)}%`;
 
-            if (target === 0) {
-                alert("目标不能为0");
-                return;
+    // 调用 getFlakesAnimationPeriod 计算新的动画周期
+    const newFlakesAnimationPeriod = getFlakesAnimationPeriod(percentageOfCompletion);
+
+    const flakes1 = document.querySelector('.flakes1');
+    const flakes2 = document.querySelector('.flakes2');
+
+    // 移除现有动画，强制重绘
+    flakes1.style.animation = 'none';
+    flakes2.style.animation = 'none';
+
+    // 强制重绘浏览器
+    void flakes1.offsetWidth;
+    void flakes2.offsetWidth;
+
+    // 重新应用动画，确保 infinite 属性生效
+    const animationSettings1 = `sfanim linear ${newFlakesAnimationPeriod}s infinite`;
+    const animationSettings2 = `sfanim linear ${newFlakesAnimationPeriod / 2}s infinite`;
+
+    flakes1.style.webkitAnimation = animationSettings1;
+    flakes1.style.animation = animationSettings1;
+
+    flakes2.style.webkitAnimation = animationSettings2;
+    flakes2.style.animation = animationSettings2;
+}
+
+
+        function getFlakesAnimationPeriod(percentageOfCompletion) {
+            // 确保输入值不小于 0
+            if (percentageOfCompletion < 0) {
+                throw new Error("percentageOfCompletion 必须在 0 到 1 之间");
             }
 
-            const percentageOfCompletion = totalAmount / target;
-
-            const percentageDisplay = document.querySelector('.percentage-display');
-
-            percentageDisplay.textContent = `${(percentageOfCompletion * 100).toFixed(0)}%`;
-
-                let newLiquidHeightRatio = getLiquidHeightRatio(percentageOfCompletion);
-
-                const startTop = 90 - 210 * previousLiquidHeightRatio; 
-                const endTop = 90 - 210 * newLiquidHeightRatio; 
-
-            const heightDifference = Math.abs(newLiquidHeightRatio - previousLiquidHeightRatio);
-            const animationDuration = Math.max(0.5, 12 * heightDifference); 
-
-            const waveChange = document.querySelector('.wave-change');
-            waveChange.style.animation = 'none';
-
-            const styleSheet = document.styleSheets[0];
-            const keyframesRule = 
-            `@keyframes change {
-                from { top: ${startTop}px; }
-                to { top: ${endTop}px; }
-            }`;
-
-            for (let i = 0; i < styleSheet.cssRules.length; i++) {
-                if (styleSheet.cssRules[i].name === 'change') {
-                    styleSheet.deleteRule(i);
-                    break;
-                }
+            // 超出范围时返回固定值
+            if (percentageOfCompletion > 1) {
+                return 2.07;
             }
 
-            styleSheet.insertRule(keyframesRule, styleSheet.cssRules.length);
+            // 根据公式计算 y 值
+            const y = 150 * Math.exp(-6 * percentageOfCompletion) + 1.7;
 
-            // 确保动画已重置，再应用新的动画
-            requestAnimationFrame(() => {
-                waveChange.style.animation = `change ${animationDuration}s linear forwards`;
-            });
-
-                previousLiquidHeightRatio = newLiquidHeightRatio;
+            // 返回动画周期
+            return y;
         }
 
 
-            
-        function getLiquidHeightRatio(percentageOfCompletion) {
-        const r = 1; 
-        const totalVolume = (4 / 3) * Math.PI * Math.pow(r, 3); 
-        const targetVolume = totalVolume * percentageOfCompletion; 
+        // 示例调用
+        console.log(getFlakesAnimationPeriod(0));   // 输出示例
+        console.log(getFlakesAnimationPeriod(0.5)); // 输出示例
+        console.log(getFlakesAnimationPeriod(1));   // 输出示例
 
-            if (percentageOfCompletion >= 1) {
-            return 1; 
-        }
+        document.addEventListener('DOMContentLoaded', calculateSnowAnimation);
 
-        let liquidHeight = 0; 
-        const increment = 0.001; 
-
-        while (true) {
-            const volume = (Math.PI * Math.pow(liquidHeight, 2) * (3 * r - liquidHeight)) / 3;
-
-            if (volume >= targetVolume) {
-                break; 
-            }
-            liquidHeight += increment; 
-        }
-
-        return liquidHeight / (r * 2); 
-        }
-
-        document.addEventListener('DOMContentLoaded', calculateWaveAnimation);
-        document.querySelector('.green').addEventListener('click', calculateWaveAnimation);
-        document.querySelector('.yellow').addEventListener('click', calculateWaveAnimation);
-        document.querySelector('.red').addEventListener('click', calculateWaveAnimation);  
-
+        document.querySelector('.yellow').addEventListener('click', calculateSnowAnimation);
+        document.querySelector('.red').addEventListener('click', calculateSnowAnimation);  
 
 
 
